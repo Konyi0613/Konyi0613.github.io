@@ -43,7 +43,7 @@
 <meta property="og:image" content="http://example.com/2025/06/16/%E6%95%99%E6%8E%88Tier-Ranking/Yudou.jpg">
 <meta property="og:image" content="http://example.com/2025/06/16/%E6%95%99%E6%8E%88Tier-Ranking/Shinmu.jpg">
 <meta property="article:published_time" content="2025-06-15T23:54:49.000Z">
-<meta property="article:modified_time" content="2025-06-16T00:40:42.159Z">
+<meta property="article:modified_time" content="2025-06-16T00:42:56.654Z">
 <meta property="article:author" content="Konyi">
 <meta property="article:tag" content="排名">
 <meta name="twitter:card" content="summary">
@@ -216,7 +216,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2025-06-16 07:54:49 / Modified: 08:40:42" itemprop="dateCreated datePublished" datetime="2025-06-16T07:54:49+08:00">2025-06-16</time>
+              <time title="Created: 2025-06-16 07:54:49 / Modified: 08:42:56" itemprop="dateCreated datePublished" datetime="2025-06-16T07:54:49+08:00">2025-06-16</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -247,7 +247,7 @@
 .tier {
   display: flex;
   align-items: stretch;
-  margin-bottom: 10px;
+  margin: 0;
 }
 
 .tier-label {
@@ -260,6 +260,7 @@
   align-items: center;
 }
 
+/* 黑底區塊設定 */
 .tier-content {
   background-color: #111;
   flex-grow: 1;
@@ -268,6 +269,20 @@
   padding: 10px;
   gap: 10px;
   overflow-x: auto;
+  border-top: 1px solid #333;
+}
+
+/* 最上層黑塊加上上圓角 */
+.tier:first-child .tier-content {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* 最下層黑塊加下圓角與底線 */
+.tier:last-child .tier-content {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom: 1px solid #333;
 }
 
 .tier-content img {
@@ -277,7 +292,7 @@
 }
 
 /* Tier colors */
-.q { background-color:rgb(255, 15, 199)}
+.q { background-color: rgb(255, 15, 199); }
 .s { background-color: #e74c3c; }
 .a { background-color: #e67e22; }
 .b { background-color: #f1c40f; }
@@ -356,6 +371,7 @@
     <img src="/2025/06/16/%E6%95%99%E6%8E%88Tier-Ranking/Shinmu.jpg" class="" title="蔡欣穆">
   </div>
 </div>
+
     </div>
 
     
