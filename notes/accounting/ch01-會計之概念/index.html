@@ -1,0 +1,938 @@
+<!DOCTYPE html><html lang="en" class="bg-[var(--page-bg)] transition text-[14px] md:text-[16px]" data-overlayscrollbars-initialize data-astro-cid-sckkx6r4 style="--bannerOffset: 15vh;--banner-height-home: 65vh;--banner-height: 35vh;--configHue: 20;--page-width: 75rem;"> <head><title>會計之概念 - Konyi&#39;s Blog</title><meta charset="UTF-8"><meta name="description" content="個體假設、會計的定義與觀念架構、會計恆等式、資產負債表與損益表"><meta name="author" content="Konyi"><meta property="og:site_name" content="Konyi's Blog"><meta property="og:url" content="https://konyi0613.github.io/notes/accounting/ch01-%E6%9C%83%E8%A8%88%E4%B9%8B%E6%A6%82%E5%BF%B5/"><meta property="og:title" content="會計之概念 - Konyi's Blog"><meta property="og:description" content="個體假設、會計的定義與觀念架構、會計恆等式、資產負債表與損益表"><meta property="og:type" content="article"><meta name="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://konyi0613.github.io/notes/accounting/ch01-%E6%9C%83%E8%A8%88%E4%B9%8B%E6%A6%82%E5%BF%B5/"><meta name="twitter:title" content="會計之概念 - Konyi's Blog"><meta name="twitter:description" content="個體假設、會計的定義與觀念架構、會計恆等式、資產負債表與損益表"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.13.10"><link rel="icon" href="/favicon/favicon-light-32.png" sizes="32x32" media="(prefers-color-scheme: light)"><link rel="icon" href="/favicon/favicon-light-128.png" sizes="128x128" media="(prefers-color-scheme: light)"><link rel="icon" href="/favicon/favicon-light-180.png" sizes="180x180" media="(prefers-color-scheme: light)"><link rel="icon" href="/favicon/favicon-light-192.png" sizes="192x192" media="(prefers-color-scheme: light)"><link rel="icon" href="/favicon/favicon-dark-32.png" sizes="32x32" media="(prefers-color-scheme: dark)"><link rel="icon" href="/favicon/favicon-dark-128.png" sizes="128x128" media="(prefers-color-scheme: dark)"><link rel="icon" href="/favicon/favicon-dark-180.png" sizes="180x180" media="(prefers-color-scheme: dark)"><link rel="icon" href="/favicon/favicon-dark-192.png" sizes="192x192" media="(prefers-color-scheme: dark)"><!-- Set the theme before the page is rendered to avoid a flash --><script>(function(){const DEFAULT_THEME = "auto";
+const LIGHT_MODE = "light";
+const DARK_MODE = "dark";
+const AUTO_MODE = "auto";
+const BANNER_HEIGHT_EXTEND = 30;
+const PAGE_WIDTH = 75;
+const configHue = 20;
+
+			// Load the theme from local storage
+			const theme = localStorage.getItem('theme') || DEFAULT_THEME;
+			switch (theme) {
+				case LIGHT_MODE:
+					document.documentElement.classList.remove('dark');
+					break
+				case DARK_MODE:
+					document.documentElement.classList.add('dark');
+					break
+				case AUTO_MODE:
+					if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+						document.documentElement.classList.add('dark');
+					} else {
+						document.documentElement.classList.remove('dark');
+					}
+			}
+
+			// Load the hue from local storage
+			const hue = localStorage.getItem('hue') || configHue;
+			document.documentElement.style.setProperty('--hue', hue);
+
+			// calculate the --banner-height-extend, which needs to be a multiple of 4 to avoid blurry text
+			let offset = Math.floor(window.innerHeight * (BANNER_HEIGHT_EXTEND / 100));
+			offset = offset - offset % 4;
+			document.documentElement.style.setProperty('--banner-height-extend', `${offset}px`);
+		})();</script><!-- defines global css variables. This will be applied to <html> <body> and some other elements idk why --><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"會計之概念","description":"個體假設、會計的定義與觀念架構、會計恆等式、資產負債表與損益表","isPartOf":"Accounting (a) (1)","author":{"@type":"Person","name":"Konyi","url":"https://konyi0613.github.io/"},"inLanguage":"en"}</script><link rel="alternate" type="application/rss+xml" title="Konyi" href="https://konyi0613.github.io/rss.xml"><link rel="stylesheet" href="/_astro/Layout.y4KPJ9hc.css">
+<link rel="stylesheet" href="/_astro/Layout.DSulWsr7.css">
+<link rel="stylesheet" href="/_astro/_page_.ZlghMKVQ.css">
+<link rel="stylesheet" href="/_astro/_page_.6uuz_YVC.css">
+<link rel="stylesheet" href="/_astro/about.B-Xk7MHk.css">
+<style>input.svelte-1wah7ro:focus{outline:0}.search-panel.svelte-1wah7ro{max-height:calc(100vh - 100px);overflow-y:auto}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k){-webkit-appearance:none;height:1.5rem;background-image:var(--color-selection-bar);transition:background-image .15s ease-in-out}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-webkit-slider-thumb{-webkit-appearance:none;height:1rem;width:.5rem;border-radius:.125rem;background:#ffffffb3;box-shadow:none}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-webkit-slider-thumb:hover{background:#fffc}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-webkit-slider-thumb:active{background:#fff9}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-moz-range-thumb{-webkit-appearance:none;height:1rem;width:.5rem;border-radius:.125rem;border-width:0;background:#ffffffb3;box-shadow:none}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-moz-range-thumb:hover{background:#fffc}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-moz-range-thumb:active{background:#fff9}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-ms-thumb{-webkit-appearance:none;height:1rem;width:.5rem;border-radius:.125rem;background:#ffffffb3;box-shadow:none}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-ms-thumb:hover{background:#fffc}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-ms-thumb:active{background:#fff9}
+</style><script type="module" src="/_astro/page.Z8IJTFqj.js"></script></head> <body class=" min-h-screen transition  enable-banner" data-overlayscrollbars-initialize data-astro-cid-sckkx6r4 style="--bannerOffset: 15vh;--banner-height-home: 65vh;--banner-height: 35vh;--configHue: 20;--page-width: 75rem;"> <div id="config-carrier" data-hue="20"></div>    <div id="top-row" class="z-50 pointer-events-none relative transition-all duration-700 max-w-[var(--page-width)] px-0 md:px-4 mx-auto"> <div id="navbar-wrapper" class="pointer-events-auto sticky top-0 transition-all"> <div id="navbar" class="z-50 onload-animation"> <div class="absolute h-8 left-0 right-0 -top-8 bg-[var(--card-bg)] transition"></div> <!-- used for onload animation --> <div class="card-base !overflow-visible max-w-[var(--page-width)] h-[4.5rem] !rounded-t-none mx-auto flex items-center justify-between px-4"> <a href="/" class="btn-plain scale-animation rounded-lg h-[3.25rem] px-5 font-bold active:scale-95"> <div class="flex flex-row text-[var(--primary)] items-center text-md"> <svg width="1em" height="1em" class="text-[1.75rem] mb-1 mr-2" data-icon="material-symbols:home-outline-rounded">   <symbol id="ai:material-symbols:home-outline-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="M6 19h3v-5q0-.425.288-.712T10 13h4q.425 0 .713.288T15 14v5h3v-9l-6-4.5L6 10zm-2 0v-9q0-.475.213-.9t.587-.7l6-4.5q.525-.4 1.2-.4t1.2.4l6 4.5q.375.275.588.7T20 10v9q0 .825-.588 1.413T18 21h-4q-.425 0-.712-.288T13 20v-5h-2v5q0 .425-.288.713T10 21H6q-.825 0-1.412-.587T4 19m8-6.75"/></symbol><use href="#ai:material-symbols:home-outline-rounded"></use>  </svg> Konyi&#39;s Blog </div> </a> <div class="hidden md:flex"> <a aria-label="Home" href="/" class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95"> <div class="flex items-center"> Home  </div> </a><a aria-label="Archive" href="/archive/" class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95"> <div class="flex items-center"> Archive  </div> </a><a aria-label="About" href="/about/" class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95"> <div class="flex items-center"> About  </div> </a><a aria-label="Notes" href="/notes/" class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95"> <div class="flex items-center"> Notes  </div> </a> </div> <div class="flex"> <!--<SearchPanel client:load>--> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).only=e;window.dispatchEvent(new Event("astro:only"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="16cUVi" component-url="/_astro/Search.BB9UHeaB.js" component-export="default" renderer-url="/_astro/client.svelte.BtEbdPyR.js" props="{}" ssr client="only" opts="{&quot;name&quot;:&quot;Search&quot;,&quot;value&quot;:&quot;svelte&quot;}"></astro-island> <button aria-label="Display Settings" class="btn-plain scale-animation rounded-lg h-11 w-11 active:scale-90" id="display-settings-switch"> <svg width="1em" height="1em" class="text-[1.25rem]" data-icon="material-symbols:palette-outline">   <symbol id="ai:material-symbols:palette-outline" viewBox="0 0 24 24"><path fill="currentColor" d="M12 22q-2.05 0-3.875-.788t-3.187-2.15t-2.15-3.187T2 12q0-2.075.813-3.9t2.2-3.175T8.25 2.788T12.2 2q2 0 3.775.688t3.113 1.9t2.125 2.875T22 11.05q0 2.875-1.75 4.413T16 17h-1.85q-.225 0-.312.125t-.088.275q0 .3.375.863t.375 1.287q0 1.25-.687 1.85T12 22m-5.5-9q.65 0 1.075-.425T8 11.5t-.425-1.075T6.5 10t-1.075.425T5 11.5t.425 1.075T6.5 13m3-4q.65 0 1.075-.425T11 7.5t-.425-1.075T9.5 6t-1.075.425T8 7.5t.425 1.075T9.5 9m5 0q.65 0 1.075-.425T16 7.5t-.425-1.075T14.5 6t-1.075.425T13 7.5t.425 1.075T14.5 9m3 4q.65 0 1.075-.425T19 11.5t-.425-1.075T17.5 10t-1.075.425T16 11.5t.425 1.075T17.5 13M12 20q.225 0 .363-.125t.137-.325q0-.35-.375-.825T11.75 17.3q0-1.05.725-1.675T14.25 15H16q1.65 0 2.825-.962T20 11.05q0-3.025-2.312-5.038T12.2 4Q8.8 4 6.4 6.325T4 12q0 3.325 2.338 5.663T12 20"/></symbol><use href="#ai:material-symbols:palette-outline"></use>  </svg> </button> <astro-island uid="xHcFf" component-url="/_astro/LightDarkSwitch.Cq210o6L.js" component-export="default" renderer-url="/_astro/client.svelte.BtEbdPyR.js" props="{}" ssr client="only" opts="{&quot;name&quot;:&quot;LightDarkSwitch&quot;,&quot;value&quot;:&quot;svelte&quot;}"></astro-island> <button aria-label="Menu" name="Nav Menu" class="btn-plain scale-animation rounded-lg w-11 h-11 active:scale-90 md:!hidden" id="nav-menu-switch"> <svg width="1em" height="1em" class="text-[1.25rem]" data-icon="material-symbols:menu-rounded">   <symbol id="ai:material-symbols:menu-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="M4 18q-.425 0-.712-.288T3 17t.288-.712T4 16h16q.425 0 .713.288T21 17t-.288.713T20 18zm0-5q-.425 0-.712-.288T3 12t.288-.712T4 11h16q.425 0 .713.288T21 12t-.288.713T20 13zm0-5q-.425 0-.712-.288T3 7t.288-.712T4 6h16q.425 0 .713.288T21 7t-.288.713T20 8z"/></symbol><use href="#ai:material-symbols:menu-rounded"></use>  </svg> </button> </div> <div id="nav-menu-panel" class="float-panel float-panel-closed absolute transition-all fixed right-4 px-2 py-2"> <a href="/" class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
+        "> <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)]"> Home </div> <svg width="1em" height="1em" class="transition text-[1.25rem] text-[var(--primary)]" data-icon="material-symbols:chevron-right-rounded">   <symbol id="ai:material-symbols:chevron-right-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="M12.6 12L8.7 8.1q-.275-.275-.275-.7t.275-.7t.7-.275t.7.275l4.6 4.6q.15.15.213.325t.062.375t-.062.375t-.213.325l-4.6 4.6q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7z"/></symbol><use href="#ai:material-symbols:chevron-right-rounded"></use>  </svg>  </a><a href="/archive/" class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
+        "> <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)]"> Archive </div> <svg width="1em" height="1em" viewBox="0 0 24 24" class="transition text-[1.25rem] text-[var(--primary)]" data-icon="material-symbols:chevron-right-rounded">   <use href="#ai:material-symbols:chevron-right-rounded"></use>  </svg>  </a><a href="/about/" class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
+        "> <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)]"> About </div> <svg width="1em" height="1em" viewBox="0 0 24 24" class="transition text-[1.25rem] text-[var(--primary)]" data-icon="material-symbols:chevron-right-rounded">   <use href="#ai:material-symbols:chevron-right-rounded"></use>  </svg>  </a><a href="/notes/" class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
+        "> <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)]"> Notes </div> <svg width="1em" height="1em" viewBox="0 0 24 24" class="transition text-[1.25rem] text-[var(--primary)]" data-icon="material-symbols:chevron-right-rounded">   <use href="#ai:material-symbols:chevron-right-rounded"></use>  </svg>  </a> </div> <astro-island uid="Z1hAL6F" component-url="/_astro/DisplaySettings.DPNwLpvy.js" component-export="default" renderer-url="/_astro/client.svelte.BtEbdPyR.js" props="{}" ssr client="only" opts="{&quot;name&quot;:&quot;DisplaySettings&quot;,&quot;value&quot;:&quot;svelte&quot;}"></astro-island> </div> </div> <script type="module">function c(){localStorage.theme==="dark"?(document.documentElement.classList.remove("dark"),localStorage.theme="light"):(document.documentElement.classList.add("dark"),localStorage.theme="dark")}function o(){let t=document.getElementById("scheme-switch");t&&(t.onclick=function(){c()});let n=document.getElementById("display-settings-switch");n&&(n.onclick=function(){let e=document.getElementById("display-setting");e&&e.classList.toggle("float-panel-closed")});let l=document.getElementById("nav-menu-switch");l&&(l.onclick=function(){let e=document.getElementById("nav-menu-panel");e&&e.classList.toggle("float-panel-closed")})}o();</script> <script>(function(){const scriptUrl = "/pagefind/pagefind.js";
+
+async function loadPagefind() {
+    try {
+        const response = await fetch(scriptUrl, { method: 'HEAD' });
+        if (!response.ok) {
+            throw new Error(`Pagefind script not found: ${response.status}`);
+        }
+
+        const pagefind = await import(scriptUrl);
+
+        await pagefind.options({
+            excerptLength: 20
+        });
+
+        window.pagefind = pagefind;
+
+        document.dispatchEvent(new CustomEvent('pagefindready'));
+        console.log('Pagefind loaded and initialized successfully, event dispatched.');
+    } catch (error) {
+        console.error('Failed to load Pagefind:', error);
+        window.pagefind = {
+            search: () => Promise.resolve({ results: [] }),
+            options: () => Promise.resolve(),
+        };
+        document.dispatchEvent(new CustomEvent('pagefindloaderror'));
+        console.log('Pagefind load error, event dispatched.');
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadPagefind);
+} else {
+    loadPagefind();
+}
+})();</script> </div> </div>  <div id="banner-wrapper" class="absolute z-10 w-full transition duration-700 overflow-hidden" style="top: -30vh"> <div id="banner" class="object-cover h-full transition duration-700 opacity-0 scale-105 overflow-hidden relative"> <div class="transition absolute inset-0 dark:bg-black/10 bg-opacity-50 pointer-events-none"></div> <img src="/_astro/banner.CXuT8U5n_aes0a.webp" alt="Banner image of the blog" style="object-position: center" loading="lazy" decoding="async" fetchpriority="auto" width="3907" height="1640" class="w-full h-full object-cover">  </div> </div> <div class="absolute w-full z-30 pointer-events-none" style="top: calc(35vh - 3.5rem)"> <!-- The pointer-events-none here prevent blocking the click event of the TOC --> <div class="relative max-w-[var(--page-width)] mx-auto pointer-events-auto"> <div id="main-grid" class="transition duration-700 w-full left-0 right-0 grid grid-cols-[17.5rem_auto] grid-rows-[auto_1fr_auto] lg:grid-rows-[auto]
+    mx-auto gap-4 px-0 md:px-4"> <!-- Banner image credit -->  <div id="sidebar" class="mb-4 row-start-2 row-end-3 col-span-2 lg:row-start-1 lg:row-end-2 lg:col-span-1 lg:max-w-[17.5rem] onload-animation w-full"> <div class="flex flex-col w-full gap-4 mb-4"> <div class="card-base p-3"> <a aria-label="Go to About Page" href="/about/" class="group block relative mx-auto mt-1 lg:mx-0 lg:mt-0 mb-3
+       max-w-[12rem] lg:max-w-none overflow-hidden rounded-xl active:scale-95"> <div class="absolute transition pointer-events-none group-hover:bg-black/30 group-active:bg-black/50
+        w-full h-full z-50 flex items-center justify-center"> <svg width="1.13em" height="1em" class="transition opacity-0 scale-90 group-hover:scale-100 group-hover:opacity-100 text-white text-5xl" data-icon="fa6-regular:address-card">   <symbol id="ai:fa6-regular:address-card" viewBox="0 0 576 512"><path fill="currentColor" d="M512 80c8.8 0 16 7.2 16 16v320c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V96c0-8.8 7.2-16 16-16zM64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm144 224a64 64 0 1 0 0-128a64 64 0 1 0 0 128m-32 32c-44.2 0-80 35.8-80 80c0 8.8 7.2 16 16 16h192c8.8 0 16-7.2 16-16c0-44.2-35.8-80-80-80zm200-144c-13.3 0-24 10.7-24 24s10.7 24 24 24h80c13.3 0 24-10.7 24-24s-10.7-24-24-24zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24h80c13.3 0 24-10.7 24-24s-10.7-24-24-24z"/></symbol><use href="#ai:fa6-regular:address-card"></use>  </svg> </div> <div class="mx-auto lg:w-full h-full lg:mt-0  overflow-hidden relative"> <div class="transition absolute inset-0 dark:bg-black/10 bg-opacity-50 pointer-events-none"></div> <img src="/_astro/avatar.ClNXyL35_Z1nNErV.webp" alt="Profile Image of the Author" style="object-position: center" loading="lazy" decoding="async" fetchpriority="auto" width="828" height="828" class="w-full h-full object-cover">  </div> </a> <div class="px-2"> <div class="font-bold text-xl text-center mb-1 dark:text-neutral-50 transition">Konyi</div> <div class="h-1 w-5 bg-[var(--primary)] mx-auto rounded-full mb-2 transition"></div> <div class="text-center text-neutral-400 mb-2.5 transition"></div> <div class="flex flex-wrap gap-2 justify-center mb-1"> <a rel="me" aria-label="GitHub" href="https://github.com/Konyi0613" target="_blank" class="btn-regular rounded-lg h-10 w-10 active:scale-90"> <svg width="0.97em" height="1em" class="text-[1.5rem]" data-icon="fa6-brands:github">   <symbol id="ai:fa6-brands:github" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6c-3.3.3-5.6-1.3-5.6-3.6c0-2 2.3-3.6 5.2-3.6c3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9c2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9c.3 2 2.9 3.3 5.9 2.6c2.9-.7 4.9-2.6 4.6-4.6c-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2c12.8 2.3 17.3-5.6 17.3-12.1c0-6.2-.3-40.4-.3-61.4c0 0-70 15-84.7-29.8c0 0-11.4-29.1-27.8-36.6c0 0-22.9-15.7 1.6-15.4c0 0 24.9 2 38.6 25.8c21.9 38.6 58.6 27.5 72.9 20.9c2.3-16 8.8-27.1 16-33.7c-55.9-6.2-112.3-14.3-112.3-110.5c0-27.5 7.6-41.3 23.6-58.9c-2.6-6.5-11.1-33.3 2.6-67.9c20.9-6.5 69 27 69 27c20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27c13.7 34.7 5.2 61.4 2.6 67.9c16 17.7 25.8 31.5 25.8 58.9c0 96.5-58.9 104.2-114.8 110.5c9.2 7.9 17 22.9 17 46.4c0 33.7-.3 75.4-.3 83.6c0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252C496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2c1.6 1.6 3.9 2.3 5.2 1c1.3-1 1-3.3-.7-5.2c-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9c1.6 1 3.6.7 4.3-.7c.7-1.3-.3-2.9-2.3-3.9c-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2c2.3 2.3 5.2 2.6 6.5 1c1.3-1.3.7-4.3-1.3-6.2c-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2c-1.4-2.3-4-3.3-5.6-2"/></symbol><use href="#ai:fa6-brands:github"></use>  </svg> </a><a rel="me" aria-label="Instagram" href="https://www.instagram.com/x_j1m0613/" target="_blank" class="btn-regular rounded-lg h-10 w-10 active:scale-90"> <svg width="0.88em" height="1em" class="text-[1.5rem]" data-icon="fa6-brands:instagram">   <symbol id="ai:fa6-brands:instagram" viewBox="0 0 448 512"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9S287.7 141 224.1 141m0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7s74.7 33.5 74.7 74.7s-33.6 74.7-74.7 74.7m146.4-194.3c0 14.9-12 26.8-26.8 26.8c-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8s26.8 12 26.8 26.8m76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9c-26.2-26.2-58-34.4-93.9-36.2c-37-2.1-147.9-2.1-184.9 0c-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9c1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0c35.9-1.7 67.7-9.9 93.9-36.2c26.2-26.2 34.4-58 36.2-93.9c2.1-37 2.1-147.8 0-184.8M398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6c-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6c-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6c29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6c11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1"/></symbol><use href="#ai:fa6-brands:instagram"></use>  </svg> </a><a rel="me" aria-label="Facebook" href="https://www.facebook.com/kon.yi.963661" target="_blank" class="btn-regular rounded-lg h-10 w-10 active:scale-90"> <svg width="1em" height="1em" class="text-[1.5rem]" data-icon="fa6-brands:facebook">   <symbol id="ai:fa6-brands:facebook" viewBox="0 0 512 512"><path fill="currentColor" d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256c0 120 82.7 220.8 194.2 248.5V334.2h-52.8V256h52.8v-33.7c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287v175.9C413.8 494.8 512 386.9 512 256"/></symbol><use href="#ai:fa6-brands:facebook"></use>  </svg> </a>  </div> </div> </div> </div> <div id="sidebar-sticky" class="transition-all duration-700 flex flex-col w-full gap-4 top-4 sticky top-4"> <widget-layout data-id="categories" data-is-collapsed="false" class="pb-4 card-base onload-animation" style="animation-delay: 150ms; --collapsedHeight: 7.5rem;" data-astro-cid-ucso7hve="true"> <div class="font-bold transition text-lg text-neutral-900 dark:text-neutral-100 relative ml-8 mt-4 mb-2
+        before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
+        before:absolute before:left-[-16px] before:top-[5.5px]" data-astro-cid-ucso7hve style="--collapsedHeight: 7.5rem;">Categories</div> <div id="categories" class="collapse-wrapper px-4 overflow-hidden" data-astro-cid-ucso7hve style="--collapsedHeight: 7.5rem;"> <a href="/archive/?category=Math" aria-label="View all posts in the Math category"> <button class="
+            w-full
+            h-10
+            rounded-lg
+            bg-none
+            hover:bg-[var(--btn-plain-bg-hover)]
+            active:bg-[var(--btn-plain-bg-active)]
+            transition-all
+            pl-2
+            hover:pl-3
+            
+            text-neutral-700
+            hover:text-[var(--primary)]
+            dark:text-neutral-300
+            dark:hover:text-[var(--primary)]
+        "> <div class="flex items-center justify-between relative mr-2"> <div class="overflow-hidden text-left whitespace-nowrap overflow-ellipsis  "> Math </div> <div class="transition px-2 h-7 ml-4 min-w-[2rem] rounded-lg text-sm font-bold
+                    text-[var(--btn-content)] dark:text-[var(--deep-text)]
+                    bg-[var(--btn-regular-bg)] dark:bg-[var(--primary)]
+                    flex items-center justify-center"> 1 </div> </div> </button> </a><a href="/archive/?category=%E4%BF%AE%E8%AA%B2%E5%BF%83%E5%BE%97" aria-label="View all posts in the 修課心得 category"> <button class="
+            w-full
+            h-10
+            rounded-lg
+            bg-none
+            hover:bg-[var(--btn-plain-bg-hover)]
+            active:bg-[var(--btn-plain-bg-active)]
+            transition-all
+            pl-2
+            hover:pl-3
+            
+            text-neutral-700
+            hover:text-[var(--primary)]
+            dark:text-neutral-300
+            dark:hover:text-[var(--primary)]
+        "> <div class="flex items-center justify-between relative mr-2"> <div class="overflow-hidden text-left whitespace-nowrap overflow-ellipsis  "> 修課心得 </div> <div class="transition px-2 h-7 ml-4 min-w-[2rem] rounded-lg text-sm font-bold
+                    text-[var(--btn-content)] dark:text-[var(--deep-text)]
+                    bg-[var(--btn-regular-bg)] dark:bg-[var(--primary)]
+                    flex items-center justify-center"> 3 </div> </div> </button> </a><a href="/archive/?category=%E6%8E%92%E5%90%8D" aria-label="View all posts in the 排名 category"> <button class="
+            w-full
+            h-10
+            rounded-lg
+            bg-none
+            hover:bg-[var(--btn-plain-bg-hover)]
+            active:bg-[var(--btn-plain-bg-active)]
+            transition-all
+            pl-2
+            hover:pl-3
+            
+            text-neutral-700
+            hover:text-[var(--primary)]
+            dark:text-neutral-300
+            dark:hover:text-[var(--primary)]
+        "> <div class="flex items-center justify-between relative mr-2"> <div class="overflow-hidden text-left whitespace-nowrap overflow-ellipsis  "> 排名 </div> <div class="transition px-2 h-7 ml-4 min-w-[2rem] rounded-lg text-sm font-bold
+                    text-[var(--btn-content)] dark:text-[var(--deep-text)]
+                    bg-[var(--btn-regular-bg)] dark:bg-[var(--primary)]
+                    flex items-center justify-center"> 1 </div> </div> </button> </a> </div>  </widget-layout>  <script type="module">class d extends HTMLElement{constructor(){if(super(),this.dataset.isCollapsed!=="true")return;const e=this.dataset.id,t=this.querySelector(".expand-btn"),s=this.querySelector(`#${e}`);t.addEventListener("click",()=>{s.classList.remove("collapsed"),t.classList.add("hidden")})}}customElements.get("widget-layout")||customElements.define("widget-layout",d);</script> <widget-layout data-id="tags" data-is-collapsed="false" class="pb-4 card-base onload-animation" style="animation-delay: 200ms; --collapsedHeight: 7.5rem;" data-astro-cid-ucso7hve="true"> <div class="font-bold transition text-lg text-neutral-900 dark:text-neutral-100 relative ml-8 mt-4 mb-2
+        before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
+        before:absolute before:left-[-16px] before:top-[5.5px]" data-astro-cid-ucso7hve style="--collapsedHeight: 7.5rem;">Tags</div> <div id="tags" class="collapse-wrapper px-4 overflow-hidden" data-astro-cid-ucso7hve style="--collapsedHeight: 7.5rem;">  <div class="flex gap-2 flex-wrap"> <a href="/archive/?tag=probability" aria-label="View all posts with the probability tag" class="btn-regular h-8 text-sm px-3 rounded-lg">  probability </a><a href="/archive/?tag=%E4%BF%AE%E8%AA%B2%E5%BF%83%E5%BE%97" aria-label="View all posts with the 修課心得 tag" class="btn-regular h-8 text-sm px-3 rounded-lg">  修課心得 </a><a href="/archive/?tag=%E5%8F%B0%E5%A4%A7" aria-label="View all posts with the 台大 tag" class="btn-regular h-8 text-sm px-3 rounded-lg">  台大 </a><a href="/archive/?tag=%E5%A4%A7%E4%B8%80" aria-label="View all posts with the 大一 tag" class="btn-regular h-8 text-sm px-3 rounded-lg">  大一 </a><a href="/archive/?tag=%E5%A4%A7%E4%BA%8C" aria-label="View all posts with the 大二 tag" class="btn-regular h-8 text-sm px-3 rounded-lg">  大二 </a><a href="/archive/?tag=%E6%8E%92%E5%90%8D" aria-label="View all posts with the 排名 tag" class="btn-regular h-8 text-sm px-3 rounded-lg">  排名 </a><a href="/archive/?tag=%E6%95%99%E6%8E%88" aria-label="View all posts with the 教授 tag" class="btn-regular h-8 text-sm px-3 rounded-lg">  教授 </a> </div>  </div>  </widget-layout>   </div> </div> <main id="swup-container" class="transition-swup-fade col-span-2 lg:col-span-1 overflow-hidden"> <div id="content-wrapper" class="onload-animation"> <!-- the overflow-hidden here prevent long text break the layout--> <!-- make id different from windows.swup global property -->   <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative mb-4"> <div id="post-container" class="card-base z-10 px-6 md:px-9 pt-6 pb-4 relative w-full"> <!-- breadcrumb back to the course --> <a href="/notes/accounting/" class="btn-regular !inline-flex w-fit rounded-lg h-8 px-3 text-sm items-center gap-1 mb-4 onload-animation"> <svg width="1em" height="1em" class="text-[1.25rem]" data-icon="material-symbols:chevron-left-rounded">   <symbol id="ai:material-symbols:chevron-left-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="m10.8 12l3.9 3.9q.275.275.275.7t-.275.7t-.7.275t-.7-.275l-4.6-4.6q-.15-.15-.212-.325T8.425 12t.063-.375t.212-.325l4.6-4.6q.275-.275.7-.275t.7.275t.275.7t-.275.7z"/></symbol><use href="#ai:material-symbols:chevron-left-rounded"></use>  </svg> Accounting (a) (1) </a> <!-- word count and reading time --> <div class="flex flex-row text-black/30 dark:text-white/30 gap-5 mb-3 transition onload-animation"> <div class="flex flex-row items-center"> <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2"> <svg width="1em" height="1em" data-icon="material-symbols:notes-rounded">   <symbol id="ai:material-symbols:notes-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="M4 18q-.425 0-.712-.288T3 17t.288-.712T4 16h10q.425 0 .713.288T15 17t-.288.713T14 18zm0-5q-.425 0-.712-.288T3 12t.288-.712T4 11h16q.425 0 .713.288T21 12t-.288.713T20 13zm0-5q-.425 0-.712-.288T3 7t.288-.712T4 6h16q.425 0 .713.288T21 7t-.288.713T20 8z"/></symbol><use href="#ai:material-symbols:notes-rounded"></use>  </svg> </div> <div class="text-sm">5510 words</div> </div> <div class="flex flex-row items-center"> <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2"> <svg width="1em" height="1em" data-icon="material-symbols:schedule-outline-rounded">   <symbol id="ai:material-symbols:schedule-outline-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="M13 11.6V8q0-.425-.288-.712T12 7t-.712.288T11 8v3.975q0 .2.075.388t.225.337l3.3 3.3q.275.275.7.275T16 16t.275-.7t-.275-.7zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22m0-2q3.325 0 5.663-2.337T20 12t-2.337-5.663T12 4T6.337 6.338T4 12t2.338 5.663T12 20"/></symbol><use href="#ai:material-symbols:schedule-outline-rounded"></use>  </svg> </div> <div class="text-sm">28 min</div> </div> </div> <!-- title --> <div class="relative onload-animation"> <div data-pagefind-body data-pagefind-weight="10" data-pagefind-meta="title" class="transition w-full block font-bold mb-3
+                     text-3xl md:text-[2.25rem]/[2.75rem]
+                     text-black/90 dark:text-white/90
+                     md:before:w-1 before:h-5 before:rounded-md before:bg-[var(--primary)]
+                     before:absolute before:top-[0.75rem] before:left-[-1.125rem]"> 會計之概念 </div> </div> <!-- metadata --> <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-black/50 dark:text-white/50 mb-5 onload-animation"> <span class="font-bold text-[var(--primary)]"> Unit 01 </span>   <span class="text-[var(--meta-divider)]">·</span> <span>Week1</span> </div> <div class="border-[var(--line-divider)] border-dashed border-b-[1px] mb-5"></div> <div data-pagefind-body class="prose dark:prose-invert prose-base !max-w-none custom-md mb-6 markdown-content onload-animation"> <!--<div class="prose dark:prose-invert max-w-none custom-md">--> <!--<div class="max-w-none custom-md">-->  <p>會計之所以為會計 (Accounting in Action)。這章從「成立一家公司」出發，一路推到兩個互相
+連結的恆等式：</p>
+<div class="katex-display-wrapper" data-latex="\text{資產} = \text{負債} + \text{股東權益}, \qquad
+\text{淨利} = \text{營收} - \text{費用}."><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>資產</mtext><mo>=</mo><mtext>負債</mtext><mo>+</mo><mtext>股東權益</mtext><mo separator="true">,</mo><mspace width="2em"></mspace><mtext>淨利</mtext><mo>=</mo><mtext>營收</mtext><mo>−</mo><mtext>費用</mtext><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">\text{資產} = \text{負債} + \text{股東權益}, \qquad
+\text{淨利} = \text{營收} - \text{費用}.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord cjk_fallback">資產</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord text"><span class="mord cjk_fallback">負債</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord cjk_fallback">股東權益</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord cjk_fallback">淨利</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord text"><span class="mord cjk_fallback">營收</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord cjk_fallback">費用</span></span><span class="mord">.</span></span></span></span></span><button class="katex-copy-btn" aria-label="Copy LaTeX" title="Copy LaTeX"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="katex-copy-icon katex-copy-icon-default"><path d="M368.37-237.37q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-474.26q0-34.48 24.26-58.74 24.26-24.26 58.74-24.26h378.26q34.48 0 58.74 24.26 24.26 24.26 24.26 58.74v474.26q0 34.48-24.26 58.74-24.26 24.26-58.74 24.26H368.37Zm0-83h378.26v-474.26H368.37v474.26Zm-155 238q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-515.76q0-17.45 11.96-29.48 11.97-12.02 29.33-12.02t29.54 12.02q12.17 12.03 12.17 29.48v515.76h419.76q17.45 0 29.48 11.96 12.02 11.97 12.02 29.33t-12.02 29.54q-12.03 12.17-29.48 12.17H213.37Zm155-238v-474.26 474.26Z"></path></svg><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="katex-copy-icon katex-copy-icon-success"><path d="m389-377.13 294.7-294.7q12.58-12.67 29.52-12.67 16.93 0 29.61 12.67 12.67 12.68 12.67 29.53 0 16.86-12.28 29.14L419.07-288.41q-12.59 12.67-29.52 12.67-16.94 0-29.62-12.67L217.41-430.93q-12.67-12.68-12.79-29.45-.12-16.77 12.55-29.45 12.68-12.67 29.62-12.67 16.93 0 29.28 12.67L389-377.13Z"></path></svg></button></div>
+<blockquote class="admonition bdm-important"><span class="bdm-title"><div>不是會計專業也要懂會計</div></span><p>董事長、CEO 即使不是會計專業，也需要懂會計，並負起責任。</p><ul>
+<li>WorldCom 的 Ebbers 在法庭上說自己不太懂會計（<em>Ebbers Tells Jury He Knew Little of Accounting</em>），最後仍因 110 億美元的財報弊案被判 25 年。</li>
+<li>博達案 63 億元掏空案，「最美女董座」侵吞 4.8 億，判刑 16 年 8 個月。</li>
+<li>張忠謀：會計是經理人的基本功。</li>
+</ul></blockquote>
+<section><h2 id="成立一家公司吧">成立一家公司吧！<a class="anchor" href="#成立一家公司吧"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="個體-entity你的公司不是你的公司">個體 (entity)：你的公司不是你的公司？<a class="anchor" href="#個體-entity你的公司不是你的公司"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p><strong>企業個體假設要求業主和公司個體的活動要分開且獨立。</strong> 也就是說，
+公司的錢和個人的錢要分開。</p><p>幾個一直在問同一件事的問題：</p><ul>
+<li>公私怎麼分：公司的錢是我的錢，我的錢還是我的錢？</li>
+<li>為什麼叫做股份「<strong>有限</strong>」公司？</li>
+<li>我出面去借錢和公司出面去借錢有什麼不一樣？</li>
+<li>你有幫忙收集過要打統編的發票嗎？</li>
+</ul><blockquote class="admonition bdm-note"><span class="bdm-title"><div>有限責任</div></span><p>股份「有限」公司是指股東的責任有限，至多就是其投入的現金。</p><p>如果以個人名義借錢，則債務會跟著一生；但如果以公司名義借錢，公司還在就有還錢的義務，
+公司倒閉的話，債務不會追究到個人身上。</p></blockquote></section><section><h3 id="組織型態">組織型態<a class="anchor" href="#組織型態"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>個體有很多種組織型態（獨資、合夥、公司、財團法人、社團法人、政府組織等等），
+公司只是其中一種。而且公司也分很多種（有限公司、股份有限公司、兩合公司、無限公司、
+閉鎖型股份有限公司等等）。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>企業組織型態</th><th>獨資</th><th>合夥</th><th>公司</th></tr></thead><tbody><tr><td>擁有者</td><td>一人獨資</td><td>二或二位以上合夥人</td><td>股東通常由許多人組成</td></tr><tr><td>業主對企業債務的個人責任</td><td>業主承擔所有獨資企業債務</td><td>普通合夥人承擔所有合夥企業債務，有限合夥人則否</td><td>股東不承擔公司債務</td></tr></tbody></table></section><section><h3 id="誰需要會計為什麼">誰需要會計？為什麼？<a class="anchor" href="#誰需要會計為什麼"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>各種組織和商業單位都會產生會計資訊，例如臺北市政府預決算、臺灣大學財報、長榮海運財報。</p><p>個體都需要會計資訊，但是個體的種類會導致需要的會計資訊不同 —— 如學校或政府的成立目的
+雖然不是營利導向，但也需要會計。<strong>本門課會著重在公司所需的會計制度。</strong></p></section><section><h3 id="我和公司的關係怎麼界定">我和公司的關係怎麼界定？<a class="anchor" href="#我和公司的關係怎麼界定"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><section><h4 id="誰來出資股東-vs-債權人">誰來出資：股東 v.s. 債權人<a class="anchor" href="#誰來出資股東-vs-債權人"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><ul>
+<li>公司如果賺錢則股東可以得到一部分，反之如果虧錢股東也要承擔一部分。</li>
+<li>債權人無法獲取公司營利，但借給公司的資金公司一定要還給債權人。</li>
+</ul><p>所以如果公司有錢，會需要先還錢給債權人，剩下的才會分給股東。這就是後面「剩餘權益」的
+由來。</p></section><section><h4 id="一人分飾兩角我是老闆還是夥計">一人分飾兩角：我是老闆還是夥計？<a class="anchor" href="#一人分飾兩角我是老闆還是夥計"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><p>老闆可能出錢請人（夥計）來經營公司，也可能自己一人分飾兩角（公司初期沒錢請人的時候）。</p><ul>
+<li>總經理是老闆嗎？董事長是老闆嗎？</li>
+<li>我買了一張台積電股票，我是台積電的老闆嗎？</li>
+</ul><blockquote class="admonition bdm-note"><span class="bdm-title"><div>控制權 v.s. 現金流量權</div></span><p>理論上，如果你買了一張台積電的股票，你也是台積電的老闆之一。但是通常會說老闆是擁有
+<em><strong>控制權（經營權）</strong></em> 的大股東，這些大股東可以決定公司的經營走向，例如要發什麼產品
+或是進什麼市場；而如果你只擁有一張公司的股票，我們會說你擁有公司的
+<em><strong>現金流量權（所有權）</strong></em>。</p></blockquote><p>想想在作業當中，你的名片要怎麼印，職銜是什麼？</p></section></section></section>
+<section><h2 id="那到底什麼是會計">那到底什麼是會計？<a class="anchor" href="#那到底什麼是會計"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><p>幾種講法：</p><ul>
+<li><strong>維基百科</strong>：是以研究人類的財務活動和成本資料的收集、分類、綜合、分析和解釋的基礎上形成協助決策的資訊系統，以有效地管理經濟的一門應用學科，它是社會科學的組成部分，也是一門重要的管理科學。</li>
+<li><strong>一般課本最常見的講法</strong>：會計就是商業的語言，用有系統的方式描述和溝通商業活動。</li>
+<li><strong>就功能來說</strong>：會計師是企業的醫生或導師。</li>
+</ul><section><h3 id="子曰會計當而已矣">子曰：會計，當而已矣<a class="anchor" href="#子曰會計當而已矣"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>（會計課會當掉很多人的意思嗎？還是⋯⋯）</p><p>此指會計即為<strong>允當</strong>的表達背後的經濟實質，以協助決策與<strong>當責 (accountability)</strong> ——
+提供一個數字去界定責任，例如營業額應該要到多少，如果沒做到的話要怎麼辦之類的。</p><p>會計系的 AI 雙關語就是 <strong>A</strong>ccountability and <strong>I</strong>ntegrity。</p></section><section><h3 id="會計的組成">會計的組成<a class="anchor" href="#會計的組成"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>就專業的組成來講，會計是財務會計、管理會計、稅務會計、審計和會計資訊系統。
+它所需要的知識，是經濟、法律、心理等等基礎學門的交集，但它非常的貼近實務，
+是一門應用的科學。</p><div class="math-env math-env-intuition"><div class="math-env-head"><span class="math-env-type">Intuition</span><span class="math-env-name"> (財務會計是什麼)</span></div><div class="math-env-body"><p>本門課主要專注的會計類別。簡單講，它是<strong>以法律規範為外表，以經濟邏輯為核心的社會科學</strong> ——
+試圖用經濟的邏輯來建立記錄交易的規則，也用類似法律的強制力來推動這套規則。</p></div></div><p>老師的看法：在法律規範之下，人民才有真正的自由；同樣的，在財務會計的規範之下，
+企業家和創業家才有發揮創意、建立商業模式的自由。</p></section><section><h3 id="會計準則">會計準則<a class="anchor" href="#會計準則"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>財務會計是規範企業如何記錄商業活動。這套規範不是由政府直接制定，但是有經過政府的認可
+（在我國是經由金管會的認可）而產生效力，稱之為<strong>會計準則</strong>。</p><p>國際上制定會計準則的團體主要有兩個：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>機構</th><th>準則</th></tr></thead><tbody><tr><td>US Financial Accounting Standards Board (FASB)</td><td>US GAAP</td></tr><tr><td>International Accounting Standards Board (IASB)</td><td>International Financial Reporting Standards (IFRS)</td></tr></tbody></table><p>這套準則是商業世界和資本市場的基石。按照這套準則所產生的資訊是投資人<strong>評價
+(valuation purpose)</strong> 的重要依據，也是各項<strong>契約訂定 (stewardship purpose)</strong> 的依據。</p><blockquote class="admonition bdm-caution"><span class="bdm-title"><div>違反會怎樣？</div></span><p>如果公司的財務報表沒有依照國際訂定的準則去編製：</p><ul>
+<li>外部審計人員會無法簽具<strong>無保留意見</strong>（會計師是在「財務報表在所有重大方面係依照適用財務報導架構編製」的結論下，才出具無保留意見），公司需要重新編製報表。</li>
+<li>按照相關法令：罰錢；出不了財報，導致下市下櫃；訴訟，在某些情況下刑事犯罪可能會導致被監禁。</li>
+</ul></blockquote></section><section><h3 id="會計觀念架構">會計觀念架構<a class="anchor" href="#會計觀念架構"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><figure class="diagram-block" data-diagram="mermaid"><pre class="diagram-src">flowchart TD
+    subgraph S1["目的"]
+        P["提供對現有及潛在之投資者、貸款人及其他債權人於&#x3C;br/>作成有關提供資源予個體之決策時有用之財務資訊。"]
+    end
+    subgraph S2["基本品質特性"]
+        M["重大性"]
+        F["忠實表述&#x3C;br/>(完整、中立、免於錯誤)&#x3C;br/>但不保證所有方面正確"]
+        R["攸關性"]
+    end
+    subgraph S3["強化品質特性"]
+        C["可比性"]
+        V["可驗證性"]
+        T["時效性"]
+        U["可了解性"]
+    end
+    P --> M
+    P --> F
+    P --> R
+    M --> C
+    F --> V
+    F --> T
+    R --> U</pre><figcaption>會計觀念架構 (Conceptual Framework)</figcaption></figure><ul>
+<li><strong>重大性</strong>：這個資訊若不提供給你的話會影響你的決策、或使你無法作決策，則此資訊具備重大性。</li>
+<li><strong>攸關性 (relevance)</strong>：與決策有相關性。</li>
+<li><strong>忠實表述</strong>：完整、中立、免於錯誤，但<strong>不保證所有方面正確</strong>。</li>
+<li><strong>可比性</strong>：公司與公司之間的資訊要可以比較。</li>
+<li><strong>可驗證性</strong>：因為是忠實表述所以要可被驗證。</li>
+<li><strong>時效性</strong>：這些資訊要是最新的。</li>
+<li><strong>可了解性</strong>：要盡量白話，讓大家聽得懂。</li>
+</ul></section><section><h3 id="誰在用會計資訊">誰在用會計資訊？<a class="anchor" href="#誰在用會計資訊"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>會計是 <strong>Language of Business</strong>：measure and translate economic transactions into
+information usable by decision makers.</p><p>使用者包括 managers、owners/shareholders、employees、creditors/lenders、
+government agencies（稅捐機關、主管機關）、potential investors、competitors、customers。</p><p>不同的人問不同的問題：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>使用者</th><th>問題</th></tr></thead><tbody><tr><td>投資人</td><td>荷蘭皇家殼牌 (Royal Dutch Shell) 的獲利情形令人滿意嗎？迪士尼和時代華納的規模及獲利相比如何？</td></tr><tr><td>債權人</td><td>新加坡航空是否有能力償付到期的債務？</td></tr><tr><td>財務</td><td>現金足以支付 SAP 公司的股利嗎？</td></tr><tr><td>行銷</td><td>Nokia 的手機應該定價多少才能滿足公司最大的利益？</td></tr><tr><td>人力資源</td><td>我們能夠負擔今年 Toyota 員工要求的加薪嗎？</td></tr><tr><td>管理</td><td>百事可樂哪一條生產線獲利最高？有沒有哪一條生產線應停止生產？</td></tr></tbody></table><blockquote class="admonition bdm-note"><span class="bdm-title"><div>內部使用者：管理會計</div></span><p>雖然會計的準則被訂定時是想要用在投資人與債權人上，但是其實公司內部的不同部門也會用到
+會計資訊，這塊叫做<strong>管理會計</strong>。上表後四列（財務、行銷、人資、管理）就是內部使用者。</p></blockquote></section><section><h3 id="會計的過程">會計的過程<a class="anchor" href="#會計的過程"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><figure class="diagram-block" data-diagram="mermaid"><pre class="diagram-src">flowchart TD
+    subgraph S1["辨認 Identification"]
+        A["選擇經濟事項（交易）&#x3C;br/>Select economic events (transactions)"]
+    end
+    subgraph S2["記錄 Recording"]
+        B["記錄、分類與彙總&#x3C;br/>Record, classify and summarize"]
+    end
+    subgraph S3["溝通 Communication"]
+        C1["編製財務報告&#x3C;br/>Prepare accounting reports"]
+        C2["解釋於使用者&#x3C;br/>Analyze and interpret for users"]
+        C1 ~~~ C2
+    end
+    A --> B
+    B --> C1</pre><figcaption>會計資訊產生的過程 —— 會計的過程包含簿記的功能</figcaption></figure></section></section>
+<section><h2 id="為我們所成立的公司記錄會計資訊吧">為我們所成立的公司記錄會計資訊吧！<a class="anchor" href="#為我們所成立的公司記錄會計資訊吧"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="會計期間假設">會計期間假設<a class="anchor" href="#會計期間假設"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><ul>
+<li>人為劃分出會計資訊所紀錄經濟活動期間段落，就是所謂的<strong>會計期間假設</strong>，因為它是假設出來的。</li>
+<li>會計期間一般可定為一個月、一季或一年；若涵蓋一整年則稱為<strong>會計年度</strong>。</li>
+<li>英美和台灣大部分的企業會計年度均採行曆年制（Calendar Year，1/1–12/31），不過亦有許多例外情形，法律和會計準則對此並無強制規定。</li>
+<li>日本大部分公司會計年度從 4/1 起，澳洲大部分公司由 7/1 起。</li>
+</ul></section><section><h3 id="小美的計程車公司">小美的計程車公司<a class="anchor" href="#小美的計程車公司"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><div class="math-env math-env-example"><div class="math-env-head"><span class="math-env-type">Example</span><span class="math-env-name"> (題目)</span></div><div class="math-env-body"><p>在 2022 年 1 月 1 日小美開設一人計程車公司，她花 30 萬買一台二手車和 2 萬元考取和申請
+職業駕照。但小美的存款只有 12 萬，不夠她創業，所以用公司名義跟爸爸無息借了 20 萬。</p><p>過了一年，小美回顧她的營業結果，發現她平均一個月可以從載客得到 6 萬的收入，但是同時
+每個月也花了 2 萬元加油、1 萬元的其他花費（包括保養、停車等等），全部都是以現金交易。
+而且經過這一年的營運，到年底，她的車價值只剩 27 萬元，職業駕照的效期也只剩一年。</p><p>以 2022 年的曆年為會計期間，來記錄會計資訊吧！</p></div></div><p>期初的資金來源與去處：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>錢去哪了（資源）</th><th></th><th>錢從哪來（請求權）</th><th></th></tr></thead><tbody><tr><td>車</td><td>30 萬</td><td>小美</td><td>12 萬</td></tr><tr><td>職業駕照</td><td>2 萬</td><td>爸爸</td><td>20 萬</td></tr><tr><td><strong>合計</strong></td><td><strong>32 萬</strong></td><td><strong>合計</strong></td><td><strong>32 萬</strong></td></tr></tbody></table></section><section><h3 id="分得出什麼是收入什麼是利潤嗎">分得出什麼是收入，什麼是利潤嗎？<a class="anchor" href="#分得出什麼是收入什麼是利潤嗎"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>先看全部現金交易的部分：</p><ul>
+<li>載客收入 <span class="katex" data-latex="= 6 \times 12 = 72"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>6</mn><mo>×</mo><mn>12</mn><mo>=</mo><mn>72</mn></mrow><annotation encoding="application/x-tex">= 6 \times 12 = 72</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">6</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">12</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">72</span></span></span></span> 萬</li>
+<li>油錢 <span class="katex" data-latex="= 2 \times 12 = 24"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>2</mn><mo>×</mo><mn>12</mn><mo>=</mo><mn>24</mn></mrow><annotation encoding="application/x-tex">= 2 \times 12 = 24</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">12</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">24</span></span></span></span> 萬</li>
+<li>其他花費 <span class="katex" data-latex="= 1 \times 12 = 12"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>1</mn><mo>×</mo><mn>12</mn><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">= 1 \times 12 = 12</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">12</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">12</span></span></span></span> 萬</li>
+</ul><p>那利潤 <span class="katex" data-latex="= 72 - 24 - 12 = 36"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>72</mn><mo>−</mo><mn>24</mn><mo>−</mo><mn>12</mn><mo>=</mo><mn>36</mn></mrow><annotation encoding="application/x-tex">= 72 - 24 - 12 = 36</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">72</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">24</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">12</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">36</span></span></span></span> 萬？</p><blockquote class="admonition bdm-warning"><span class="bdm-title"><div>不，是手上現金多 36 萬，不是有 36 萬的利潤！</div></span><p>現金的增加不等於利潤。還有<strong>隱藏的花費</strong>沒有算進去。</p></blockquote><p>車從 30 萬變成 27 萬、駕照從 2 萬變成 1 萬，這一年「用掉」的部分才是真正的成本：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th>明顯的花費</th><th>隱藏的花費</th></tr></thead><tbody><tr><td>項目</td><td>油錢 24 萬、其他花費 12 萬</td><td>用車 3 萬、用牌照 1 萬</td></tr></tbody></table><p>所以</p><div class="katex-display-wrapper" data-latex="\text{利潤} = 72 - 24 - 12 - 3 - 1 = 32 \text{ 萬}."><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>利潤</mtext><mo>=</mo><mn>72</mn><mo>−</mo><mn>24</mn><mo>−</mo><mn>12</mn><mo>−</mo><mn>3</mn><mo>−</mo><mn>1</mn><mo>=</mo><mn>32</mn><mtext> 萬</mtext><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">\text{利潤} = 72 - 24 - 12 - 3 - 1 = 32 \text{ 萬}.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord cjk_fallback">利潤</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">72</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">24</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">12</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">32</span><span class="mord text"><span class="mord"> </span><span class="mord cjk_fallback">萬</span></span><span class="mord">.</span></span></span></span></span><button class="katex-copy-btn" aria-label="Copy LaTeX" title="Copy LaTeX"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="katex-copy-icon katex-copy-icon-default"><path d="M368.37-237.37q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-474.26q0-34.48 24.26-58.74 24.26-24.26 58.74-24.26h378.26q34.48 0 58.74 24.26 24.26 24.26 24.26 58.74v474.26q0 34.48-24.26 58.74-24.26 24.26-58.74 24.26H368.37Zm0-83h378.26v-474.26H368.37v474.26Zm-155 238q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-515.76q0-17.45 11.96-29.48 11.97-12.02 29.33-12.02t29.54 12.02q12.17 12.03 12.17 29.48v515.76h419.76q17.45 0 29.48 11.96 12.02 11.97 12.02 29.33t-12.02 29.54q-12.03 12.17-29.48 12.17H213.37Zm155-238v-474.26 474.26Z"></path></svg><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="katex-copy-icon katex-copy-icon-success"><path d="m389-377.13 294.7-294.7q12.58-12.67 29.52-12.67 16.93 0 29.61 12.67 12.67 12.68 12.67 29.53 0 16.86-12.28 29.14L419.07-288.41q-12.59 12.67-29.52 12.67-16.94 0-29.62-12.67L217.41-430.93q-12.67-12.68-12.79-29.45-.12-16.77 12.55-29.45 12.68-12.67 29.62-12.67 16.93 0 29.28 12.67L389-377.13Z"></path></svg></button></div><p>接著的問題是：<strong>這 32 萬是屬於小美的，還是爸爸的？</strong> 答案是小美的 —— 爸爸是債權人，
+只拿得回 20 萬。</p></section><section><h3 id="哪裡不平衡">哪裡不平衡？<a class="anchor" href="#哪裡不平衡"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>如果期末只寫車 27 萬和駕照 1 萬：</p><div class="katex-display-wrapper" data-latex="\underbrace{27 + 1}_{28} \ne \underbrace{(12+32)}_{\text{小美 } 44} + \underbrace{20}_{\text{爸爸}} = 64."><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><munder><munder><mrow><mn>27</mn><mo>+</mo><mn>1</mn></mrow><mo stretchy="true">⏟</mo></munder><mn>28</mn></munder><mo mathvariant="normal">≠</mo><munder><munder><mrow><mo stretchy="false">(</mo><mn>12</mn><mo>+</mo><mn>32</mn><mo stretchy="false">)</mo></mrow><mo stretchy="true">⏟</mo></munder><mrow><mtext>小美 </mtext><mn>44</mn></mrow></munder><mo>+</mo><munder><munder><mn>20</mn><mo stretchy="true">⏟</mo></munder><mtext>爸爸</mtext></munder><mo>=</mo><mn>64.</mn></mrow><annotation encoding="application/x-tex">\underbrace{27 + 1}_{28} \ne \underbrace{(12+32)}_{\text{小美 } 44} + \underbrace{20}_{\text{爸爸}} = 64.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.0769em;vertical-align:-1.3824em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6444em;"><span style="top:-1.6176em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">28</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6444em;"><span class="svg-align" style="top:-2.2687em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy" style="height:0.548em;min-width:1.6em;"><span class="brace-left" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMinYMin slice"><path d="M0 6l6-6h17c12.688 0 19.313.3 20 1 4 4 7.313 8.3 10 13
+ 35.313 51.3 80.813 93.8 136.5 127.5 55.688 33.7 117.188 55.8 184.5 66.5.688
+ 0 2 .3 4 1 18.688 2.7 76 4.3 172 5h399450v120H429l-6-1c-124.688-8-235-61.7
+-331-161C60.687 138.7 32.312 99.3 7 54L0 41V6z"></path></svg></span><span class="brace-center" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMidYMin slice"><path d="M199572 214
+c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
+ 53.3-86.7 123.7-153 211-199 66.7-36 137.3-56.3 212-62h199568v120H200432c-178.3
+ 11.7-311.7 78.3-403 201-6 8-9.7 12-11 12-.7.7-6.7 1-18 1s-17.3-.3-18-1c-1.3 0
+-5-4-11-12-44.7-59.3-101.3-106.3-170-141s-145.3-54.3-229-60H0V214z"></path></svg></span><span class="brace-right" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMaxYMin slice"><path d="M399994 0l6 6v35l-6 11c-56 104-135.3 181.3-238 232-57.3
+ 28.7-117 45-179 50H-300V214h399897c43.3-7 81-15 113-26 100.7-33 179.7-91 237
+-174 2.7-5 6-9 10-13 .7-1 7.3-1 20-1h17z"></path></svg></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">27</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7313em;"><span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.3824em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.3263em;vertical-align:-1.5763em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.75em;"><span style="top:-1.4237em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord cjk_fallback mtight">小美</span><span class="mord mtight"> </span></span><span class="mord mtight">44</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.75em;"><span class="svg-align" style="top:-2.102em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy" style="height:0.548em;min-width:1.6em;"><span class="brace-left" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMinYMin slice"><path d="M0 6l6-6h17c12.688 0 19.313.3 20 1 4 4 7.313 8.3 10 13
+ 35.313 51.3 80.813 93.8 136.5 127.5 55.688 33.7 117.188 55.8 184.5 66.5.688
+ 0 2 .3 4 1 18.688 2.7 76 4.3 172 5h399450v120H429l-6-1c-124.688-8-235-61.7
+-331-161C60.687 138.7 32.312 99.3 7 54L0 41V6z"></path></svg></span><span class="brace-center" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMidYMin slice"><path d="M199572 214
+c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
+ 53.3-86.7 123.7-153 211-199 66.7-36 137.3-56.3 212-62h199568v120H200432c-178.3
+ 11.7-311.7 78.3-403 201-6 8-9.7 12-11 12-.7.7-6.7 1-18 1s-17.3-.3-18-1c-1.3 0
+-5-4-11-12-44.7-59.3-101.3-106.3-170-141s-145.3-54.3-229-60H0V214z"></path></svg></span><span class="brace-right" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMaxYMin slice"><path d="M399994 0l6 6v35l-6 11c-56 104-135.3 181.3-238 232-57.3
+ 28.7-117 45-179 50H-300V214h399897c43.3-7 81-15 113-26 100.7-33 179.7-91 237
+-174 2.7-5 6-9 10-13 .7-1 7.3-1 20-1h17z"></path></svg></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord">12</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">32</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.898em;"><span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.5763em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.9708em;vertical-align:-1.3263em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6444em;"><span style="top:-1.6737em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord cjk_fallback mtight">爸爸</span></span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6444em;"><span class="svg-align" style="top:-2.352em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy" style="height:0.548em;min-width:1.6em;"><span class="brace-left" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMinYMin slice"><path d="M0 6l6-6h17c12.688 0 19.313.3 20 1 4 4 7.313 8.3 10 13
+ 35.313 51.3 80.813 93.8 136.5 127.5 55.688 33.7 117.188 55.8 184.5 66.5.688
+ 0 2 .3 4 1 18.688 2.7 76 4.3 172 5h399450v120H429l-6-1c-124.688-8-235-61.7
+-331-161C60.687 138.7 32.312 99.3 7 54L0 41V6z"></path></svg></span><span class="brace-center" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMidYMin slice"><path d="M199572 214
+c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
+ 53.3-86.7 123.7-153 211-199 66.7-36 137.3-56.3 212-62h199568v120H200432c-178.3
+ 11.7-311.7 78.3-403 201-6 8-9.7 12-11 12-.7.7-6.7 1-18 1s-17.3-.3-18-1c-1.3 0
+-5-4-11-12-44.7-59.3-101.3-106.3-170-141s-145.3-54.3-229-60H0V214z"></path></svg></span><span class="brace-right" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMaxYMin slice"><path d="M399994 0l6 6v35l-6 11c-56 104-135.3 181.3-238 232-57.3
+ 28.7-117 45-179 50H-300V214h399897c43.3-7 81-15 113-26 100.7-33 179.7-91 237
+-174 2.7-5 6-9 10-13 .7-1 7.3-1 20-1h17z"></path></svg></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">20</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.648em;"><span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.3263em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">64.</span></span></span></span></span><button class="katex-copy-btn" aria-label="Copy LaTeX" title="Copy LaTeX"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="katex-copy-icon katex-copy-icon-default"><path d="M368.37-237.37q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-474.26q0-34.48 24.26-58.74 24.26-24.26 58.74-24.26h378.26q34.48 0 58.74 24.26 24.26 24.26 24.26 58.74v474.26q0 34.48-24.26 58.74-24.26 24.26-58.74 24.26H368.37Zm0-83h378.26v-474.26H368.37v474.26Zm-155 238q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-515.76q0-17.45 11.96-29.48 11.97-12.02 29.33-12.02t29.54 12.02q12.17 12.03 12.17 29.48v515.76h419.76q17.45 0 29.48 11.96 12.02 11.97 12.02 29.33t-12.02 29.54q-12.03 12.17-29.48 12.17H213.37Zm155-238v-474.26 474.26Z"></path></svg><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="katex-copy-icon katex-copy-icon-success"><path d="m389-377.13 294.7-294.7q12.58-12.67 29.52-12.67 16.93 0 29.61 12.67 12.67 12.68 12.67 29.53 0 16.86-12.28 29.14L419.07-288.41q-12.59 12.67-29.52 12.67-16.94 0-29.62-12.67L217.41-430.93q-12.67-12.68-12.79-29.45-.12-16.77 12.55-29.45 12.68-12.67 29.62-12.67 16.93 0 29.28 12.67L389-377.13Z"></path></svg></button></div><p>漏掉的是<strong>這一年收進來的現金 36 萬</strong>。補回去就平了：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>資產</th><th></th><th>負債與權益</th><th></th></tr></thead><tbody><tr><td>現金</td><td>36 萬</td><td>爸爸（負債）</td><td>20 萬</td></tr><tr><td>車</td><td>27 萬</td><td>小美（權益）</td><td>12 + 32 = 44 萬</td></tr><tr><td>職業駕照</td><td>1 萬</td><td></td><td></td></tr><tr><td><strong>合計</strong></td><td><strong>64 萬</strong></td><td><strong>合計</strong></td><td><strong>64 萬</strong></td></tr></tbody></table></section></section>
+<section><h2 id="會計恆等式及要素">會計恆等式及要素<a class="anchor" href="#會計恆等式及要素"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><div class="katex-display-wrapper" data-latex="\text{資產} = \text{負債} + \text{股東權益}"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>資產</mtext><mo>=</mo><mtext>負債</mtext><mo>+</mo><mtext>股東權益</mtext></mrow><annotation encoding="application/x-tex">\text{資產} = \text{負債} + \text{股東權益}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord cjk_fallback">資產</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord text"><span class="mord cjk_fallback">負債</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord cjk_fallback">股東權益</span></span></span></span></span></span><button class="katex-copy-btn" aria-label="Copy LaTeX" title="Copy LaTeX"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="katex-copy-icon katex-copy-icon-default"><path d="M368.37-237.37q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-474.26q0-34.48 24.26-58.74 24.26-24.26 58.74-24.26h378.26q34.48 0 58.74 24.26 24.26 24.26 24.26 58.74v474.26q0 34.48-24.26 58.74-24.26 24.26-58.74 24.26H368.37Zm0-83h378.26v-474.26H368.37v474.26Zm-155 238q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-515.76q0-17.45 11.96-29.48 11.97-12.02 29.33-12.02t29.54 12.02q12.17 12.03 12.17 29.48v515.76h419.76q17.45 0 29.48 11.96 12.02 11.97 12.02 29.33t-12.02 29.54q-12.03 12.17-29.48 12.17H213.37Zm155-238v-474.26 474.26Z"></path></svg><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="katex-copy-icon katex-copy-icon-success"><path d="m389-377.13 294.7-294.7q12.58-12.67 29.52-12.67 16.93 0 29.61 12.67 12.67 12.68 12.67 29.53 0 16.86-12.28 29.14L419.07-288.41q-12.59 12.67-29.52 12.67-16.94 0-29.62-12.67L217.41-430.93q-12.67-12.68-12.79-29.45-.12-16.77 12.55-29.45 12.68-12.67 29.62-12.67 16.93 0 29.28 12.67L389-377.13Z"></path></svg></button></div><section><h3 id="資產">資產<a class="anchor" href="#資產"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><ul>
+<li>資產是企業所擁有的經濟資源，使用資產可為企業帶來收益。</li>
+<li>資產包括現金、用品、設備、無形資產等。</li>
+</ul><div class="math-env math-env-question"><div class="math-env-head"><span class="math-env-type">Question</span><span class="math-env-name"> (員工算不算是資產？大谷翔平是不是天使隊的資產？)</span></div><div class="math-env-body"><p>不算，因為價值無法客觀衡量。</p></div></div></section><section><h3 id="負債">負債<a class="anchor" href="#負債"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><ul>
+<li>負債是公司出面借的錢，可能是跟銀行借、可能發行債券，也可能向上游廠商或其他人賒欠。這些人都是公司的<strong>債權人</strong>，因為債權人出資，使公司可以彌補股東出資之不足。</li>
+<li>從另一個角度來說，負債是指<strong>債權人對企業資產之請求權</strong>。</li>
+</ul></section><section><h3 id="權益">權益<a class="anchor" href="#權益"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><ul>
+<li>權益在公司剛設立時是股東的投入（<strong>普通股股本</strong>），在公司開始營運後則要加入利潤（<strong>保留盈餘</strong>），可能因為賺錢而增加或賠錢而減少。</li>
+<li>從另一個角度來說，<strong>所有權人對總資產之請求權</strong>稱為權益。</li>
+</ul><div class="math-env math-env-definition"><div class="math-env-head"><span class="math-env-type">Definition</span><span class="math-env-name"> (股本)</span></div><div class="math-env-body"><p>股本是指公司發行股票所籌集到的原始資金總額，代表股東對公司出資的份額與所有權。</p></div></div><p>通常資產負債表 (balance sheet) 可以寫成</p><div class="katex-display-wrapper" data-latex="\text{資產} - \text{負債} = \text{股東權益},"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>資產</mtext><mo>−</mo><mtext>負債</mtext><mo>=</mo><mtext>股東權益</mtext><mo separator="true">,</mo></mrow><annotation encoding="application/x-tex">\text{資產} - \text{負債} = \text{股東權益},</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord text"><span class="mord cjk_fallback">資產</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord cjk_fallback">負債</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord cjk_fallback">股東權益</span></span><span class="mpunct">,</span></span></span></span></span><button class="katex-copy-btn" aria-label="Copy LaTeX" title="Copy LaTeX"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="katex-copy-icon katex-copy-icon-default"><path d="M368.37-237.37q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-474.26q0-34.48 24.26-58.74 24.26-24.26 58.74-24.26h378.26q34.48 0 58.74 24.26 24.26 24.26 24.26 58.74v474.26q0 34.48-24.26 58.74-24.26 24.26-58.74 24.26H368.37Zm0-83h378.26v-474.26H368.37v474.26Zm-155 238q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-515.76q0-17.45 11.96-29.48 11.97-12.02 29.33-12.02t29.54 12.02q12.17 12.03 12.17 29.48v515.76h419.76q17.45 0 29.48 11.96 12.02 11.97 12.02 29.33t-12.02 29.54q-12.03 12.17-29.48 12.17H213.37Zm155-238v-474.26 474.26Z"></path></svg><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="katex-copy-icon katex-copy-icon-success"><path d="m389-377.13 294.7-294.7q12.58-12.67 29.52-12.67 16.93 0 29.61 12.67 12.67 12.68 12.67 29.53 0 16.86-12.28 29.14L419.07-288.41q-12.59 12.67-29.52 12.67-16.94 0-29.62-12.67L217.41-430.93q-12.67-12.68-12.79-29.45-.12-16.77 12.55-29.45 12.68-12.67 29.62-12.67 16.93 0 29.28 12.67L389-377.13Z"></path></svg></button></div><p>要這樣移項是為了強調<strong>負債對資產的請求權優先於股東</strong>，這也是為什麼權益也被叫成
+剩餘權益 (residual claim)。用英文來說的話</p><div class="katex-display-wrapper" data-latex="\text{Assets} - \text{Liabilities} = \text{OE (Owner&#x27;s equity)} = \text{Net worth（淨資產）}"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>Assets</mtext><mo>−</mo><mtext>Liabilities</mtext><mo>=</mo><mtext>OE (Owner’s equity)</mtext><mo>=</mo><mtext>Net worth（淨資產）</mtext></mrow><annotation encoding="application/x-tex">\text{Assets} - \text{Liabilities} = \text{OE (Owner's equity)} = \text{Net worth（淨資產）}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord text"><span class="mord">Assets</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">Liabilities</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">OE (Owner’s equity)</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">Net worth</span><span class="mord cjk_fallback">（淨資產）</span></span></span></span></span></span><button class="katex-copy-btn" aria-label="Copy LaTeX" title="Copy LaTeX"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="katex-copy-icon katex-copy-icon-default"><path d="M368.37-237.37q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-474.26q0-34.48 24.26-58.74 24.26-24.26 58.74-24.26h378.26q34.48 0 58.74 24.26 24.26 24.26 24.26 58.74v474.26q0 34.48-24.26 58.74-24.26 24.26-58.74 24.26H368.37Zm0-83h378.26v-474.26H368.37v474.26Zm-155 238q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-515.76q0-17.45 11.96-29.48 11.97-12.02 29.33-12.02t29.54 12.02q12.17 12.03 12.17 29.48v515.76h419.76q17.45 0 29.48 11.96 12.02 11.97 12.02 29.33t-12.02 29.54q-12.03 12.17-29.48 12.17H213.37Zm155-238v-474.26 474.26Z"></path></svg><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="katex-copy-icon katex-copy-icon-success"><path d="m389-377.13 294.7-294.7q12.58-12.67 29.52-12.67 16.93 0 29.61 12.67 12.67 12.68 12.67 29.53 0 16.86-12.28 29.14L419.07-288.41q-12.59 12.67-29.52 12.67-16.94 0-29.62-12.67L217.41-430.93q-12.67-12.68-12.79-29.45-.12-16.77 12.55-29.45 12.68-12.67 29.62-12.67 16.93 0 29.28 12.67L389-377.13Z"></path></svg></button></div></section><section><h3 id="balance-sheet">Balance sheet<a class="anchor" href="#balance-sheet"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>Reports the financial position of a business entity <strong>at a specific point in time</strong>.
+It presents a business as the holder of resources (A) that are equal to the claims
+against those assets (L and OE).</p>
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Assets $1,000</th><th>Liabilities $600</th></tr></thead><tbody><tr><td></td><td>Equity $400</td></tr></tbody></table></section><section><h3 id="asset-types">Asset types<a class="anchor" href="#asset-types"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><ul>
+<li><strong>Assets</strong>: Economic resources expected to give future benefits to the business.
+<ul>
+<li><strong>Current assets（流動資產）</strong>: Those assets which the company expects to convert to cash, sell, or consume during the next 12 months or within the operating cycle.
+<ul>
+<li>Ex: Cash, Inventory（存貨）, Accounts Receivable（應收款項）, Prepaid Expenses（預付費用）</li>
+</ul>
+</li>
+<li><strong>Long-term assets</strong>: Those assets which the company expects to hold longer than the next 12 months or within the operating cycle.
+<ul>
+<li>Ex: Property（不動產）, Plant（廠房）, and Equipment（設備）</li>
+</ul>
+</li>
+<li><strong>Intangibles（無形資產）</strong>: Those with no physical form.
+<ul>
+<li>Ex: Trademarks（商標）, Patents, Goodwill（商譽）, License</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Liabilities（負債）</strong>: What are the company’s existing obligations to parties other than shareholders?
+<ul>
+<li><strong>Current liabilities（流動負債）</strong>: payable within one year or one operating cycle.
+<ul>
+<li>Ex: Accounts Payable（應付款項）, Notes Payable（應付票據）, Salary Payable（應付薪資）</li>
+</ul>
+</li>
+<li><strong>Long-term liabilities</strong>: Debts not payable within one year or one operating cycle.
+<ul>
+<li>Ex: Bonds Payable（應付債券）, Notes Payable（應付票據）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Owner’s Equity (or Shareholder’s Equity)</strong>: What is the company’s “net asset” value?
+<ul>
+<li>Represents the shareholders’ <strong>residual ownership</strong> of the assets of the business.</li>
+<li>Ex: Share Capital（股本）, Retained Earnings（保留盈餘）</li>
+</ul>
+</li>
+</ul><p>三種「應付」差在欠誰、為什麼欠：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>名稱</th><th>中文</th><th>欠誰？</th><th>為什麼欠？</th></tr></thead><tbody><tr><td><strong>Accounts Payable (A/P)</strong></td><td>應付帳款</td><td>供應商</td><td>買東西/服務但還沒付錢</td></tr><tr><td><strong>Notes Payable</strong></td><td>應付票據</td><td>銀行、公司或其他債權人</td><td>有簽發正式的借款票據/本票</td></tr><tr><td><strong>Salary Payable</strong></td><td>應付薪資</td><td>員工</td><td>員工已經工作，但薪水還沒付</td></tr></tbody></table></section><section><h3 id="小美的兩張資產負債表">小美的兩張資產負債表<a class="anchor" href="#小美的兩張資產負債表"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th>2022.01.01</th><th>2022.12.31</th></tr></thead><tbody><tr><td>資產</td><td>32 萬（汽車 30 萬、駕照 2 萬）</td><td>64 萬（現金 36 萬、汽車 27 萬、駕照 1 萬）</td></tr><tr><td>負債</td><td>20 萬</td><td>20 萬</td></tr><tr><td>權益</td><td>12 萬</td><td>44 萬</td></tr></tbody></table><div class="math-env math-env-exercise"><div class="math-env-head"><span class="math-env-type">Exercise</span><span class="math-env-name"> (隨堂測驗)</span></div><div class="math-env-body"><p>甲公司於民國 109 年底資產總額為 27,607 億元，權益總額為 18,506 億元，請問甲公司 109
+年底的負債總額為多少？且這些資訊可由那個財務報表取得？</p><p>(A) 46,113 億元；資產負債表　(B) 9,101 億元；資產負債表
+(C) 23,057 億元；綜合損益表　(D) 4,551 億元；現金流量表</p><p>答案：<spoiler>(B)。<span class="katex" data-latex="27{,}607 - 18{,}506 = 9{,}101"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>27,607</mn><mo>−</mo><mn>18,506</mn><mo>=</mo><mn>9,101</mn></mrow><annotation encoding="application/x-tex">27{,}607 - 18{,}506 = 9{,}101</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">27</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">607</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">18</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">506</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">9</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">101</span></span></span></span>，而資產、負債、權益都在資產負債表上。</spoiler></p></div></div></section><section><h3 id="損益表-income-statement">損益表 (Income statement)<a class="anchor" href="#損益表-income-statement"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>資產負債表代表公司在一個<strong>時間點</strong>的財務狀況，而損益表代表<strong>一段期間</strong>的財務狀況 ——
+reports the performance (“economic earning activities”) over a specific period of time.</p><div class="katex-display-wrapper" data-latex="\text{營收} - \text{費用} = \text{淨利}, \qquad
+\text{Net Income} = \text{Revenue} - \text{Expenses}."><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>營收</mtext><mo>−</mo><mtext>費用</mtext><mo>=</mo><mtext>淨利</mtext><mo separator="true">,</mo><mspace width="2em"></mspace><mtext>Net Income</mtext><mo>=</mo><mtext>Revenue</mtext><mo>−</mo><mtext>Expenses</mtext><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">\text{營收} - \text{費用} = \text{淨利}, \qquad
+\text{Net Income} = \text{Revenue} - \text{Expenses}.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord text"><span class="mord cjk_fallback">營收</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord cjk_fallback">費用</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord cjk_fallback">淨利</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">Net Income</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord text"><span class="mord">Revenue</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Expenses</span></span><span class="mord">.</span></span></span></span></span><button class="katex-copy-btn" aria-label="Copy LaTeX" title="Copy LaTeX"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="katex-copy-icon katex-copy-icon-default"><path d="M368.37-237.37q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-474.26q0-34.48 24.26-58.74 24.26-24.26 58.74-24.26h378.26q34.48 0 58.74 24.26 24.26 24.26 24.26 58.74v474.26q0 34.48-24.26 58.74-24.26 24.26-58.74 24.26H368.37Zm0-83h378.26v-474.26H368.37v474.26Zm-155 238q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-515.76q0-17.45 11.96-29.48 11.97-12.02 29.33-12.02t29.54 12.02q12.17 12.03 12.17 29.48v515.76h419.76q17.45 0 29.48 11.96 12.02 11.97 12.02 29.33t-12.02 29.54q-12.03 12.17-29.48 12.17H213.37Zm155-238v-474.26 474.26Z"></path></svg><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="katex-copy-icon katex-copy-icon-success"><path d="m389-377.13 294.7-294.7q12.58-12.67 29.52-12.67 16.93 0 29.61 12.67 12.67 12.68 12.67 29.53 0 16.86-12.28 29.14L419.07-288.41q-12.59 12.67-29.52 12.67-16.94 0-29.62-12.67L217.41-430.93q-12.67-12.68-12.79-29.45-.12-16.77 12.55-29.45 12.68-12.67 29.62-12.67 16.93 0 29.28 12.67L389-377.13Z"></path></svg></button></div><ul>
+<li><strong>Revenue</strong>: proceeds from sale of goods or services
+<ul>
+<li>Ex: Sales revenue, Service revenue, Interest revenue, Dividend revenue</li>
+</ul>
+</li>
+<li><strong>Expenses</strong>: expenditure incurred to earn revenue
+<ul>
+<li>Ex: Cost of goods sold, Salary expense, Rent expense, Utilities expense, Interest expense</li>
+</ul>
+</li>
+</ul><blockquote class="admonition bdm-note"><span class="bdm-title"><div>兩個容易誤會的費用名稱</div></span><ul>
+<li><strong>Utilities（公共服務）expense</strong> = 公司「用水、用電、用瓦斯、用網路」所花的成本。</li>
+<li><strong>Interest expense</strong> = 公司因借錢而產生的利息成本。</li>
+</ul></blockquote><p>回到小美，損益表 (2022.01.01–2022.12.31)：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>要素</th><th>項目</th><th>金額</th></tr></thead><tbody><tr><td>營收 (Revenue)</td><td>載客 <span class="katex" data-latex="6 \times 12"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn><mo>×</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">6 \times 12</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">6</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">12</span></span></span></span></td><td>72 萬</td></tr><tr><td>費用 (Expense)</td><td>油錢 <span class="katex" data-latex="2 \times 12"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">2 \times 12</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">12</span></span></span></span></td><td>24 萬</td></tr><tr><td></td><td>其他花費 <span class="katex" data-latex="1 \times 12"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>×</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">1 \times 12</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">12</span></span></span></span></td><td>12 萬</td></tr><tr><td></td><td>用車 → <strong>折舊 (Depreciation)</strong></td><td>3 萬</td></tr><tr><td></td><td>用牌照 → <strong>攤銷 (Amortization)</strong></td><td>1 萬</td></tr><tr><td>淨利 (Net income)</td><td>72 − 40</td><td><strong>32 萬</strong></td></tr></tbody></table><p>有形資產隨時間耗用叫折舊，無形資產（駕照）叫攤銷。</p></section><section><h3 id="五大要素的定義">五大要素的定義<a class="anchor" href="#五大要素的定義"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>要素</th><th>定義或描述</th></tr></thead><tbody><tr><td>資產</td><td>因過去事項而由個體所控制之<strong>現時經濟資源</strong>。經濟資源係指具有產生經濟效益之可能性之一項權利。</td></tr><tr><td>負債</td><td>個體因過去事項而須轉移經濟資源之<strong>現時義務</strong>。</td></tr><tr><td>權益</td><td>對個體之資產減除其所有負債之<strong>剩餘權利</strong>。</td></tr><tr><td>收益</td><td>造成權益增加之資產增加或負債減少，但不包含與權益請求權持有人之投入有關者。</td></tr><tr><td>費損</td><td>造成權益減少之資產減少或負債增加，但不包含與權益請求權持有人之投入有關者。</td></tr></tbody></table><div class="math-env math-env-intuition"><div class="math-env-head"><span class="math-env-type">Intuition</span><span class="math-env-name"> (收益的定義在講什麼)</span></div><div class="math-env-body"><p>把它拆開來看：</p><blockquote>
+<p>收益 = 造成權益增加的「資產增加」或「負債減少」，但不包含權益請求權持有人投入所造成的增加。</p>
+</blockquote><p>核心其實只有一句：</p><blockquote>
+<p>收益就是「不是股東拿錢進來，但讓公司淨資產變多」的東西。</p>
+</blockquote><p>而收益 − 費損 = 淨利。</p></div></div></section><section><h3 id="資產負債表與損益表的關係存量與流量">資產負債表與損益表的關係：存量與流量<a class="anchor" href="#資產負債表與損益表的關係存量與流量"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><figure class="diagram-block" data-diagram="mermaid"><pre class="diagram-src">flowchart LR
+    B1["&#x3C;b>存量&#x3C;/b>&#x3C;br/>資產負債表 (2022.01.01)&#x3C;br/>資產32萬元 = 權益12萬元 + 負債20萬元"]
+    B2["&#x3C;b>存量&#x3C;/b>&#x3C;br/>資產負債表 (2022.12.31)&#x3C;br/>資產64萬元 = 權益44萬元 + 負債20萬元"]
+    TT@{ shape: text, label: "時間 →" }
+    B1 -- "&#x3C;b>流量&#x3C;/b>&#x3C;br/>損益表 (2022/1/1−2022/12/31)&#x3C;br/>收入72萬元 − 費用40萬元 = 淨利32萬元" --> B2
+    B2 ~~~ TT</pre><figcaption>兩張報表之間的連結關係</figcaption></figure><ul>
+<li><strong>存量</strong>代表在定點的狀態，每一期會依據績效而累積下去。</li>
+<li><strong>流量</strong>代表某段時間的績效，在每一期結束時，結算到存量後歸零，下一期的績效重新開始算。</li>
+</ul><p>這樣可以看出來原本的存量加上淨利會是下一個時間點的存量。多期就長這樣：</p><figure class="diagram-block" data-diagram="mermaid"><pre class="diagram-src">flowchart LR
+    BS11["&#x3C;b>Balance Sheet&#x3C;/b>&#x3C;br/>December 31&#x3C;br/>2011"]
+    BS12["&#x3C;b>Balance Sheet&#x3C;/b>&#x3C;br/>December 31&#x3C;br/>2012"]
+    BS13["&#x3C;b>Balance Sheet&#x3C;/b>&#x3C;br/>December 31&#x3C;br/>2013"]
+    BS14["&#x3C;b>Balance Sheet&#x3C;/b>&#x3C;br/>December 31&#x3C;br/>2014"]
+    TT@{ shape: text, label: "Time →" }
+    BS11 -- "Income statement&#x3C;br/>for the year 2012" --> BS12
+    BS12 -- "Income statement&#x3C;br/>for the year 2013" --> BS13
+    BS13 -- "Income statement&#x3C;br/>for the year 2014" --> BS14
+    BS14 ~~~ TT</pre><figcaption>Relation between IS and BS</figcaption></figure><ul>
+<li>A <strong>balance sheet</strong> shows the financial position of the company at a discrete point in time.</li>
+<li>An <strong>income statement</strong> shows the financial performance between those points in time.</li>
+<li><strong>Statement of Owners Equity</strong> demonstrates the link between those two financial statements.</li>
+</ul></section></section>
+<section><h2 id="綜合練習">綜合練習<a class="anchor" href="#綜合練習"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="兩個恆等式怎麼連結">兩個恆等式怎麼連結<a class="anchor" href="#兩個恆等式怎麼連結"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>期初資產負債表 → 期間損益表 → 期末資產負債表：</p><div class="katex-display-wrapper" data-latex="\underbrace{\text{資產} = \text{負債} + \text{股東權益}}_{2022/1/1}
+\;+\;
+\underbrace{\text{營收} - \text{費用} = \text{淨利}}_{2022 \text{ 年度}}
+\;=\;
+\underbrace{\text{資產} = \text{負債} + \text{股東權益}}_{2022/12/31}"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><munder><munder><mrow><mtext>資產</mtext><mo>=</mo><mtext>負債</mtext><mo>+</mo><mtext>股東權益</mtext></mrow><mo stretchy="true">⏟</mo></munder><mrow><mn>2022</mn><mi mathvariant="normal">/</mi><mn>1</mn><mi mathvariant="normal">/</mi><mn>1</mn></mrow></munder><mtext>  </mtext><mo>+</mo><mtext>  </mtext><munder><munder><mrow><mtext>營收</mtext><mo>−</mo><mtext>費用</mtext><mo>=</mo><mtext>淨利</mtext></mrow><mo stretchy="true">⏟</mo></munder><mrow><mn>2022</mn><mtext> 年度</mtext></mrow></munder><mtext>  </mtext><mo>=</mo><mtext>  </mtext><munder><munder><mrow><mtext>資產</mtext><mo>=</mo><mtext>負債</mtext><mo>+</mo><mtext>股東權益</mtext></mrow><mo stretchy="true">⏟</mo></munder><mrow><mn>2022</mn><mi mathvariant="normal">/</mi><mn>12</mn><mi mathvariant="normal">/</mi><mn>31</mn></mrow></munder></mrow><annotation encoding="application/x-tex">\underbrace{\text{資產} = \text{負債} + \text{股東權益}}_{2022/1/1}
+\;+\;
+\underbrace{\text{營收} - \text{費用} = \text{淨利}}_{2022 \text{ 年度}}
+\;=\;
+\underbrace{\text{資產} = \text{負債} + \text{股東權益}}_{2022/12/31}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.3147em;vertical-align:-1.6313em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-1.5437em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2022/1/1</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span class="svg-align" style="top:-2.2687em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy" style="height:0.548em;min-width:1.6em;"><span class="brace-left" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMinYMin slice"><path d="M0 6l6-6h17c12.688 0 19.313.3 20 1 4 4 7.313 8.3 10 13
+ 35.313 51.3 80.813 93.8 136.5 127.5 55.688 33.7 117.188 55.8 184.5 66.5.688
+ 0 2 .3 4 1 18.688 2.7 76 4.3 172 5h399450v120H429l-6-1c-124.688-8-235-61.7
+-331-161C60.687 138.7 32.312 99.3 7 54L0 41V6z"></path></svg></span><span class="brace-center" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMidYMin slice"><path d="M199572 214
+c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
+ 53.3-86.7 123.7-153 211-199 66.7-36 137.3-56.3 212-62h199568v120H200432c-178.3
+ 11.7-311.7 78.3-403 201-6 8-9.7 12-11 12-.7.7-6.7 1-18 1s-17.3-.3-18-1c-1.3 0
+-5-4-11-12-44.7-59.3-101.3-106.3-170-141s-145.3-54.3-229-60H0V214z"></path></svg></span><span class="brace-right" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMaxYMin slice"><path d="M399994 0l6 6v35l-6 11c-56 104-135.3 181.3-238 232-57.3
+ 28.7-117 45-179 50H-300V214h399897c43.3-7 81-15 113-26 100.7-33 179.7-91 237
+-174 2.7-5 6-9 10-13 .7-1 7.3-1 20-1h17z"></path></svg></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord cjk_fallback">資產</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord text"><span class="mord cjk_fallback">負債</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord cjk_fallback">股東權益</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7313em;"><span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.6313em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.093em;vertical-align:-1.4097em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-1.5903em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2022</span><span class="mord text mtight"><span class="mord mtight"> </span><span class="mord cjk_fallback mtight">年度</span></span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span class="svg-align" style="top:-2.2687em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy" style="height:0.548em;min-width:1.6em;"><span class="brace-left" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMinYMin slice"><path d="M0 6l6-6h17c12.688 0 19.313.3 20 1 4 4 7.313 8.3 10 13
+ 35.313 51.3 80.813 93.8 136.5 127.5 55.688 33.7 117.188 55.8 184.5 66.5.688
+ 0 2 .3 4 1 18.688 2.7 76 4.3 172 5h399450v120H429l-6-1c-124.688-8-235-61.7
+-331-161C60.687 138.7 32.312 99.3 7 54L0 41V6z"></path></svg></span><span class="brace-center" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMidYMin slice"><path d="M199572 214
+c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
+ 53.3-86.7 123.7-153 211-199 66.7-36 137.3-56.3 212-62h199568v120H200432c-178.3
+ 11.7-311.7 78.3-403 201-6 8-9.7 12-11 12-.7.7-6.7 1-18 1s-17.3-.3-18-1c-1.3 0
+-5-4-11-12-44.7-59.3-101.3-106.3-170-141s-145.3-54.3-229-60H0V214z"></path></svg></span><span class="brace-right" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMaxYMin slice"><path d="M399994 0l6 6v35l-6 11c-56 104-135.3 181.3-238 232-57.3
+ 28.7-117 45-179 50H-300V214h399897c43.3-7 81-15 113-26 100.7-33 179.7-91 237
+-174 2.7-5 6-9 10-13 .7-1 7.3-1 20-1h17z"></path></svg></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord cjk_fallback">營收</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord cjk_fallback">費用</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord text"><span class="mord cjk_fallback">淨利</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7313em;"><span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.4097em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.3147em;vertical-align:-1.6313em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span style="top:-1.5437em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2022/12/31</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6833em;"><span class="svg-align" style="top:-2.2687em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy" style="height:0.548em;min-width:1.6em;"><span class="brace-left" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMinYMin slice"><path d="M0 6l6-6h17c12.688 0 19.313.3 20 1 4 4 7.313 8.3 10 13
+ 35.313 51.3 80.813 93.8 136.5 127.5 55.688 33.7 117.188 55.8 184.5 66.5.688
+ 0 2 .3 4 1 18.688 2.7 76 4.3 172 5h399450v120H429l-6-1c-124.688-8-235-61.7
+-331-161C60.687 138.7 32.312 99.3 7 54L0 41V6z"></path></svg></span><span class="brace-center" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMidYMin slice"><path d="M199572 214
+c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
+ 53.3-86.7 123.7-153 211-199 66.7-36 137.3-56.3 212-62h199568v120H200432c-178.3
+ 11.7-311.7 78.3-403 201-6 8-9.7 12-11 12-.7.7-6.7 1-18 1s-17.3-.3-18-1c-1.3 0
+-5-4-11-12-44.7-59.3-101.3-106.3-170-141s-145.3-54.3-229-60H0V214z"></path></svg></span><span class="brace-right" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMaxYMin slice"><path d="M399994 0l6 6v35l-6 11c-56 104-135.3 181.3-238 232-57.3
+ 28.7-117 45-179 50H-300V214h399897c43.3-7 81-15 113-26 100.7-33 179.7-91 237
+-174 2.7-5 6-9 10-13 .7-1 7.3-1 20-1h17z"></path></svg></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord cjk_fallback">資產</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord text"><span class="mord cjk_fallback">負債</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord cjk_fallback">股東權益</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7313em;"><span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.6313em;"><span></span></span></span></span></span></span></span></span></span><button class="katex-copy-btn" aria-label="Copy LaTeX" title="Copy LaTeX"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="katex-copy-icon katex-copy-icon-default"><path d="M368.37-237.37q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-474.26q0-34.48 24.26-58.74 24.26-24.26 58.74-24.26h378.26q34.48 0 58.74 24.26 24.26 24.26 24.26 58.74v474.26q0 34.48-24.26 58.74-24.26 24.26-58.74 24.26H368.37Zm0-83h378.26v-474.26H368.37v474.26Zm-155 238q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-515.76q0-17.45 11.96-29.48 11.97-12.02 29.33-12.02t29.54 12.02q12.17 12.03 12.17 29.48v515.76h419.76q17.45 0 29.48 11.96 12.02 11.97 12.02 29.33t-12.02 29.54q-12.03 12.17-29.48 12.17H213.37Zm155-238v-474.26 474.26Z"></path></svg><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="katex-copy-icon katex-copy-icon-success"><path d="m389-377.13 294.7-294.7q12.58-12.67 29.52-12.67 16.93 0 29.61 12.67 12.67 12.68 12.67 29.53 0 16.86-12.28 29.14L419.07-288.41q-12.59 12.67-29.52 12.67-16.94 0-29.62-12.67L217.41-430.93q-12.67-12.68-12.79-29.45-.12-16.77 12.55-29.45 12.68-12.67 29.62-12.67 16.93 0 29.28 12.67L389-377.13Z"></path></svg></button></div><p>以小美為例，期末權益 44 萬 = 期初投入 12 萬 + <strong>保留盈餘</strong> 32 萬。淨利就是把兩張
+資產負債表接起來的那條線。</p></section><section><h3 id="交易對五大要素的影響">交易對五大要素的影響<a class="anchor" href="#交易對五大要素的影響"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><div class="math-env math-env-exercise"><div class="math-env-head"><span class="math-env-type">Exercise</span><span class="math-env-name"> (A 公司 2022 年 9 月份交易)</span></div><div class="math-env-body"><ol>
+<li>向 B 設備公司賒購電腦終端機 $20,000。</li>
+<li>支付 5 月份倉庫租金 $3,000。</li>
+<li>提供電腦服務給客戶，收現 $2,400。</li>
+<li>現金支付 5 月份電費 $11,000。</li>
+<li>股東額外增資 $32,000 現金。</li>
+<li>支付交易 (1) 中賒欠 B 設備公司的款項。</li>
+<li>5 月份廣告費用為 $1,100，尚未付現。</li>
+</ol></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>#</th><th>交易內容</th><th align="center">資產</th><th align="center">負債</th><th align="center">股東權益</th><th align="center">營收</th><th align="center">費用</th></tr></thead><tbody><tr><td>1</td><td>賒購電腦終端機 $20,000</td><td align="center">↑</td><td align="center">↑</td><td align="center"></td><td align="center"></td><td align="center"></td></tr><tr><td>2</td><td>支付倉庫租金 $3,000</td><td align="center">↓</td><td align="center"></td><td align="center">↓ *</td><td align="center"></td><td align="center">↑</td></tr><tr><td>3</td><td>提供服務收現 $2,400</td><td align="center">↑</td><td align="center"></td><td align="center">↑ *</td><td align="center">↑</td><td align="center"></td></tr><tr><td>4</td><td>現金支付電費 $11,000</td><td align="center">↓</td><td align="center"></td><td align="center">↓ *</td><td align="center"></td><td align="center">↑</td></tr><tr><td>5</td><td>股東額外增資 $32,000</td><td align="center">↑</td><td align="center"></td><td align="center">↑</td><td align="center"></td><td align="center"></td></tr><tr><td>6</td><td>支付交易 (1) 的賒欠款</td><td align="center">↓</td><td align="center">↓</td><td align="center"></td><td align="center"></td><td align="center"></td></tr><tr><td>7</td><td>廣告費 $1,100 尚未付現</td><td align="center"></td><td align="center">↑</td><td align="center">↓ *</td><td align="center"></td><td align="center">↑</td></tr></tbody></table><p>* 標記處就是<strong>兩個恆等式連結</strong>的地方：損益表上的營收／費用，透過淨利改變資產負債表上的權益。</p><p>文字敘述版：</p><ol>
+<li>資產增加及負債增加。</li>
+<li>資產減少及費用增加導致權益減少 *。</li>
+<li>資產增加及收入增加導致權益增加 *。</li>
+<li>資產減少及費用增加導致權益減少 *。</li>
+<li>資產增加及權益增加。</li>
+<li>資產減少及負債減少。</li>
+<li>負債增加及費用增加導致權益減少 *。</li>
+</ol><p>交易 6 放回小美的例子（假設還爸爸 5 萬）：現金 36 → 31 萬、負債 20 → 15 萬，
+總資產 59 萬 = 負債 15 萬 + 權益 44 萬，<strong>資產減少及負債減少</strong>，等式依然成立。</p></section><section><h3 id="blockbuster-video">Blockbuster Video<a class="anchor" href="#blockbuster-video"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><div class="math-env math-env-exercise"><div class="math-env-head"><span class="math-env-type">Exercise</span></div><div class="math-env-body"><p>Indicate effects of the following business transactions on the accounting equation
+of a Blockbuster Video location.</p><p>a) Received cash of $10,000 from owner
+b) Purchased office furniture on account $600
+c) Paid $100 cash to purchase supplies
+d) Rented videos to customers and received cash of $600
+e) Earned video rental revenue on account $1,200
+f) Received cash on account $300
+g) Sold land for $12,000 cash, which was the cost of the land
+h) Paid cash on account $250
+i) Paid monthly office rent of $800 with cash at end of the month</p></div></div><p>解答：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th>影響</th><th></th></tr></thead><tbody><tr><td>a)</td><td>Asset ↑</td><td>Equity ↑</td></tr><tr><td>b)</td><td>Asset ↑</td><td>Liability ↑</td></tr><tr><td>c)</td><td>Asset ↑</td><td>Asset ↓</td></tr><tr><td>d)</td><td>Asset ↑</td><td>Revenue ↑ → Equity ↑</td></tr><tr><td>e)</td><td>同 d.</td><td></td></tr><tr><td>f)</td><td>Asset ↑</td><td>Asset ↓</td></tr><tr><td>g)</td><td>Asset ↑</td><td>Asset ↓</td></tr><tr><td>h)</td><td>Asset ↓</td><td>Liability ↓</td></tr><tr><td>i)</td><td>Asset ↓</td><td>Expense ↑ → Equity ↓</td></tr></tbody></table><p>c) 和 f)、g) 都是「資產換資產」，總額不變 —— 用現金換用品、收回應收帳款、
+用帳面價值賣地都不影響恆等式兩邊。</p></section></section>  </div> <script type="module" src="/_astro/Markdown.astro_astro_type_script_index_0_lang.DMmJuWXS.js"></script> <div class="relative transition overflow-hidden bg-[var(--license-block-bg)] py-5 px-6 mb-6 rounded-xl license-container onload-animation"> <div class="transition font-bold text-black/75 dark:text-white/75"> 會計之概念 </div> <a href="https://konyi0613.github.io/notes/accounting/ch01-會計之概念/" class="link text-[var(--primary)]"> https://konyi0613.github.io/notes/accounting/ch01-會計之概念/ </a> <div class="flex gap-6 mt-2"> <div> <div class="transition text-black/30 dark:text-white/30 text-sm">Author</div> <div class="transition text-black/75 dark:text-white/75 line-clamp-2">Konyi</div> </div> <div> <div class="transition text-black/30 dark:text-white/30 text-sm">Published at</div> <div class="transition text-black/75 dark:text-white/75 line-clamp-2">2026-09-09</div> </div> <div> <div class="transition text-black/30 dark:text-white/30 text-sm">License</div> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" class="link text-[var(--primary)] line-clamp-2">CC BY-NC-SA 4.0</a> </div> </div> <svg width="0.97em" height="1em" class="transition text-[15rem] absolute pointer-events-none right-6 top-1/2 -translate-y-1/2 text-black/5 dark:text-white/5" data-icon="fa6-brands:creative-commons">   <symbol id="ai:fa6-brands:creative-commons" viewBox="0 0 496 512"><path fill="currentColor" d="m245.83 214.87l-33.22 17.28c-9.43-19.58-25.24-19.93-27.46-19.93c-22.13 0-33.22 14.61-33.22 43.84c0 23.57 9.21 43.84 33.22 43.84c14.47 0 24.65-7.09 30.57-21.26l30.55 15.5c-6.17 11.51-25.69 38.98-65.1 38.98c-22.6 0-73.96-10.32-73.96-77.05c0-58.69 43-77.06 72.63-77.06c30.72-.01 52.7 11.95 65.99 35.86m143.05 0l-32.78 17.28c-9.5-19.77-25.72-19.93-27.9-19.93c-22.14 0-33.22 14.61-33.22 43.84c0 23.55 9.23 43.84 33.22 43.84c14.45 0 24.65-7.09 30.54-21.26l31 15.5c-2.1 3.75-21.39 38.98-65.09 38.98c-22.69 0-73.96-9.87-73.96-77.05c0-58.67 42.97-77.06 72.63-77.06c30.71-.01 52.58 11.95 65.56 35.86M247.56 8.05C104.74 8.05 0 123.11 0 256.05c0 138.49 113.6 248 247.56 248c129.93 0 248.44-100.87 248.44-248c0-137.87-106.62-248-248.44-248m.87 450.81c-112.54 0-203.7-93.04-203.7-202.81c0-105.42 85.43-203.27 203.72-203.27c112.53 0 202.82 89.46 202.82 203.26c-.01 121.69-99.68 202.82-202.84 202.82"/></symbol><use href="#ai:fa6-brands:creative-commons"></use>  </svg> </div> </div> </div>  <div class="flex flex-col md:flex-row justify-between mb-4 gap-4 overflow-hidden w-full"> <a href="#" class="w-full font-bold overflow-hidden active:scale-95 pointer-events-none">  </a> <a href="#" class="w-full font-bold overflow-hidden active:scale-95 pointer-events-none">  </a> </div>  <div class="footer col-span-2 onload-animation hidden lg:block"> <!--<div class="border-t border-[var(&#45;&#45;primary)] mx-16 border-dashed py-8 max-w-[var(&#45;&#45;page-width)] flex flex-col items-center justify-center px-6">--><div class="transition border-t border-black/10 dark:border-white/15 my-10 border-dashed mx-32"></div> <!--<div class="transition bg-[oklch(92%_0.01_var(&#45;&#45;hue))] dark:bg-black rounded-2xl py-8 mt-4 mb-8 flex flex-col items-center justify-center px-6">--> <div class="transition border-dashed border-[oklch(85%_0.01_var(--hue))] dark:border-white/15 rounded-2xl mb-12 flex flex-col items-center justify-center px-6"> <div class="transition text-50 text-sm text-center">
+&copy; <span id="copyright-year">2026</span> Konyi. All Rights Reserved. /
+<a class="transition link text-[var(--primary)] font-medium" target="_blank" href="/rss.xml">RSS</a> /
+<a class="transition link text-[var(--primary)] font-medium" target="_blank" href="/sitemap-index.xml">Sitemap</a><br>
+Powered by
+<a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://astro.build">Astro</a> &
+<a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a> </div> </div> </div> </div> </main> <div class="footer col-span-2 onload-animation block lg:hidden"> <!--<div class="border-t border-[var(&#45;&#45;primary)] mx-16 border-dashed py-8 max-w-[var(&#45;&#45;page-width)] flex flex-col items-center justify-center px-6">--><div class="transition border-t border-black/10 dark:border-white/15 my-10 border-dashed mx-32"></div> <!--<div class="transition bg-[oklch(92%_0.01_var(&#45;&#45;hue))] dark:bg-black rounded-2xl py-8 mt-4 mb-8 flex flex-col items-center justify-center px-6">--> <div class="transition border-dashed border-[oklch(85%_0.01_var(--hue))] dark:border-white/15 rounded-2xl mb-12 flex flex-col items-center justify-center px-6"> <div class="transition text-50 text-sm text-center">
+&copy; <span id="copyright-year">2026</span> Konyi. All Rights Reserved. /
+<a class="transition link text-[var(--primary)] font-medium" target="_blank" href="/rss.xml">RSS</a> /
+<a class="transition link text-[var(--primary)] font-medium" target="_blank" href="/sitemap-index.xml">Sitemap</a><br>
+Powered by
+<a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://astro.build">Astro</a> &
+<a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a> </div> </div> </div> </div> <!-- There can't be a filter on parent element, or it will break `fixed` --><div class="back-to-top-wrapper hidden lg:block" data-astro-cid-eymb5ayk> <div id="back-to-top-btn" class="back-to-top-btn hide flex items-center rounded-2xl overflow-hidden transition" onclick="backToTop()" data-astro-cid-eymb5ayk> <button aria-label="Back to Top" class="btn-card h-[3.75rem] w-[3.75rem]" data-astro-cid-eymb5ayk> <svg width="1em" height="1em" class="mx-auto" data-astro-cid-eymb5ayk="true" data-icon="material-symbols:keyboard-arrow-up-rounded">   <symbol id="ai:material-symbols:keyboard-arrow-up-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="m12 10.8l-3.9 3.9q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7l4.6-4.6q.3-.3.7-.3t.7.3l4.6 4.6q.275.275.275.7t-.275.7t-.7.275t-.7-.275z"/></symbol><use href="#ai:material-symbols:keyboard-arrow-up-rounded"></use>  </svg> </button> </div> </div>  <script>
+function backToTop() {
+    window.scroll({ top: 0, behavior: 'smooth' });
+}
+</script> </div> </div>  <div class="absolute w-full z-0 hidden xl:block"> <div class="relative max-w-[var(--page-width)] mx-auto"> <!-- TOC component --> <div id="toc-wrapper" class="hidden lg:block transition absolute top-0 -right-[var(--toc-width)] w-[var(--toc-width)] items-center toc-hide"> <div id="toc-inner-wrapper" class="fixed top-14 w-[var(--toc-width)] h-[calc(100vh_-_20rem)] overflow-y-scroll overflow-x-hidden hide-scrollbar"> <div id="toc" class="w-full h-full transition-swup-fade "> <div class="h-8 w-full"></div> <table-of-contents class="group"><a href="#成立一家公司吧" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">1</div><div class="transition text-sm text-50">成立一家公司吧！</div></a><a href="#個體-entity你的公司不是你的公司" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">個體 (entity)：你的公司不是你的公司？</div></a><a href="#組織型態" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">組織型態</div></a><a href="#誰需要會計為什麼" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">誰需要會計？為什麼？</div></a><a href="#我和公司的關係怎麼界定" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">我和公司的關係怎麼界定？</div></a><a href="#那到底什麼是會計" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">2</div><div class="transition text-sm text-50">那到底什麼是會計？</div></a><a href="#子曰會計當而已矣" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">子曰：會計，當而已矣</div></a><a href="#會計的組成" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">會計的組成</div></a><a href="#會計準則" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">會計準則</div></a><a href="#會計觀念架構" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">會計觀念架構</div></a><a href="#誰在用會計資訊" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">誰在用會計資訊？</div></a><a href="#會計的過程" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">會計的過程</div></a><a href="#為我們所成立的公司記錄會計資訊吧" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">3</div><div class="transition text-sm text-50">為我們所成立的公司記錄會計資訊吧！</div></a><a href="#會計期間假設" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">會計期間假設</div></a><a href="#小美的計程車公司" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">小美的計程車公司</div></a><a href="#分得出什麼是收入什麼是利潤嗎" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">分得出什麼是收入，什麼是利潤嗎？</div></a><a href="#哪裡不平衡" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">哪裡不平衡？</div></a><a href="#會計恆等式及要素" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">4</div><div class="transition text-sm text-50">會計恆等式及要素</div></a><a href="#資產" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">資產</div></a><a href="#負債" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">負債</div></a><a href="#權益" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">權益</div></a><a href="#balance-sheet" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">Balance sheet</div></a><a href="#asset-types" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">Asset types</div></a><a href="#小美的兩張資產負債表" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">小美的兩張資產負債表</div></a><a href="#損益表-income-statement" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">損益表 (Income statement)</div></a><a href="#五大要素的定義" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">五大要素的定義</div></a><a href="#資產負債表與損益表的關係存量與流量" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">資產負債表與損益表的關係：存量與流量</div></a><a href="#綜合練習" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">5</div><div class="transition text-sm text-50">綜合練習</div></a><a href="#兩個恆等式怎麼連結" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">兩個恆等式怎麼連結</div></a><a href="#交易對五大要素的影響" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">交易對五大要素的影響</div></a><a href="#blockbuster-video" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">Blockbuster Video</div></a><div id="active-indicator" style="opacity: 0" class="-z-10 absolute bg-[var(--toc-btn-hover)] left-0 right-0 rounded-xl transition-all group-hover:bg-transparent border-2 border-[var(--toc-btn-hover)] group-hover:border-[var(--toc-btn-active)] border-dashed"></div></table-of-contents><script type="module">class l extends HTMLElement{tocEl=null;visibleClass="visible";observer;anchorNavTarget=null;headingIdxMap=new Map;headings=[];sections=[];tocEntries=[];active=[];activeIndicator=null;constructor(){super(),this.observer=new IntersectionObserver(this.markVisibleSection,{threshold:0})}markVisibleSection=t=>{t.forEach(e=>{const i=e.target.children[0]?.getAttribute("id"),s=i?this.headingIdxMap.get(i):void 0;s!=null&&(this.active[s]=e.isIntersecting),e.isIntersecting&&this.anchorNavTarget==e.target.firstChild&&(this.anchorNavTarget=null)}),this.active.includes(!0)||this.fallback(),this.update()};toggleActiveHeading=()=>{let t=this.active.length-1,e=this.active.length-1,i=-1;for(;t>=0&&!this.active[t];)this.tocEntries[t].classList.remove(this.visibleClass),t--;for(;t>=0&&this.active[t];)this.tocEntries[t].classList.add(this.visibleClass),e=Math.min(e,t),i=Math.max(i,t),t--;for(;t>=0;)this.tocEntries[t].classList.remove(this.visibleClass),t--;if(e>i)this.activeIndicator?.setAttribute("style","opacity: 0");else{let s=this.tocEl?.getBoundingClientRect().top||0,n=this.tocEl?.scrollTop||0,o=this.tocEntries[e].getBoundingClientRect().top-s+n,c=this.tocEntries[i].getBoundingClientRect().bottom-s+n;this.activeIndicator?.setAttribute("style",`top: ${o}px; height: ${c-o}px`)}};scrollToActiveHeading=()=>{if(this.anchorNavTarget||!this.tocEl)return;const t=document.querySelectorAll(`#toc .${this.visibleClass}`);if(!t.length)return;const e=t[0],i=t[t.length-1],s=this.tocEl.clientHeight;let n;i.getBoundingClientRect().bottom-e.getBoundingClientRect().top<.9*s?n=e.offsetTop-32:n=i.offsetTop-s*.8,this.tocEl.scrollTo({top:n,left:0,behavior:"smooth"})};update=()=>{requestAnimationFrame(()=>{this.toggleActiveHeading(),this.scrollToActiveHeading()})};fallback=()=>{if(this.sections.length)for(let t=0;t<this.sections.length;t++){let e=this.sections[t].getBoundingClientRect().top,i=this.sections[t].getBoundingClientRect().bottom;if(this.isInRange(e,0,window.innerHeight)||this.isInRange(i,0,window.innerHeight)||e<0&&i>window.innerHeight)this.markActiveHeading(t);else if(e>window.innerHeight)break}};markActiveHeading=t=>{this.active[t]=!0};handleAnchorClick=t=>{const e=t.composedPath().find(i=>i instanceof HTMLAnchorElement);if(e){const i=decodeURIComponent(e.hash?.substring(1)),s=this.headingIdxMap.get(i);s!==void 0?this.anchorNavTarget=this.headings[s]:this.anchorNavTarget=null}};isInRange(t,e,i){return e<t&&t<i}connectedCallback(){const t=document.querySelector(".prose");t?t.addEventListener("animationend",()=>{this.init()},{once:!0}):console.debug("Animation element not found")}init(){if(this.tocEl=document.getElementById("toc-inner-wrapper"),!!this.tocEl&&(this.tocEl.addEventListener("click",this.handleAnchorClick,{capture:!0}),this.activeIndicator=document.getElementById("active-indicator"),this.tocEntries=Array.from(document.querySelectorAll("#toc a[href^='#']")),this.tocEntries.length!==0)){this.sections=new Array(this.tocEntries.length),this.headings=new Array(this.tocEntries.length);for(let t=0;t<this.tocEntries.length;t++){const e=decodeURIComponent(this.tocEntries[t].hash?.substring(1)),i=document.getElementById(e),s=i?.parentElement;i instanceof HTMLElement&&s instanceof HTMLElement&&(this.headings[t]=i,this.sections[t]=s,this.headingIdxMap.set(e,t))}this.active=new Array(this.tocEntries.length).fill(!1),this.sections.forEach(t=>this.observer.observe(t)),this.fallback(),this.update()}}disconnectedCallback(){this.sections.forEach(t=>this.observer.unobserve(t)),this.observer.disconnect(),this.tocEl?.removeEventListener("click",this.handleAnchorClick)}}customElements.get("table-of-contents")||customElements.define("table-of-contents",l);</script> <div class="h-8 w-full"></div> </div> </div> </div> <!-- #toc needs to exist for Swup to work normally -->  </div> </div>  <!-- increase the page height during page transition to prevent the scrolling animation from jumping --> <div id="page-height-extend" class="hidden h-[300vh]" data-astro-cid-sckkx6r4 style="--bannerOffset: 15vh;--banner-height-home: 65vh;--banner-height: 35vh;--configHue: 20;--page-width: 75rem;"></div>  <script type="module" src="/_astro/Layout.astro_astro_type_script_index_0_lang.DAHrxWCB.js"></script> <script type="module" src="/_astro/Layout.astro_astro_type_script_index_1_lang.Ddm2SD6h.js"></script></body></html>
