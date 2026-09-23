@@ -1,0 +1,645 @@
+<!DOCTYPE html><html lang="en" class="bg-[var(--page-bg)] transition text-[14px] md:text-[16px]" data-overlayscrollbars-initialize data-astro-cid-sckkx6r4 style="--bannerOffset: 15vh;--banner-height-home: 65vh;--banner-height: 35vh;--configHue: 20;--page-width: 75rem;"> <head><title>OS Concept - Konyi&#39;s Blog</title><meta charset="UTF-8"><meta name="description" content="OS Concept - Konyi's Blog"><meta name="author" content="Konyi"><meta property="og:site_name" content="Konyi's Blog"><meta property="og:url" content="https://konyi0613.github.io/notes/sp/ch00-os_concept/"><meta property="og:title" content="OS Concept - Konyi's Blog"><meta property="og:description" content="OS Concept - Konyi's Blog"><meta property="og:type" content="article"><meta name="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://konyi0613.github.io/notes/sp/ch00-os_concept/"><meta name="twitter:title" content="OS Concept - Konyi's Blog"><meta name="twitter:description" content="OS Concept - Konyi's Blog"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.13.10"><link rel="icon" href="/favicon/favicon-light-32.png" sizes="32x32" media="(prefers-color-scheme: light)"><link rel="icon" href="/favicon/favicon-light-128.png" sizes="128x128" media="(prefers-color-scheme: light)"><link rel="icon" href="/favicon/favicon-light-180.png" sizes="180x180" media="(prefers-color-scheme: light)"><link rel="icon" href="/favicon/favicon-light-192.png" sizes="192x192" media="(prefers-color-scheme: light)"><link rel="icon" href="/favicon/favicon-dark-32.png" sizes="32x32" media="(prefers-color-scheme: dark)"><link rel="icon" href="/favicon/favicon-dark-128.png" sizes="128x128" media="(prefers-color-scheme: dark)"><link rel="icon" href="/favicon/favicon-dark-180.png" sizes="180x180" media="(prefers-color-scheme: dark)"><link rel="icon" href="/favicon/favicon-dark-192.png" sizes="192x192" media="(prefers-color-scheme: dark)"><!-- Set the theme before the page is rendered to avoid a flash --><script>(function(){const DEFAULT_THEME = "auto";
+const LIGHT_MODE = "light";
+const DARK_MODE = "dark";
+const AUTO_MODE = "auto";
+const BANNER_HEIGHT_EXTEND = 30;
+const PAGE_WIDTH = 75;
+const configHue = 20;
+
+			// Load the theme from local storage
+			const theme = localStorage.getItem('theme') || DEFAULT_THEME;
+			switch (theme) {
+				case LIGHT_MODE:
+					document.documentElement.classList.remove('dark');
+					break
+				case DARK_MODE:
+					document.documentElement.classList.add('dark');
+					break
+				case AUTO_MODE:
+					if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+						document.documentElement.classList.add('dark');
+					} else {
+						document.documentElement.classList.remove('dark');
+					}
+			}
+
+			// Load the hue from local storage
+			const hue = localStorage.getItem('hue') || configHue;
+			document.documentElement.style.setProperty('--hue', hue);
+
+			// calculate the --banner-height-extend, which needs to be a multiple of 4 to avoid blurry text
+			let offset = Math.floor(window.innerHeight * (BANNER_HEIGHT_EXTEND / 100));
+			offset = offset - offset % 4;
+			document.documentElement.style.setProperty('--banner-height-extend', `${offset}px`);
+		})();</script><!-- defines global css variables. This will be applied to <html> <body> and some other elements idk why --><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"OS Concept","description":"OS Concept","isPartOf":"System Programming","author":{"@type":"Person","name":"Konyi","url":"https://konyi0613.github.io/"},"inLanguage":"en"}</script><link rel="alternate" type="application/rss+xml" title="Konyi" href="https://konyi0613.github.io/rss.xml"><link rel="stylesheet" href="/_astro/Layout.y4KPJ9hc.css">
+<link rel="stylesheet" href="/_astro/Layout.DSulWsr7.css">
+<link rel="stylesheet" href="/_astro/_page_.ZlghMKVQ.css">
+<link rel="stylesheet" href="/_astro/_page_.DH99ciXV.css">
+<link rel="stylesheet" href="/_astro/about.B-Xk7MHk.css">
+<style>.diary-calendar.svelte-1fl5r95{position:relative;--day-text: rgba(0, 0, 0, .75);--day-muted: rgba(0, 0, 0, .25)}.dark .diary-calendar.svelte-1fl5r95{position:relative;--day-text: rgba(255, 255, 255, .75);--day-muted: rgba(255, 255, 255, .25)}.dot.svelte-1fl5r95{display:inline-block;width:4px;height:4px;border-radius:9999px;background:var(--primary);flex:none}.day.svelte-1fl5r95{color:var(--day-text)}.day.marked.svelte-1fl5r95{color:var(--day-color);font-weight:700}.day.has-entry.svelte-1fl5r95{background:var(--btn-regular-bg);font-weight:700;cursor:pointer}.day.has-entry.svelte-1fl5r95:hover{background:var(--btn-regular-bg-hover)}.day.has-entry.svelte-1fl5r95:active{background:var(--btn-regular-bg-active);transform:scale(.95)}.day.today.svelte-1fl5r95{outline:2px solid var(--primary);outline-offset:-2px}.day.draft.svelte-1fl5r95{opacity:.7}.day.draft.svelte-1fl5r95:after{content:"";position:absolute;inset:0;border:1px dashed var(--meta-divider);border-radius:inherit;pointer-events:none}.draft-badge.svelte-1fl5r95{flex:none;font-size:.7rem;font-weight:700;line-height:1;padding:.2rem .35rem;border-radius:.3rem;color:var(--btn-content);background:var(--btn-regular-bg);border:1px dashed var(--meta-divider)}.day.outside.svelte-1fl5r95{color:var(--day-muted);opacity:.55}.day.selected.svelte-1fl5r95{background:var(--primary);color:#fff;font-weight:700}.day.selected.svelte-1fl5r95 .dot:where(.svelte-1fl5r95){background:#fff}.jump-select.svelte-1fl5r95{-webkit-appearance:none;-moz-appearance:none;appearance:none;background:transparent;border:0;border-radius:.5rem;padding:.25rem .4rem;cursor:pointer;transition:background .15s ease;text-align:center;-moz-text-align-last:center;text-align-last:center}.jump-select.svelte-1fl5r95:hover{background:var(--btn-plain-bg-hover)}.jump-select.svelte-1fl5r95:focus-visible{outline:2px solid var(--primary);outline-offset:-2px}.dark .jump-select.svelte-1fl5r95{color-scheme:dark}.jump-select.svelte-1fl5r95 option:where(.svelte-1fl5r95){background:var(--float-panel-bg)}.diary-tip.svelte-1fl5r95{position:absolute;z-index:60;transform:translate(-50%,calc(-100% - .5rem));pointer-events:none;border-radius:.5rem;background:var(--float-panel-bg);box-shadow:0 8px 24px #0000001f}input.svelte-1wah7ro:focus{outline:0}.search-panel.svelte-1wah7ro{max-height:calc(100vh - 100px);overflow-y:auto}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k){-webkit-appearance:none;height:1.5rem;background-image:var(--color-selection-bar);transition:background-image .15s ease-in-out}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-webkit-slider-thumb{-webkit-appearance:none;height:1rem;width:.5rem;border-radius:.125rem;background:#ffffffb3;box-shadow:none}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-webkit-slider-thumb:hover{background:#fffc}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-webkit-slider-thumb:active{background:#fff9}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-moz-range-thumb{-webkit-appearance:none;height:1rem;width:.5rem;border-radius:.125rem;border-width:0;background:#ffffffb3;box-shadow:none}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-moz-range-thumb:hover{background:#fffc}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-moz-range-thumb:active{background:#fff9}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-ms-thumb{-webkit-appearance:none;height:1rem;width:.5rem;border-radius:.125rem;background:#ffffffb3;box-shadow:none}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-ms-thumb:hover{background:#fffc}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-ms-thumb:active{background:#fff9}
+</style><script type="module" src="/_astro/page.Z8IJTFqj.js"></script></head> <body class=" min-h-screen transition  enable-banner" data-overlayscrollbars-initialize data-astro-cid-sckkx6r4 style="--bannerOffset: 15vh;--banner-height-home: 65vh;--banner-height: 35vh;--configHue: 20;--page-width: 75rem;"> <div id="config-carrier" data-hue="20"></div>    <div id="top-row" class="z-50 pointer-events-none relative transition-all duration-700 max-w-[var(--page-width)] px-0 md:px-4 mx-auto"> <div id="navbar-wrapper" class="pointer-events-auto sticky top-0 transition-all"> <div id="navbar" class="z-50 onload-animation"> <div class="absolute h-8 left-0 right-0 -top-8 bg-[var(--card-bg)] transition"></div> <!-- used for onload animation --> <div class="card-base !overflow-visible max-w-[var(--page-width)] h-[4.5rem] !rounded-t-none mx-auto flex items-center justify-between px-4"> <a href="/" class="btn-plain scale-animation rounded-lg h-[3.25rem] px-5 font-bold active:scale-95"> <div class="flex flex-row text-[var(--primary)] items-center text-md"> <svg width="1em" height="1em" class="text-[1.75rem] mb-1 mr-2" data-icon="material-symbols:home-outline-rounded">   <symbol id="ai:material-symbols:home-outline-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="M6 19h3v-5q0-.425.288-.712T10 13h4q.425 0 .713.288T15 14v5h3v-9l-6-4.5L6 10zm-2 0v-9q0-.475.213-.9t.587-.7l6-4.5q.525-.4 1.2-.4t1.2.4l6 4.5q.375.275.588.7T20 10v9q0 .825-.588 1.413T18 21h-4q-.425 0-.712-.288T13 20v-5h-2v5q0 .425-.288.713T10 21H6q-.825 0-1.412-.587T4 19m8-6.75"/></symbol><use href="#ai:material-symbols:home-outline-rounded"></use>  </svg> Konyi&#39;s Blog </div> </a> <div class="hidden md:flex"> <a aria-label="Home" href="/" class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95"> <div class="flex items-center"> Home  </div> </a><a aria-label="Archive" href="/archive/" class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95"> <div class="flex items-center"> Archive  </div> </a><a aria-label="About" href="/about/" class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95"> <div class="flex items-center"> About  </div> </a><a aria-label="Notes" href="/notes/" class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95"> <div class="flex items-center"> Notes  </div> </a> </div> <div class="flex"> <!--<SearchPanel client:load>--> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).only=e;window.dispatchEvent(new Event("astro:only"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="16cUVi" component-url="/_astro/Search.CkeXxXjO.js" component-export="default" renderer-url="/_astro/client.svelte.E6BSH4ng.js" props="{}" ssr client="only" opts="{&quot;name&quot;:&quot;Search&quot;,&quot;value&quot;:&quot;svelte&quot;}"></astro-island> <button aria-label="Display Settings" class="btn-plain scale-animation rounded-lg h-11 w-11 active:scale-90" id="display-settings-switch"> <svg width="1em" height="1em" class="text-[1.25rem]" data-icon="material-symbols:palette-outline">   <symbol id="ai:material-symbols:palette-outline" viewBox="0 0 24 24"><path fill="currentColor" d="M12 22q-2.05 0-3.875-.788t-3.187-2.15t-2.15-3.187T2 12q0-2.075.813-3.9t2.2-3.175T8.25 2.788T12.2 2q2 0 3.775.688t3.113 1.9t2.125 2.875T22 11.05q0 2.875-1.75 4.413T16 17h-1.85q-.225 0-.312.125t-.088.275q0 .3.375.863t.375 1.287q0 1.25-.687 1.85T12 22m-5.5-9q.65 0 1.075-.425T8 11.5t-.425-1.075T6.5 10t-1.075.425T5 11.5t.425 1.075T6.5 13m3-4q.65 0 1.075-.425T11 7.5t-.425-1.075T9.5 6t-1.075.425T8 7.5t.425 1.075T9.5 9m5 0q.65 0 1.075-.425T16 7.5t-.425-1.075T14.5 6t-1.075.425T13 7.5t.425 1.075T14.5 9m3 4q.65 0 1.075-.425T19 11.5t-.425-1.075T17.5 10t-1.075.425T16 11.5t.425 1.075T17.5 13M12 20q.225 0 .363-.125t.137-.325q0-.35-.375-.825T11.75 17.3q0-1.05.725-1.675T14.25 15H16q1.65 0 2.825-.962T20 11.05q0-3.025-2.312-5.038T12.2 4Q8.8 4 6.4 6.325T4 12q0 3.325 2.338 5.663T12 20"/></symbol><use href="#ai:material-symbols:palette-outline"></use>  </svg> </button> <astro-island uid="xHcFf" component-url="/_astro/LightDarkSwitch.BRdKw8uI.js" component-export="default" renderer-url="/_astro/client.svelte.E6BSH4ng.js" props="{}" ssr client="only" opts="{&quot;name&quot;:&quot;LightDarkSwitch&quot;,&quot;value&quot;:&quot;svelte&quot;}"></astro-island> <button aria-label="Menu" name="Nav Menu" class="btn-plain scale-animation rounded-lg w-11 h-11 active:scale-90 md:!hidden" id="nav-menu-switch"> <svg width="1em" height="1em" class="text-[1.25rem]" data-icon="material-symbols:menu-rounded">   <symbol id="ai:material-symbols:menu-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="M4 18q-.425 0-.712-.288T3 17t.288-.712T4 16h16q.425 0 .713.288T21 17t-.288.713T20 18zm0-5q-.425 0-.712-.288T3 12t.288-.712T4 11h16q.425 0 .713.288T21 12t-.288.713T20 13zm0-5q-.425 0-.712-.288T3 7t.288-.712T4 6h16q.425 0 .713.288T21 7t-.288.713T20 8z"/></symbol><use href="#ai:material-symbols:menu-rounded"></use>  </svg> </button> </div> <div id="nav-menu-panel" class="float-panel float-panel-closed absolute transition-all fixed right-4 px-2 py-2"> <a href="/" class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
+        "> <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)]"> Home </div> <svg width="1em" height="1em" class="transition text-[1.25rem] text-[var(--primary)]" data-icon="material-symbols:chevron-right-rounded">   <symbol id="ai:material-symbols:chevron-right-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="M12.6 12L8.7 8.1q-.275-.275-.275-.7t.275-.7t.7-.275t.7.275l4.6 4.6q.15.15.213.325t.062.375t-.062.375t-.213.325l-4.6 4.6q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7z"/></symbol><use href="#ai:material-symbols:chevron-right-rounded"></use>  </svg>  </a><a href="/archive/" class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
+        "> <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)]"> Archive </div> <svg width="1em" height="1em" viewBox="0 0 24 24" class="transition text-[1.25rem] text-[var(--primary)]" data-icon="material-symbols:chevron-right-rounded">   <use href="#ai:material-symbols:chevron-right-rounded"></use>  </svg>  </a><a href="/about/" class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
+        "> <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)]"> About </div> <svg width="1em" height="1em" viewBox="0 0 24 24" class="transition text-[1.25rem] text-[var(--primary)]" data-icon="material-symbols:chevron-right-rounded">   <use href="#ai:material-symbols:chevron-right-rounded"></use>  </svg>  </a><a href="/notes/" class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
+        "> <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)]"> Notes </div> <svg width="1em" height="1em" viewBox="0 0 24 24" class="transition text-[1.25rem] text-[var(--primary)]" data-icon="material-symbols:chevron-right-rounded">   <use href="#ai:material-symbols:chevron-right-rounded"></use>  </svg>  </a> </div> <astro-island uid="Z1hAL6F" component-url="/_astro/DisplaySettings.C5x3qtFK.js" component-export="default" renderer-url="/_astro/client.svelte.E6BSH4ng.js" props="{}" ssr client="only" opts="{&quot;name&quot;:&quot;DisplaySettings&quot;,&quot;value&quot;:&quot;svelte&quot;}"></astro-island> </div> </div> <script type="module">function c(){localStorage.theme==="dark"?(document.documentElement.classList.remove("dark"),localStorage.theme="light"):(document.documentElement.classList.add("dark"),localStorage.theme="dark")}function o(){let t=document.getElementById("scheme-switch");t&&(t.onclick=function(){c()});let n=document.getElementById("display-settings-switch");n&&(n.onclick=function(){let e=document.getElementById("display-setting");e&&e.classList.toggle("float-panel-closed")});let l=document.getElementById("nav-menu-switch");l&&(l.onclick=function(){let e=document.getElementById("nav-menu-panel");e&&e.classList.toggle("float-panel-closed")})}o();</script> <script>(function(){const scriptUrl = "/pagefind/pagefind.js";
+
+async function loadPagefind() {
+    try {
+        const response = await fetch(scriptUrl, { method: 'HEAD' });
+        if (!response.ok) {
+            throw new Error(`Pagefind script not found: ${response.status}`);
+        }
+
+        const pagefind = await import(scriptUrl);
+
+        await pagefind.options({
+            excerptLength: 20
+        });
+
+        window.pagefind = pagefind;
+
+        document.dispatchEvent(new CustomEvent('pagefindready'));
+        console.log('Pagefind loaded and initialized successfully, event dispatched.');
+    } catch (error) {
+        console.error('Failed to load Pagefind:', error);
+        window.pagefind = {
+            search: () => Promise.resolve({ results: [] }),
+            options: () => Promise.resolve(),
+        };
+        document.dispatchEvent(new CustomEvent('pagefindloaderror'));
+        console.log('Pagefind load error, event dispatched.');
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadPagefind);
+} else {
+    loadPagefind();
+}
+})();</script> </div> </div>  <div id="banner-wrapper" class="absolute z-10 w-full transition duration-700 overflow-hidden" style="top: -30vh"> <div id="banner" class="object-cover h-full transition duration-700 opacity-0 scale-105 overflow-hidden relative"> <div class="transition absolute inset-0 dark:bg-black/10 bg-opacity-50 pointer-events-none"></div> <img src="/_astro/banner.CXuT8U5n_aes0a.webp" alt="Banner image of the blog" style="object-position: center" loading="lazy" decoding="async" fetchpriority="auto" width="3907" height="1640" class="w-full h-full object-cover">  </div> </div> <div class="absolute w-full z-30 pointer-events-none" style="top: calc(35vh - 3.5rem)"> <!-- The pointer-events-none here prevent blocking the click event of the TOC --> <div class="relative max-w-[var(--page-width)] mx-auto pointer-events-auto"> <div id="main-grid" class="transition duration-700 w-full left-0 right-0 grid grid-cols-[17.5rem_auto] grid-rows-[auto_1fr_auto] lg:grid-rows-[auto]
+    mx-auto gap-4 px-0 md:px-4"> <!-- Banner image credit -->  <div id="sidebar" class="mb-4 row-start-2 row-end-3 col-span-2 lg:row-start-1 lg:row-end-2 lg:col-span-1 lg:max-w-[17.5rem] onload-animation w-full"> <div class="flex flex-col w-full gap-4 mb-4"> <div class="card-base p-3"> <a aria-label="Go to About Page" href="/about/" class="group block relative mx-auto mt-1 lg:mx-0 lg:mt-0 mb-3
+       max-w-[12rem] lg:max-w-none overflow-hidden rounded-xl active:scale-95"> <div class="absolute transition pointer-events-none group-hover:bg-black/30 group-active:bg-black/50
+        w-full h-full z-50 flex items-center justify-center"> <svg width="1.13em" height="1em" class="transition opacity-0 scale-90 group-hover:scale-100 group-hover:opacity-100 text-white text-5xl" data-icon="fa6-regular:address-card">   <symbol id="ai:fa6-regular:address-card" viewBox="0 0 576 512"><path fill="currentColor" d="M512 80c8.8 0 16 7.2 16 16v320c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V96c0-8.8 7.2-16 16-16zM64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm144 224a64 64 0 1 0 0-128a64 64 0 1 0 0 128m-32 32c-44.2 0-80 35.8-80 80c0 8.8 7.2 16 16 16h192c8.8 0 16-7.2 16-16c0-44.2-35.8-80-80-80zm200-144c-13.3 0-24 10.7-24 24s10.7 24 24 24h80c13.3 0 24-10.7 24-24s-10.7-24-24-24zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24h80c13.3 0 24-10.7 24-24s-10.7-24-24-24z"/></symbol><use href="#ai:fa6-regular:address-card"></use>  </svg> </div> <div class="mx-auto lg:w-full h-full lg:mt-0  overflow-hidden relative"> <div class="transition absolute inset-0 dark:bg-black/10 bg-opacity-50 pointer-events-none"></div> <img src="/_astro/avatar.ClNXyL35_Z1nNErV.webp" alt="Profile Image of the Author" style="object-position: center" loading="lazy" decoding="async" fetchpriority="auto" width="828" height="828" class="w-full h-full object-cover">  </div> </a> <div class="px-2"> <div class="font-bold text-xl text-center mb-1 dark:text-neutral-50 transition">Konyi</div> <div class="h-1 w-5 bg-[var(--primary)] mx-auto rounded-full mb-2 transition"></div> <div class="text-center text-neutral-400 mb-2.5 transition"></div> <div class="flex flex-wrap gap-2 justify-center mb-1"> <a rel="me" aria-label="GitHub" href="https://github.com/Konyi0613" target="_blank" class="btn-regular rounded-lg h-10 w-10 active:scale-90"> <svg width="0.97em" height="1em" class="text-[1.5rem]" data-icon="fa6-brands:github">   <symbol id="ai:fa6-brands:github" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6c-3.3.3-5.6-1.3-5.6-3.6c0-2 2.3-3.6 5.2-3.6c3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9c2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9c.3 2 2.9 3.3 5.9 2.6c2.9-.7 4.9-2.6 4.6-4.6c-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2c12.8 2.3 17.3-5.6 17.3-12.1c0-6.2-.3-40.4-.3-61.4c0 0-70 15-84.7-29.8c0 0-11.4-29.1-27.8-36.6c0 0-22.9-15.7 1.6-15.4c0 0 24.9 2 38.6 25.8c21.9 38.6 58.6 27.5 72.9 20.9c2.3-16 8.8-27.1 16-33.7c-55.9-6.2-112.3-14.3-112.3-110.5c0-27.5 7.6-41.3 23.6-58.9c-2.6-6.5-11.1-33.3 2.6-67.9c20.9-6.5 69 27 69 27c20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27c13.7 34.7 5.2 61.4 2.6 67.9c16 17.7 25.8 31.5 25.8 58.9c0 96.5-58.9 104.2-114.8 110.5c9.2 7.9 17 22.9 17 46.4c0 33.7-.3 75.4-.3 83.6c0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252C496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2c1.6 1.6 3.9 2.3 5.2 1c1.3-1 1-3.3-.7-5.2c-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9c1.6 1 3.6.7 4.3-.7c.7-1.3-.3-2.9-2.3-3.9c-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2c2.3 2.3 5.2 2.6 6.5 1c1.3-1.3.7-4.3-1.3-6.2c-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2c-1.4-2.3-4-3.3-5.6-2"/></symbol><use href="#ai:fa6-brands:github"></use>  </svg> </a><a rel="me" aria-label="Instagram" href="https://www.instagram.com/x_j1m0613/" target="_blank" class="btn-regular rounded-lg h-10 w-10 active:scale-90"> <svg width="0.88em" height="1em" class="text-[1.5rem]" data-icon="fa6-brands:instagram">   <symbol id="ai:fa6-brands:instagram" viewBox="0 0 448 512"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9S287.7 141 224.1 141m0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7s74.7 33.5 74.7 74.7s-33.6 74.7-74.7 74.7m146.4-194.3c0 14.9-12 26.8-26.8 26.8c-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8s26.8 12 26.8 26.8m76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9c-26.2-26.2-58-34.4-93.9-36.2c-37-2.1-147.9-2.1-184.9 0c-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9c1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0c35.9-1.7 67.7-9.9 93.9-36.2c26.2-26.2 34.4-58 36.2-93.9c2.1-37 2.1-147.8 0-184.8M398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6c-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6c-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6c29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6c11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1"/></symbol><use href="#ai:fa6-brands:instagram"></use>  </svg> </a><a rel="me" aria-label="Facebook" href="https://www.facebook.com/kon.yi.963661" target="_blank" class="btn-regular rounded-lg h-10 w-10 active:scale-90"> <svg width="1em" height="1em" class="text-[1.5rem]" data-icon="fa6-brands:facebook">   <symbol id="ai:fa6-brands:facebook" viewBox="0 0 512 512"><path fill="currentColor" d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256c0 120 82.7 220.8 194.2 248.5V334.2h-52.8V256h52.8v-33.7c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287v175.9C413.8 494.8 512 386.9 512 256"/></symbol><use href="#ai:fa6-brands:facebook"></use>  </svg> </a>  </div> </div> </div> </div> <div id="sidebar-sticky" class="transition-all duration-700 flex flex-col w-full gap-4 top-4 sticky top-4"> <widget-layout data-id="categories" data-is-collapsed="false" class="pb-4 card-base onload-animation" style="animation-delay: 150ms; --collapsedHeight: 7.5rem;" data-astro-cid-ucso7hve="true"> <div class="font-bold transition text-lg text-neutral-900 dark:text-neutral-100 relative ml-8 mt-4 mb-2
+        before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
+        before:absolute before:left-[-16px] before:top-[5.5px]" data-astro-cid-ucso7hve style="--collapsedHeight: 7.5rem;">Categories</div> <div id="categories" class="collapse-wrapper px-4 overflow-hidden" data-astro-cid-ucso7hve style="--collapsedHeight: 7.5rem;"> <a href="/archive/?category=Math" aria-label="View all posts in the Math category"> <button class="
+            w-full
+            h-10
+            rounded-lg
+            bg-none
+            hover:bg-[var(--btn-plain-bg-hover)]
+            active:bg-[var(--btn-plain-bg-active)]
+            transition-all
+            pl-2
+            hover:pl-3
+            
+            text-neutral-700
+            hover:text-[var(--primary)]
+            dark:text-neutral-300
+            dark:hover:text-[var(--primary)]
+        "> <div class="flex items-center justify-between relative mr-2"> <div class="overflow-hidden text-left whitespace-nowrap overflow-ellipsis  "> Math </div> <div class="transition px-2 h-7 ml-4 min-w-[2rem] rounded-lg text-sm font-bold
+                    text-[var(--btn-content)] dark:text-[var(--deep-text)]
+                    bg-[var(--btn-regular-bg)] dark:bg-[var(--primary)]
+                    flex items-center justify-center"> 1 </div> </div> </button> </a><a href="/archive/?category=%E4%BF%AE%E8%AA%B2%E5%BF%83%E5%BE%97" aria-label="View all posts in the 修課心得 category"> <button class="
+            w-full
+            h-10
+            rounded-lg
+            bg-none
+            hover:bg-[var(--btn-plain-bg-hover)]
+            active:bg-[var(--btn-plain-bg-active)]
+            transition-all
+            pl-2
+            hover:pl-3
+            
+            text-neutral-700
+            hover:text-[var(--primary)]
+            dark:text-neutral-300
+            dark:hover:text-[var(--primary)]
+        "> <div class="flex items-center justify-between relative mr-2"> <div class="overflow-hidden text-left whitespace-nowrap overflow-ellipsis  "> 修課心得 </div> <div class="transition px-2 h-7 ml-4 min-w-[2rem] rounded-lg text-sm font-bold
+                    text-[var(--btn-content)] dark:text-[var(--deep-text)]
+                    bg-[var(--btn-regular-bg)] dark:bg-[var(--primary)]
+                    flex items-center justify-center"> 3 </div> </div> </button> </a><a href="/archive/?category=%E6%8E%92%E5%90%8D" aria-label="View all posts in the 排名 category"> <button class="
+            w-full
+            h-10
+            rounded-lg
+            bg-none
+            hover:bg-[var(--btn-plain-bg-hover)]
+            active:bg-[var(--btn-plain-bg-active)]
+            transition-all
+            pl-2
+            hover:pl-3
+            
+            text-neutral-700
+            hover:text-[var(--primary)]
+            dark:text-neutral-300
+            dark:hover:text-[var(--primary)]
+        "> <div class="flex items-center justify-between relative mr-2"> <div class="overflow-hidden text-left whitespace-nowrap overflow-ellipsis  "> 排名 </div> <div class="transition px-2 h-7 ml-4 min-w-[2rem] rounded-lg text-sm font-bold
+                    text-[var(--btn-content)] dark:text-[var(--deep-text)]
+                    bg-[var(--btn-regular-bg)] dark:bg-[var(--primary)]
+                    flex items-center justify-center"> 1 </div> </div> </button> </a> </div>  </widget-layout>  <script type="module">class d extends HTMLElement{constructor(){if(super(),this.dataset.isCollapsed!=="true")return;const e=this.dataset.id,t=this.querySelector(".expand-btn"),s=this.querySelector(`#${e}`);t.addEventListener("click",()=>{s.classList.remove("collapsed"),t.classList.add("hidden")})}}customElements.get("widget-layout")||customElements.define("widget-layout",d);</script> <widget-layout data-id="tags" data-is-collapsed="false" class="pb-4 card-base onload-animation" style="animation-delay: 200ms; --collapsedHeight: 7.5rem;" data-astro-cid-ucso7hve="true"> <div class="font-bold transition text-lg text-neutral-900 dark:text-neutral-100 relative ml-8 mt-4 mb-2
+        before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
+        before:absolute before:left-[-16px] before:top-[5.5px]" data-astro-cid-ucso7hve style="--collapsedHeight: 7.5rem;">Tags</div> <div id="tags" class="collapse-wrapper px-4 overflow-hidden" data-astro-cid-ucso7hve style="--collapsedHeight: 7.5rem;">  <div class="flex gap-2 flex-wrap"> <a href="/archive/?tag=probability" aria-label="View all posts with the probability tag" class="btn-regular h-8 text-sm px-3 rounded-lg">  probability </a><a href="/archive/?tag=%E4%BF%AE%E8%AA%B2%E5%BF%83%E5%BE%97" aria-label="View all posts with the 修課心得 tag" class="btn-regular h-8 text-sm px-3 rounded-lg">  修課心得 </a><a href="/archive/?tag=%E5%8F%B0%E5%A4%A7" aria-label="View all posts with the 台大 tag" class="btn-regular h-8 text-sm px-3 rounded-lg">  台大 </a><a href="/archive/?tag=%E5%A4%A7%E4%B8%80" aria-label="View all posts with the 大一 tag" class="btn-regular h-8 text-sm px-3 rounded-lg">  大一 </a><a href="/archive/?tag=%E5%A4%A7%E4%BA%8C" aria-label="View all posts with the 大二 tag" class="btn-regular h-8 text-sm px-3 rounded-lg">  大二 </a><a href="/archive/?tag=%E6%8E%92%E5%90%8D" aria-label="View all posts with the 排名 tag" class="btn-regular h-8 text-sm px-3 rounded-lg">  排名 </a><a href="/archive/?tag=%E6%95%99%E6%8E%88" aria-label="View all posts with the 教授 tag" class="btn-regular h-8 text-sm px-3 rounded-lg">  教授 </a> </div>  </div>  </widget-layout>   </div> </div> <main id="swup-container" class="transition-swup-fade col-span-2 lg:col-span-1 overflow-hidden"> <div id="content-wrapper" class="onload-animation"> <!-- the overflow-hidden here prevent long text break the layout--> <!-- make id different from windows.swup global property -->   <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative mb-4"> <div id="post-container" class="card-base z-10 px-6 md:px-9 pt-6 pb-4 relative w-full"> <!-- breadcrumb back to the course --> <a href="/notes/sp/" class="btn-regular !inline-flex w-fit rounded-lg h-8 px-3 text-sm items-center gap-1 mb-4 onload-animation"> <svg width="1em" height="1em" class="text-[1.25rem]" data-icon="material-symbols:chevron-left-rounded">   <symbol id="ai:material-symbols:chevron-left-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="m10.8 12l3.9 3.9q.275.275.275.7t-.275.7t-.7.275t-.7-.275l-4.6-4.6q-.15-.15-.212-.325T8.425 12t.063-.375t.212-.325l4.6-4.6q.275-.275.7-.275t.7.275t.275.7t-.275.7z"/></symbol><use href="#ai:material-symbols:chevron-left-rounded"></use>  </svg> System Programming </a> <!-- word count and reading time --> <div class="flex flex-row text-black/30 dark:text-white/30 gap-5 mb-3 transition onload-animation"> <div class="flex flex-row items-center"> <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2"> <svg width="1em" height="1em" data-icon="material-symbols:notes-rounded">   <symbol id="ai:material-symbols:notes-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="M4 18q-.425 0-.712-.288T3 17t.288-.712T4 16h10q.425 0 .713.288T15 17t-.288.713T14 18zm0-5q-.425 0-.712-.288T3 12t.288-.712T4 11h16q.425 0 .713.288T21 12t-.288.713T20 13zm0-5q-.425 0-.712-.288T3 7t.288-.712T4 6h16q.425 0 .713.288T21 7t-.288.713T20 8z"/></symbol><use href="#ai:material-symbols:notes-rounded"></use>  </svg> </div> <div class="text-sm">6241 words</div> </div> <div class="flex flex-row items-center"> <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2"> <svg width="1em" height="1em" data-icon="material-symbols:schedule-outline-rounded">   <symbol id="ai:material-symbols:schedule-outline-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="M13 11.6V8q0-.425-.288-.712T12 7t-.712.288T11 8v3.975q0 .2.075.388t.225.337l3.3 3.3q.275.275.7.275T16 16t.275-.7t-.275-.7zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22m0-2q3.325 0 5.663-2.337T20 12t-2.337-5.663T12 4T6.337 6.338T4 12t2.338 5.663T12 20"/></symbol><use href="#ai:material-symbols:schedule-outline-rounded"></use>  </svg> </div> <div class="text-sm">31 min</div> </div> </div> <!-- title --> <div class="relative onload-animation"> <div data-pagefind-body data-pagefind-weight="10" data-pagefind-meta="title" class="transition w-full block font-bold mb-3
+                     text-3xl md:text-[2.25rem]/[2.75rem]
+                     text-black/90 dark:text-white/90
+                     md:before:w-1 before:h-5 before:rounded-md before:bg-[var(--primary)]
+                     before:absolute before:top-[0.75rem] before:left-[-1.125rem]"> OS Concept </div> </div> <!-- metadata --> <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-black/50 dark:text-white/50 mb-5 onload-animation"> <span class="font-bold text-[var(--primary)]"> Unit 00 </span>     </div> <div class="border-[var(--line-divider)] border-dashed border-b-[1px] mb-5"></div> <div data-pagefind-body class="prose dark:prose-invert prose-base !max-w-none custom-md mb-6 markdown-content onload-animation"> <!--<div class="prose dark:prose-invert max-w-none custom-md">--> <!--<div class="max-w-none custom-md">-->  <section><h2 id="page-04">page-04<a class="anchor" href="#page-04"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="這頁的主旨">這頁的主旨<a class="anchor" href="#這頁的主旨"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>一個電腦系統由三大類東西組成：<strong>硬體（hardware）、系統程式（system programs）、應用程式（application programs）</strong>。這頁用一張經典的「階層圖」（出自 Tanenbaum 的作業系統教科書）把整台電腦從最底層的電子元件到最上層的使用者程式，一層一層疊起來。每一層只跟相鄰的層打交道，並對上層隱藏下層的細節。</p></section><section><h3 id="左邊的階層圖由上往下">左邊的階層圖（由上往下）<a class="anchor" href="#左邊的階層圖由上往下"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>層</th><th>內容</th><th>說明</th></tr></thead><tbody><tr><td>Application programs</td><td>Banking system、Airline reservation、Web browser</td><td>一般使用者真正要用的程式</td></tr><tr><td>System programs</td><td>Compilers、Editors、Command interpreter (shell)</td><td>幫助開發與操作的工具程式，不是 OS 核心的一部分</td></tr><tr><td>Operating system</td><td>—</td><td>管理硬體、提供服務給上層</td></tr><tr><td>Machine language</td><td>—</td><td>這顆 CPU 能直接執行的指令集（binary 指令）</td></tr><tr><td>Microarchitecture</td><td>—</td><td>實作那套指令集的硬體邏輯：ALU、暫存器、資料路徑、控制單元等</td></tr><tr><td>Physical devices</td><td>—</td><td>最底層的電晶體、閘、電路</td></tr></tbody></table><p>其中<strong>下面三層（Machine language / Microarchitecture / Physical devices）屬於硬體</strong>，上面三層（OS 以上）屬於軟體。</p></section><section><h3 id="兩個關鍵介面圖上的兩個紫色標籤">兩個關鍵「介面」（圖上的兩個紫色標籤）<a class="anchor" href="#兩個關鍵介面圖上的兩個紫色標籤"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>這頁想強調的重點是：層與層之間有兩條特別重要的分界線。</p><ul>
+<li>
+<p><strong>ISA（Instruction Set Architecture）</strong>：位在「machine language」這一層，是<strong>硬體與軟體之間的介面</strong>。它規定 CPU 提供哪些指令、有哪些暫存器、記憶體怎麼定址。只要 ISA 不變，上層軟體就不必管底下微架構怎麼做（例如 Intel 和 AMD 微架構不同，但都能跑 x86 程式）。</p>
+</li>
+<li>
+<p><strong>System Call</strong>：位在「OS」和上層程式之間，是<strong>應用程式取得 OS 服務的唯一合法入口</strong>。應用程式不能直接碰硬體，要讀檔、開 process、送網路封包都得透過 system call 請 OS 代勞。這也正是這門課（Systems Programming）的主題。</p>
+</li>
+</ul></section><section><h3 id="右下角疊上去的硬體方塊圖">右下角疊上去的硬體方塊圖<a class="anchor" href="#右下角疊上去的硬體方塊圖"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>補充說明「machine language / 硬體」那幾層實際長什麼樣：<strong>CPU、Memory、Input and Output</strong> 三個元件透過 <strong>System Bus</strong> 相連，而 system bus 又分成：</p><ul>
+<li><strong>Control bus</strong>：傳控制訊號（讀/寫、時脈等）</li>
+<li><strong>Address bus</strong>：指定要存取的記憶體或 I/O 位址</li>
+<li><strong>Data bus</strong>：實際傳輸的資料</li>
+</ul></section></section>
+<section><h2 id="page-05">page-05<a class="anchor" href="#page-05"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="觀點一延伸機器-it-is-an-extended-machinevertical縱向">觀點一：延伸機器 It is an extended machine（vertical，縱向）<a class="anchor" href="#觀點一延伸機器-it-is-an-extended-machinevertical縱向"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>把 OS 看成疊在硬體之上的一層抽象，<strong>由下往上</strong>把難用的硬體包裝成好用的「虛擬機器」。</p><ul>
+<li>
+<p><strong>Presents user with a virtual machine, easier to use（提供虛擬機器，比較好用）</strong>
+硬體介面非常原始又繁瑣。例如要從磁碟讀一個磁區，得自己操作磁碟控制器的暫存器、設定磁軌/磁頭/磁區、啟動馬達、等中斷、處理錯誤重試。OS 把這些包成一個 <code>read()</code> 呼叫，程式設計師只看到「檔案」這個乾淨的概念。這層乾淨介面就是 <strong>user interface / API（system call）</strong>。</p>
+</li>
+<li>
+<p><strong>Hides the messy details which must be performed（把必須做、但很髒的細節藏起來）</strong>
+那些中斷處理、DMA、裝置差異都還是要做，只是 OS 幫你做掉。而且是 <strong>safely（安全地）</strong>：使用者程式不能直接碰硬體，一律透過 OS 代為執行，OS 會做權限檢查、避免一支程式搞垮整台機器。</p>
+</li>
+</ul><blockquote>
+<p>對應第 4 頁：OS 就是硬體與應用程式之間那一層，「vertical」指的是它在那個縱向堆疊裡的位置。</p>
+</blockquote></section><section><h3 id="觀點二資源管理者-it-is-a-resource-managerhorizontal橫向">觀點二：資源管理者 It is a resource manager（horizontal，橫向）<a class="anchor" href="#觀點二資源管理者-it-is-a-resource-managerhorizontal橫向"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>把 OS 看成一個仲裁者，<strong>橫向</strong>協調多支同時執行的程式去共用有限的資源。</p><ul>
+<li>
+<p><strong>Resources：CPU、memory、I/O devices（disks、printers）</strong>
+這些資源數量有限，卻有很多程式同時想用。</p>
+</li>
+<li>
+<p><strong>Each program gets time with the resource（時間多工，time multiplexing）</strong>
+多支程式輪流用 CPU，每支拿一小段時間片（time slice）後切換；印表機則是排隊，一份印完再印下一份。</p>
+</li>
+<li>
+<p><strong>Each program gets space on the resource（空間多工，space multiplexing）</strong>
+記憶體切成多塊分給不同程式同時持有；磁碟空間分配給不同檔案；快取分區。</p>
+</li>
+<li>
+<p><strong>OS makes sure programs have a fair use（確保公平使用）</strong>
+OS 負責排程與配置，讓資源被公平分配，並且互相隔離保護——一支程式不能偷用或破壞另一支程式的資源。</p>
+</li>
+</ul></section></section>
+<section><h2 id="page-07">page-07<a class="anchor" href="#page-07"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><p>這頁用一張「同心圓（洋蔥）圖」畫 UNIX 的分層結構。<strong>越外圈越接近使用者、越內圈越接近硬體</strong>；要往內走一定要穿過中間那條紅線（System Calls）。這正是第 5 頁「延伸機器（vertical）」觀點的具體展開。</p></section>
+<section><h2 id="由外往內的每一層對應右邊的說明框">由外往內的每一層（對應右邊的說明框）<a class="anchor" href="#由外往內的每一層對應右邊的說明框"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="1-applications應用程式最外圈">1. applications（應用程式，最外圈）<a class="anchor" href="#1-applications應用程式最外圈"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><ul>
+<li><strong>Written by programmer / Compiled by programmer</strong></li>
+<li>使用者自己寫、自己編譯的程式。離硬體最遠，權限最低。</li>
+</ul></section><section><h3 id="2-shell外殼">2. shell（外殼）<a class="anchor" href="#2-shell外殼"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><ul>
+<li><strong>Interactive interface</strong>：使用者跟系統互動的介面</li>
+<li><strong>Users can issue commands (e.g., <code>ls</code>)</strong>：你輸入指令，shell 負責解析，再幫你載入並執行對應的程式</li>
+<li>本質上 shell 只是一支特殊的應用程式（命令解譯器），但因為是主要的互動入口，所以單獨畫一圈。</li>
+</ul></section><section><h3 id="3-system-calls系統呼叫紅色分界線">3. System Calls（系統呼叫，紅色分界線）<a class="anchor" href="#3-system-calls系統呼叫紅色分界線"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><ul>
+<li><strong>Application program can request service from kernel</strong>：上層程式想用核心的功能（開檔、開行程、送封包…），只能透過這組固定介面進入核心（透過 trap / 軟體中斷，從 user mode 切到 kernel mode）</li>
+<li><strong>Portable OS layer</strong>：因為這組介面規格固定，不同硬體平台上都長一樣，所以程式碼可攜——換機器不用改</li>
+<li>這條線就是 <strong>user space 與 kernel space 的邊界</strong>。</li>
+</ul></section><section><h3 id="4-kernel核心最內圈">4. kernel（核心，最內圈）<a class="anchor" href="#4-kernel核心最內圈"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><ul>
+<li><strong>Bootstrap, system initialization</strong>：開機載入、系統初始化</li>
+<li><strong>interrupt and exception</strong>：處理中斷與例外</li>
+<li><strong>process, memory &#x26; I/O management</strong>：行程排程、記憶體管理、I/O 管理</li>
+<li>真正直接操作硬體的部分，權限最高。</li>
+</ul><blockquote class="admonition bdm-note"><span class="bdm-title">NOTE</span><p>process=一支正在執行中的程式（a program in execution）</p></blockquote></section><section><h3 id="5-library-routines函式庫常式">5. library routines（函式庫常式）<a class="anchor" href="#5-library-routines函式庫常式"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><ul>
+<li><strong>Provided pre-compiled object codes</strong>：預先編譯好的函式庫（例如 C 標準函式庫）</li>
+<li><strong>Defined in headers (e.g., <code>stdio.h</code>)</strong>：函式原型宣告在標頭檔裡</li>
+<li>位置介於應用程式與 system call 之間。有些函式純粹在 user space 做事（如 <code>strcpy</code>、<code>memcpy</code>），有些則是 system call 的包裝（如 <code>printf</code> 最終會呼叫 <code>write</code> 這個 system call）。目的是讓程式設計師不必直接寫 system call。</li>
+</ul><blockquote class="admonition bdm-note"><span class="bdm-title">NOTE</span><p>整套 OS 就是「一大堆程式碼、函式庫、工具程式」。而 kernel 就是這一大堆裡面最核心、最特別的那一塊——通常是單一一支程式。</p><h3 id="kernel-特別的三件事">kernel 特別的三件事<a class="anchor" href="#kernel-特別的三件事"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><ol>
+<li>
+<p><strong>它是單一一個 binary image</strong></p>
+<ul>
+<li>binary image = 一支<strong>已經編譯好、可以被 CPU 直接載入執行的二進位檔案</strong>（不是原始碼，也不是很多支程式檔案的集合）</li>
+<li>Linux：開機時 bootloader 載入的 <code>/boot/vmlinuz-*</code> 那個檔案</li>
+<li>macOS 是 XNU、Windows 是 <code>ntoskrnl.exe</code></li>
+<li>不是「一堆程式的集合」，就是<strong>一支</strong>（雖然可以動態載入驅動模組）</li>
+</ul>
+</li>
+<li>
+<p><strong>它跑在特權模式（kernel mode / ring 0）</strong></p>
+<ul>
+<li>CPU 有一個硬體位元區分 user mode / kernel mode</li>
+<li>只有 kernel mode 能執行「特權指令」：改分頁表、關中斷、直接對裝置 I/O port 讀寫、停 CPU…</li>
+<li>user mode 程式想做這些 → 被 CPU 擋下來（trap）</li>
+</ul>
+</li>
+</ol><blockquote class="admonition bdm-note"><span class="bdm-title"><div>Trap 是什麼</div></span><p>trap 是 CPU <strong>硬體</strong>觸發的一種例外（exception），作用是把控制權從 user mode 安全地交給 kernel mode。發生時 CPU 會：</p><ol>
+<li>存下目前狀態（PC、暫存器）</li>
+<li>把模式位元切成 kernel mode</li>
+<li>跳到 kernel 裡事先設好的固定位址（trap handler）開始執行</li>
+</ol><p>它有兩種觸發方式：</p><ul>
+<li><strong>主動</strong>：程式自己執行 <code>syscall</code> 這類指令，要求 kernel 提供服務（這就是上面 page-07 講的 system call）</li>
+<li><strong>被動</strong>：user mode 程式想執行特權指令，CPU 檢查目前模式位元後直接擋下來，觸發 trap（程式通常會收到錯誤，如 <code>SIGSEGV</code>）</li>
+</ul><p>重點是：user mode 程式<strong>不能</strong>自己跳進 kernel 程式碼的任意位置，只能透過這些固定入口「借道」進入。</p></blockquote><ul>
+<li>所以<strong>唯一能直接碰硬體的程式碼就是 kernel</strong></li>
+</ul><ol start="3">
+<li><strong>它常駐、隨時都在</strong>
+<ul>
+<li>你的程式會結束；kernel 從開機到關機一直躺在記憶體裡</li>
+<li>每次中斷、例外、system call 發生，CPU 就跳進 kernel 的程式碼執行</li>
+</ul>
+</li>
+</ol></blockquote></section></section>
+<section><h2 id="page-10">page-10<a class="anchor" href="#page-10"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="system-call-vs-function-call">System call vs. function call<a class="anchor" href="#system-call-vs-function-call"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>System call：請 OS 代為執行某項工作（a request to the operating system to perform some activity）。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th>Function call（<code>dp()</code>）</th><th>System call（<code>open()</code>）</th></tr></thead><tbody><tr><td>callee 在哪</td><td>同一支程式裡</td><td>kernel 裡</td></tr><tr><td>怎麼跳過去</td><td>一般的 <code>call</code> 指令，可跳到任意位址</td><td>trap 指令（如 <code>syscall</code>），只能進 kernel 事先設好的入口</td></tr><tr><td>執行模式</td><td>不變，都在 user mode</td><td>user mode → kernel mode，做完再切回來</td></tr><tr><td>信任關係</td><td>同一個 user、同一個 domain of trust</td><td>OS 被信任、user 不被信任，kernel 要檢查參數防止濫用</td></tr><tr><td>是哪個 process</td><td>同一個</td><td><strong>還是同一個</strong></td></tr></tbody></table></section><section><h3 id="為什麼右圖把-os-畫成另一個框">為什麼右圖把 OS 畫成另一個框<a class="anchor" href="#為什麼右圖把-os-畫成另一個框"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>綠框代表的是 <strong>保護邊界（domain of trust）</strong>，不是 process 的邊界。左圖 caller 和 callee 在同一個框裡，權限相同；右圖的 <code>open()</code> 屬於 kernel，跑在較高權限，user 程式不能直接讀寫 kernel 的記憶體、也不能任意跳進去，所以畫在框外。</p><blockquote class="admonition bdm-important"><span class="bdm-title">IMPORTANT</span><p>system call 進 kernel mode <strong>不會</strong> 產生新的 process：PID 不變，是 kernel <strong>代替這個 process</strong> 執行 <code>open()</code>。所以 page-14 的 <code>sys</code> 時間才會算在這支程式頭上。</p></blockquote></section><section><h3 id="mode-switch-vs-context-switch">Mode switch vs. context switch<a class="anchor" href="#mode-switch-vs-context-switch"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><blockquote>
+<p>這裡只先比較兩者的差別，context switch 的詳細介紹在 page-29 到 page-43。</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th>Mode switch</th><th>Context switch</th></tr></thead><tbody><tr><td>換的是什麼</td><td>同一個 process 的執行模式（user ↔ kernel）</td><td>CPU 上跑的 process（A → B）</td></tr><tr><td>什麼時候發生</td><td>每次 system call、中斷、例外</td><td>scheduler 決定換人：時間片用完、process 被 block（等 I/O、<code>sleep</code>）</td></tr><tr><td>要存什麼</td><td>目前的 PC、暫存器，再切模式位元</td><td>整個 process 的 CPU 狀態，還要換成另一個 process 的記憶體映射（page table）</td></tr><tr><td>成本</td><td>較低（但也不便宜，見 page-14）</td><td>較高：換了記憶體映射，cache、TLB 裡的資料多半用不上</td></tr></tbody></table><p>兩者的關係：context switch 由 kernel 裡的 scheduler 執行，所以 <strong>一定先有 mode switch</strong>；反過來，mode switch 不一定會造成 context switch。</p><ul>
+<li><code>getpid()</code>：進 kernel 拿到 PID 就回原 process，只有 mode switch。</li>
+<li><code>read()</code> 要等磁碟、<code>sleep 5</code>（page-15）：kernel 把這個 process block 起來、改跑別的 process，這時才發生 context switch。</li>
+</ul></section></section>
+<section><h2 id="page-11">page-11<a class="anchor" href="#page-11"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="user-mode-與-kernel-mode-的保護機制">User mode 與 kernel mode 的保護機制<a class="anchor" href="#user-mode-與-kernel-mode-的保護機制"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>這頁把 page-07「System Calls 是 user space 與 kernel space 邊界」的說法，
+用「執行模式（mode of execution）」講得更具體：CPU 到底靠什麼分辨現在准不准碰硬體。</p><ul>
+<li><strong>Modes of Execution (for protection)</strong>：大多數 CPU 至少支援兩種執行模式——<strong>特權模式（kernel mode）<strong>與</strong>非特權模式（user mode）</strong>，這是整套保護機制的硬體基礎。</li>
+<li><strong>User mode</strong>：process 在此模式下<strong>被禁止存取分配給 kernel 或其他 process 的記憶體</strong>——這就是一支使用者程式不能直接改到 kernel 的資料結構、也碰不到別的 process 記憶體的原因。</li>
+<li>當 user mode 的 process 想用 kernel 提供的服務（例如 system call）時，<strong>系統必須暫時切換到 kernel mode</strong>——這正是前面 page-07 note 裡 trap 觸發時做的第 2 步（把模式位元切成 kernel mode）。</li>
+<li><strong>Mode Switch</strong>：在 user mode 與 kernel mode 之間切換這個動作本身的名稱。</li>
+</ul></section></section>
+<section><h2 id="page-14">page-14<a class="anchor" href="#page-14"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><div class="math-env math-env-example"><div class="math-env-head"><span class="math-env-type">Example</span><span class="math-env-name"> (Example 1)</span></div><div class="math-env-body"><p>第 14 頁的動畫把<strong>兩段程式碼</strong>和 <strong>real/user/sys 的定義文字</strong>疊在一起了。以下是還原：</p><section><h4 id="這頁其實有兩支程式">這頁其實有兩支程式<a class="anchor" href="#這頁其實有兩支程式"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><p><strong>程式 1（上面那段，純計算）</strong></p><div class="expressive-code"><link rel="stylesheet" href="/_astro/ec.4fsv9.css"><script type="module" src="/_astro/ec.g1fg5.js"></script><figure class="frame"><figcaption class="header"></figcaption><pre data-language="c" class="wrap" style="--ecMaxLine:32ch"><code><div class="ec-line"><div class="gutter"><div class="ln" aria-hidden="true">1</div></div><div class="code"><span style="--0:#F97583;--1:#F97583">void</span><span style="--0:#E1E4E8;--1:#E1E4E8"> </span><span style="--0:#B392F0;--1:#B392F0">main</span><span style="--0:#E1E4E8;--1:#E1E4E8">()</span></div></div><div class="ec-line"><div class="gutter"><div class="ln" aria-hidden="true">2</div></div><div class="code"><span style="--0:#E1E4E8;--1:#E1E4E8">{</span></div></div><div class="ec-line" style="--ecIndent:4ch"><div class="gutter"><div class="ln" aria-hidden="true">3</div></div><div class="code"><span class="indent">    </span><span style="--0:#F97583;--1:#F97583">int</span><span style="--0:#E1E4E8;--1:#E1E4E8"> i, sum</span><span style="--0:#F97583;--1:#F97583">=</span><span style="--0:#79B8FF;--1:#79B8FF">0</span><span style="--0:#E1E4E8;--1:#E1E4E8">;</span></div></div><div class="ec-line" style="--ecIndent:4ch"><div class="gutter"><div class="ln" aria-hidden="true">4</div></div><div class="code"><span class="indent">    </span><span style="--0:#F97583;--1:#F97583">for</span><span style="--0:#E1E4E8;--1:#E1E4E8"> (i</span><span style="--0:#F97583;--1:#F97583">=</span><span style="--0:#79B8FF;--1:#79B8FF">1</span><span style="--0:#E1E4E8;--1:#E1E4E8">; i</span><span style="--0:#F97583;--1:#F97583">&#x3C;=</span><span style="--0:#79B8FF;--1:#79B8FF">100000000</span><span style="--0:#E1E4E8;--1:#E1E4E8">; i</span><span style="--0:#F97583;--1:#F97583">++</span><span style="--0:#E1E4E8;--1:#E1E4E8">)</span></div></div><div class="ec-line" style="--ecIndent:8ch"><div class="gutter"><div class="ln" aria-hidden="true">5</div></div><div class="code"><span class="indent"><span style="--0:#E1E4E8;--1:#E1E4E8">        </span></span><span style="--0:#E1E4E8;--1:#E1E4E8">sum </span><span style="--0:#F97583;--1:#F97583">+=</span><span style="--0:#E1E4E8;--1:#E1E4E8"> i;</span></div></div><div class="ec-line"><div class="gutter"><div class="ln" aria-hidden="true">6</div></div><div class="code"><span style="--0:#E1E4E8;--1:#E1E4E8">}</span></div></div></code><button class="copy-btn" aria-label="Copy code"><div class="copy-btn-icon"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon copy-icon"><path d="M368.37-237.37q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-474.26q0-34.48 24.26-58.74 24.26-24.26 58.74-24.26h378.26q34.48 0 58.74 24.26 24.26 24.26 24.26 58.74v474.26q0 34.48-24.26 58.74-24.26 24.26-58.74 24.26H368.37Zm0-83h378.26v-474.26H368.37v474.26Zm-155 238q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-515.76q0-17.45 11.96-29.48 11.97-12.02 29.33-12.02t29.54 12.02q12.17 12.03 12.17 29.48v515.76h419.76q17.45 0 29.48 11.96 12.02 11.97 12.02 29.33t-12.02 29.54q-12.03 12.17-29.48 12.17H213.37Zm155-238v-474.26 474.26Z"></path></svg><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon success-icon"><path d="m389-377.13 294.7-294.7q12.58-12.67 29.52-12.67 16.93 0 29.61 12.67 12.67 12.68 12.67 29.53 0 16.86-12.28 29.14L419.07-288.41q-12.59 12.67-29.52 12.67-16.94 0-29.62-12.67L217.41-430.93q-12.67-12.68-12.79-29.45-.12-16.77 12.55-29.45 12.68-12.67 29.62-12.67 16.93 0 29.28 12.67L389-377.13Z"></path></svg></div></button></pre></figure></div><p>一億次加法，<strong>完全沒有 I/O、沒有 system call</strong>。</p><p><strong>程式 2（被文字蓋住的那段，狂做 I/O）</strong></p><div class="expressive-code"><figure class="frame"><figcaption class="header"></figcaption><pre data-language="c" class="wrap" style="--ecMaxLine:65ch"><code><div class="ec-line"><div class="gutter"><div class="ln" aria-hidden="true">1</div></div><div class="code"><span style="--0:#F97583;--1:#F97583">void</span><span style="--0:#E1E4E8;--1:#E1E4E8"> </span><span style="--0:#B392F0;--1:#B392F0">main</span><span style="--0:#E1E4E8;--1:#E1E4E8">()</span></div></div><div class="ec-line"><div class="gutter"><div class="ln" aria-hidden="true">2</div></div><div class="code"><span style="--0:#E1E4E8;--1:#E1E4E8">{</span></div></div><div class="ec-line" style="--ecIndent:4ch"><div class="gutter"><div class="ln" aria-hidden="true">3</div></div><div class="code"><span class="indent">    </span><span style="--0:#F97583;--1:#F97583">int</span><span style="--0:#E1E4E8;--1:#E1E4E8"> i;</span></div></div><div class="ec-line" style="--ecIndent:4ch"><div class="gutter"><div class="ln" aria-hidden="true">4</div></div><div class="code"><span class="indent">    </span><span style="--0:#F97583;--1:#F97583">char</span><span style="--0:#E1E4E8;--1:#E1E4E8"> </span><span style="--0:#F97583;--1:#F97583">*</span><span style="--0:#E1E4E8;--1:#E1E4E8">str </span><span style="--0:#F97583;--1:#F97583">=</span><span style="--0:#E1E4E8;--1:#E1E4E8"> </span><span style="--0:#9ECBFF;--1:#9ECBFF">"Hello World</span><span style="--0:#79B8FF;--1:#79B8FF">\n</span><span style="--0:#9ECBFF;--1:#9ECBFF">"</span><span style="--0:#E1E4E8;--1:#E1E4E8">;</span></div></div><div class="ec-line" style="--ecIndent:4ch"><div class="gutter"><div class="ln" aria-hidden="true">5</div></div><div class="code"><span class="indent">    </span><span style="--0:#F97583;--1:#F97583">for</span><span style="--0:#E1E4E8;--1:#E1E4E8"> (i</span><span style="--0:#F97583;--1:#F97583">=</span><span style="--0:#79B8FF;--1:#79B8FF">1</span><span style="--0:#E1E4E8;--1:#E1E4E8">; i</span><span style="--0:#F97583;--1:#F97583">&#x3C;</span><span style="--0:#79B8FF;--1:#79B8FF">1000000</span><span style="--0:#E1E4E8;--1:#E1E4E8">; i</span><span style="--0:#F97583;--1:#F97583">++</span><span style="--0:#E1E4E8;--1:#E1E4E8">)</span></div></div><div class="ec-line" style="--ecIndent:8ch"><div class="gutter"><div class="ln" aria-hidden="true">6</div></div><div class="code"><span class="indent">        </span><span style="--0:#B392F0;--1:#B392F0">write</span><span style="--0:#E1E4E8;--1:#E1E4E8">( </span><span style="--0:#79B8FF;--1:#79B8FF">1</span><span style="--0:#E1E4E8;--1:#E1E4E8">, str, </span><span style="--0:#B392F0;--1:#B392F0">strlen</span><span style="--0:#E1E4E8;--1:#E1E4E8">( str ));</span><span style="--0:#99A0A6;--1:#99A0A6">   // write() 是 system call</span></div></div><div class="ec-line"><div class="gutter"><div class="ln" aria-hidden="true">7</div></div><div class="code"><span style="--0:#E1E4E8;--1:#E1E4E8">}</span></div></div></code><button class="copy-btn" aria-label="Copy code"><div class="copy-btn-icon"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon copy-icon"><path d="M368.37-237.37q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-474.26q0-34.48 24.26-58.74 24.26-24.26 58.74-24.26h378.26q34.48 0 58.74 24.26 24.26 24.26 24.26 58.74v474.26q0 34.48-24.26 58.74-24.26 24.26-58.74 24.26H368.37Zm0-83h378.26v-474.26H368.37v474.26Zm-155 238q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-515.76q0-17.45 11.96-29.48 11.97-12.02 29.33-12.02t29.54 12.02q12.17 12.03 12.17 29.48v515.76h419.76q17.45 0 29.48 11.96 12.02 11.97 12.02 29.33t-12.02 29.54q-12.03 12.17-29.48 12.17H213.37Zm155-238v-474.26 474.26Z"></path></svg><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon success-icon"><path d="m389-377.13 294.7-294.7q12.58-12.67 29.52-12.67 16.93 0 29.61 12.67 12.67 12.68 12.67 29.53 0 16.86-12.28 29.14L419.07-288.41q-12.59 12.67-29.52 12.67-16.94 0-29.62-12.67L217.41-430.93q-12.67-12.68-12.79-29.45-.12-16.77 12.55-29.45 12.68-12.67 29.62-12.67 16.93 0 29.28 12.67L389-377.13Z"></path></svg></div></button></pre></figure></div><p>一百萬次 <code>write()</code>，<strong>幾乎不算東西，但一直在做 system call</strong>。</p></section><section><h4 id="題目">題目<a class="anchor" href="#題目"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><p>用 shell 的 <code>time -p execfile</code> 去量這兩支程式（<code>time</code> = 執行程式並統計耗時），得到兩組數字：</p><ul>
+<li><strong>A) real 0.43, user 0.42, sys 0.00</strong></li>
+<li><strong>B) real 2.99, user 0.04, sys 1.32</strong></li>
+</ul><p><strong>問：哪一組對應哪一支程式？</strong></p></section></div></div><section><h4 id="先看被蓋住的三個定義">先看被蓋住的三個定義<a class="anchor" href="#先看被蓋住的三個定義"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>欄位</th><th>意思</th></tr></thead><tbody><tr><td><strong>real</strong></td><td>牆上時鐘時間（wall-clock）：從開始到結束的實際經過時間，<strong>包含</strong>等 I/O、被排程器換下去等別人跑的時間</td></tr><tr><td><strong>user</strong></td><td>這支程式在 <strong>user mode</strong> 執行自己程式碼所花的 CPU 時間</td></tr><tr><td><strong>sys</strong></td><td>kernel <strong>代替這支程式</strong>執行 system call 所花的 CPU 時間（kernel mode）</td></tr></tbody></table></section><section><h4 id="答案">答案<a class="anchor" href="#答案"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><p><strong>程式 1（純計算）→ A</strong></p><ul>
+<li>一直在跑自己的迴圈 → <code>user</code> 幾乎吃滿（0.42）</li>
+<li>沒有任何 system call → <code>sys = 0.00</code></li>
+<li>沒有 I/O 等待、CPU 一路跑到底 → <code>real ≈ user</code>（0.43 ≈ 0.42）</li>
+</ul><p><strong>程式 2（一百萬次 write）→ B</strong></p><ul>
+<li>自己幾乎沒在算 → <code>user</code> 很小（0.04）</li>
+<li>每次 <code>write()</code> 都陷入 kernel 執行 → <code>sys</code> 很大（1.32）</li>
+<li><code>real</code>(2.99) 遠大於 <code>user + sys</code>(1.36)：因為 process 常常<strong>卡在 I/O</strong>（等終端機/pipe 把輸出收走）或被換下去，這段等待時間算進 <code>real</code>，但不算 CPU 時間</li>
+</ul></section><section><h4 id="這頁想教的觀念">這頁想教的觀念<a class="anchor" href="#這頁想教的觀念"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><ol>
+<li><strong><code>sys</code> 時間大 = 這支程式很依賴 system call</strong>（做很多 I/O）。</li>
+<li><strong>system call 很貴</strong>：程式 2 幾乎不做事，光是切進切出 kernel 一百萬次就燒掉 1.3 秒。</li>
+<li><code>real ≠ user + sys</code>：中間的差就是「沒在用 CPU、純粹在等」的時間。</li>
+</ol></section></section>
+<section><h2 id="page-15">page-15<a class="anchor" href="#page-15"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><div class="math-env math-env-example"><div class="math-env-head"><span class="math-env-type">Example</span><span class="math-env-name"> (Example 2)</span></div><div class="math-env-body"><p>這頁在比較「<strong>讓程式等 5 秒</strong>」的兩種寫法，重點看它們對 CPU 時間的影響。</p><section><h4 id="程式用-busy-wait-等-5-秒">程式：用 busy wait 等 5 秒<a class="anchor" href="#程式用-busy-wait-等-5-秒"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><div class="expressive-code"><figure class="frame"><figcaption class="header"></figcaption><pre data-language="c" class="wrap" style="--ecMaxLine:70ch"><code><div class="ec-line"><div class="gutter"><div class="ln" aria-hidden="true">1</div></div><div class="code"><span style="--0:#F97583;--1:#F97583">void</span><span style="--0:#E1E4E8;--1:#E1E4E8"> </span><span style="--0:#B392F0;--1:#B392F0">main</span><span style="--0:#E1E4E8;--1:#E1E4E8">()</span><span style="--0:#99A0A6;--1:#99A0A6">     // busy wait for 5 seconds</span></div></div><div class="ec-line"><div class="gutter"><div class="ln" aria-hidden="true">2</div></div><div class="code"><span style="--0:#E1E4E8;--1:#E1E4E8">{</span></div></div><div class="ec-line" style="--ecIndent:4ch"><div class="gutter"><div class="ln" aria-hidden="true">3</div></div><div class="code"><span class="indent">    </span><span style="--0:#F97583;--1:#F97583">time_t</span><span style="--0:#E1E4E8;--1:#E1E4E8"> start_time;</span></div></div><div class="ec-line"><div class="gutter"><div class="ln" aria-hidden="true">4</div></div><div class="code">
+</div></div><div class="ec-line" style="--ecIndent:4ch"><div class="gutter"><div class="ln" aria-hidden="true">5</div></div><div class="code"><span class="indent"><span style="--0:#E1E4E8;--1:#E1E4E8">    </span></span><span style="--0:#E1E4E8;--1:#E1E4E8">start_time </span><span style="--0:#F97583;--1:#F97583">=</span><span style="--0:#E1E4E8;--1:#E1E4E8"> </span><span style="--0:#B392F0;--1:#B392F0">time</span><span style="--0:#E1E4E8;--1:#E1E4E8">( </span><span style="--0:#79B8FF;--1:#79B8FF">NULL</span><span style="--0:#E1E4E8;--1:#E1E4E8"> );</span><span style="--0:#99A0A6;--1:#99A0A6">          // 記下現在時間（秒）</span></div></div><div class="ec-line" style="--ecIndent:4ch"><div class="gutter"><div class="ln" aria-hidden="true">6</div></div><div class="code"><span class="indent">    </span><span style="--0:#F97583;--1:#F97583">while</span><span style="--0:#E1E4E8;--1:#E1E4E8"> (</span><span style="--0:#79B8FF;--1:#79B8FF">1</span><span style="--0:#E1E4E8;--1:#E1E4E8">) {</span></div></div><div class="ec-line" style="--ecIndent:8ch"><div class="gutter"><div class="ln" aria-hidden="true">7</div></div><div class="code"><span class="indent">        </span><span style="--0:#F97583;--1:#F97583">if</span><span style="--0:#E1E4E8;--1:#E1E4E8"> ( </span><span style="--0:#B392F0;--1:#B392F0">time</span><span style="--0:#E1E4E8;--1:#E1E4E8">( </span><span style="--0:#79B8FF;--1:#79B8FF">NULL</span><span style="--0:#E1E4E8;--1:#E1E4E8"> ) </span><span style="--0:#F97583;--1:#F97583">></span><span style="--0:#E1E4E8;--1:#E1E4E8"> start_time </span><span style="--0:#F97583;--1:#F97583">+</span><span style="--0:#E1E4E8;--1:#E1E4E8"> </span><span style="--0:#79B8FF;--1:#79B8FF">5</span><span style="--0:#E1E4E8;--1:#E1E4E8"> ) </span><span style="--0:#F97583;--1:#F97583">break</span><span style="--0:#E1E4E8;--1:#E1E4E8">;</span><span style="--0:#99A0A6;--1:#99A0A6">   // 一直問「過 5 秒了嗎？」</span></div></div><div class="ec-line" style="--ecIndent:4ch"><div class="gutter"><div class="ln" aria-hidden="true">8</div></div><div class="code"><span class="indent"><span style="--0:#E1E4E8;--1:#E1E4E8">    </span></span><span style="--0:#E1E4E8;--1:#E1E4E8">}</span></div></div><div class="ec-line"><div class="gutter"><div class="ln" aria-hidden="true">9</div></div><div class="code"><span style="--0:#E1E4E8;--1:#E1E4E8">}</span></div></div></code><button class="copy-btn" aria-label="Copy code"><div class="copy-btn-icon"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon copy-icon"><path d="M368.37-237.37q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-474.26q0-34.48 24.26-58.74 24.26-24.26 58.74-24.26h378.26q34.48 0 58.74 24.26 24.26 24.26 24.26 58.74v474.26q0 34.48-24.26 58.74-24.26 24.26-58.74 24.26H368.37Zm0-83h378.26v-474.26H368.37v474.26Zm-155 238q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-515.76q0-17.45 11.96-29.48 11.97-12.02 29.33-12.02t29.54 12.02q12.17 12.03 12.17 29.48v515.76h419.76q17.45 0 29.48 11.96 12.02 11.97 12.02 29.33t-12.02 29.54q-12.03 12.17-29.48 12.17H213.37Zm155-238v-474.26 474.26Z"></path></svg><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon success-icon"><path d="m389-377.13 294.7-294.7q12.58-12.67 29.52-12.67 16.93 0 29.61 12.67 12.67 12.68 12.67 29.53 0 16.86-12.28 29.14L419.07-288.41q-12.59 12.67-29.52 12.67-16.94 0-29.62-12.67L217.41-430.93q-12.67-12.68-12.79-29.45-.12-16.77 12.55-29.45 12.68-12.67 29.62-12.67 16.93 0 29.28 12.67L389-377.13Z"></path></svg></div></button></pre></figure></div><p>這支程式什麼事都沒做，就是在迴圈裡<strong>不停地問現在幾點</strong>，直到過了 5 秒才跳出。這叫 <strong>busy waiting（空轉等待）</strong>。</p></section><section><h4 id="量測結果">量測結果<a class="anchor" href="#量測結果"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>寫法</th><th>real</th><th>user</th><th>sys</th><th>評價</th></tr></thead><tbody><tr><td>busy wait（上面那支）</td><td>5.60</td><td><strong>5.50</strong></td><td>0.00</td><td><strong>bad</strong></td></tr><tr><td><code>time -p sleep 5</code></td><td>5.00</td><td><strong>0.00</strong></td><td>0.00</td><td><strong>good</strong></td></tr></tbody></table><p>（<code>sleep</code>：延遲指定的時間）</p></section></div></div><section><h4 id="差在哪">差在哪<a class="anchor" href="#差在哪"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><p><strong>busy wait（爛）</strong></p><ul>
+<li>迴圈整整 5 秒都在全速跑 → <code>user</code> ≈ 5.5 秒，<strong>CPU 被吃滿</strong></li>
+<li>這 5 秒的 CPU 完全浪費：沒算出任何東西，只是一直看時鐘</li>
+<li>其他程式因此搶不到 CPU；筆電還會耗電發熱</li>
+<li><code>real</code>(5.60) 比 <code>user</code>(5.50) 多一點，是因為這是共用主機，中間 CPU 有分給別人</li>
+</ul><p><strong><code>sleep 5</code>（好）</strong></p><ul>
+<li><code>sleep</code> 是跟 kernel 說「<strong>5 秒後再叫我</strong>」，然後 process 進入 blocked 狀態、<strong>被踢下 CPU</strong> (sleep 期間 cpu 沒有在運行)</li>
+<li>睡著的 5 秒完全不佔 CPU → <code>user</code>、<code>sys</code> 都是 0.00</li>
+<li>這段時間 CPU 可以讓給別的程式用</li>
+<li><code>real</code> 剛好 5.00，又準又不浪費</li>
+</ul></section><section><h4 id="這頁想教的觀念-1">這頁想教的觀念<a class="anchor" href="#這頁想教的觀念-1"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><ol>
+<li><strong>程式要「等」的時候應該 block (讓 OS 把自己排程下去)，不要 spin (空轉)。</strong></li>
+<li>空轉的成本會直接反映在 <code>user</code> 時間上——燒的是真正的 CPU；阻塞式等待（<code>sleep</code>、等 I/O、等 semaphore）幾乎不花 CPU。</li>
+<li>busy-wait 只有在極少數情況才划算（等待極短、或多核心的 spinlock，此時 context switch 比空轉還貴）。</li>
+</ol></section><section><h4 id="跟-example-1-的對照">跟 Example 1 的對照<a class="anchor" href="#跟-example-1-的對照"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><ul>
+<li>Example 1：<code>sys</code> 時間大 → 程式做很多 system call / I/O。</li>
+<li>Example 2：<code>user</code> 時間大到不合理（明明沒在算東西）→ 程式在空轉浪費 CPU。</li>
+</ul></section></section>
+<section><h2 id="page-16">page-16<a class="anchor" href="#page-16"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="這頁在講什麼">這頁在講什麼<a class="anchor" href="#這頁在講什麼"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>用 <code>read(fd, buffer, nbytes)</code> 當例子，把一次 system call 拆成 11 個步驟，說明為什麼 system call 很貴（呼應 page-14）。</p><p><code>read(fd, buffer, nbytes)</code>：從檔案 <code>fd</code> 讀最多 <code>nbytes</code> 個 byte 放進 <code>buffer</code>，回傳實際讀到幾個 byte。</p><ul>
+<li><strong>fd（file descriptor，檔案描述子）</strong>：一個小整數，代表這支 process 開著的某個檔案。<code>open()</code> 開檔成功時由 kernel 發給你，之後讀寫都用它指定是哪個檔案。0、1、2 預設是鍵盤輸入、螢幕輸出、錯誤輸出，所以 page-14 的 <code>write(1, ...)</code> 是寫到螢幕。</li>
+<li><strong>buffer</strong>：一塊記憶體，kernel 會把讀到的資料放進來。因為 kernel 要寫進去，所以傳的是它的位址（圖上的 <code>&#x26;buffer</code>）。</li>
+</ul></section><section><h3 id="先補三個背景知識">先補三個背景知識<a class="anchor" href="#先補三個背景知識"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><section><h4 id="1-暫存器pcsp">1. 暫存器、PC、SP<a class="anchor" href="#1-暫存器pcsp"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><ul>
+<li><strong>暫存器（register）</strong>：CPU 內部少量、極快的儲存格。CPU 運算的資料都要先放進暫存器。</li>
+<li><strong>PC（program counter）</strong>：一個暫存器，存「下一條要執行的指令在哪個位址」。CPU 就是不斷照 PC 抓指令、執行、再把 PC 移到下一條。function call 和 trap 本質上都是在改 PC；page-07 note 裡 trap 要先存下 PC，就是為了記住回來時要從哪裡繼續。</li>
+<li><strong>SP（stack pointer）</strong>：一個暫存器，存 stack 頂端的位址。</li>
+</ul></section><section><h4 id="2-stack堆疊">2. Stack（堆疊）<a class="anchor" href="#2-stack堆疊"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><ul>
+<li>process 記憶體裡的一塊區域，專門給 function call 用：放參數、區域變數、回傳位址。</li>
+<li>像疊盤子，只能從頂端放（push）或拿走（pop）。</li>
+<li>大多數機器上 stack 是 <strong>往低位址長</strong> 的：push 一次 SP 就變小；要丟掉 stack 上的東西，只要把 SP 加回去。</li>
+<li>function call 怎麼用 stack：
+<ol>
+<li>caller 把參數 push 上去</li>
+<li><code>call</code> 指令把 <strong>return address</strong>（回來後該執行的下一條指令位址）push 上去，再把 PC 改成函式的位址</li>
+<li>函式結束時，<code>ret</code> 指令把 return address pop 回 PC，於是回到原處</li>
+</ol>
+</li>
+</ul></section><section><h4 id="3-這張圖怎麼看">3. 這張圖怎麼看<a class="anchor" href="#3-這張圖怎麼看"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><ul>
+<li><strong>縱軸是記憶體位址</strong>：最上面 <code>0xFFFFFFFF</code>（32 位元能表示的最大位址，約 4 GB），最下面 0。</li>
+<li><strong>灰色是 kernel space</strong>（kernel 的程式碼與資料），上面白色是 <strong>user space</strong>（你的程式和 C library）。user mode 下碰不到灰色區（page-11）。</li>
+<li><strong>每個框是一條機器指令</strong>，不是資料；圖上沒有畫出 stack 本身。
+<ul>
+<li>下面那組（User program calling read）：你程式裡 <code>read(fd, buffer, nbytes);</code> 這一行編譯出來的指令。</li>
+<li>上面那組（Library procedure read）：C library 裡 <code>read</code> 函式的指令。page-07 說過 library 有些函式是 system call 的包裝，你呼叫的 <code>read</code> 就是這種包裝，不是 kernel 本身。</li>
+</ul>
+</li>
+<li><strong>紅色箭頭與數字是 CPU 執行的順序</strong>，也就是 PC 跳到哪裡。同一組裡的指令由下往上執行（位址由小到大）。</li>
+<li>兩側的藍色標籤只是各步驟的說明。</li>
+</ul></section></section><section><h3 id="11-個步驟">11 個步驟<a class="anchor" href="#11-個步驟"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><section><h4 id="在你的程式裡user-mode">在你的程式裡（user mode）<a class="anchor" href="#在你的程式裡user-mode"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><p><strong>1–3. Push nbytes → Push &#x26;buffer → Push fd</strong>：把三個參數 push 到 stack，順序和寫的相反。</p><ul>
+<li>為什麼反過來：這樣第一個參數 <code>fd</code> 會在最上面，被呼叫的函式永遠能在 stack 頂端往下固定距離的地方找到第 1、第 2、第 3 個參數。像 <code>printf</code> 這種參數個數不固定的函式特別需要這樣：它得先讀到第一個參數（格式字串），才知道後面還有幾個。</li>
+</ul><p><strong>4. Call read</strong>：普通的 function call（page-10 左圖），跳進 C library 的 <code>read</code>，同時 push return address。到這裡都還沒進 kernel。</p></section><section><h4 id="在-c-library-的-read-裡user-mode">在 C library 的 <code>read</code> 裡（user mode）<a class="anchor" href="#在-c-library-的-read-裡user-mode"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><p><strong>5. Put code for read in register</strong>：每個 system call 都有一個編號（<strong>system call number</strong>），例如 x86-64 Linux 上 <code>read</code> 是 0、<code>write</code> 是 1、<code>open</code> 是 2。library 把 <code>read</code> 的編號放進一個約定好的暫存器。</p><ul>
+<li>為什麼需要編號：所有 system call 都從 <strong>同一個</strong> trap 入口進 kernel（page-07 note：只能從固定入口借道），kernel 要靠這個編號才知道你要哪項服務。</li>
+</ul><p><strong>6. Trap to the kernel</strong>：執行 trap 指令（x86-64 上叫 <code>syscall</code>），流程就是 page-07 note 講的：存下 PC 與暫存器 → 模式位元切成 kernel mode → 跳到 kernel 設好的固定入口。這一步就是 page-11 的 mode switch。</p></section><section><h4 id="在-kernel-裡kernel-mode">在 kernel 裡（kernel mode）<a class="anchor" href="#在-kernel-裡kernel-mode"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><p><strong>7. Dispatch（分派）</strong>：入口處的程式讀出暫存器裡的編號，去查 <strong>system call table</strong>（一張表，第 n 格存著第 n 號 system call 處理函式的位址），再跳過去。圖中那個橫條紋方塊就是這張表。</p><p><strong>8. Run handler</strong>：真正做事的 kernel 函式。以 <code>read</code> 為例：</p><ol>
+<li>檢查參數：<code>fd</code> 是不是這個 process 真的開著的檔案、<code>buffer</code> 的位址是不是在這個 process 自己的 user space 裡（page-10：OS 不信任 user）。</li>
+<li>去拿資料。如果資料還沒好（要等磁碟、等鍵盤輸入），kernel 就把這個 process block 起來、先讓別的 process 跑（context switch，見 page-10），資料到了再回來繼續。</li>
+<li>把資料複製進 <code>buffer</code>，把回傳值（讀到幾個 byte，或錯誤碼）放進暫存器。</li>
+</ol></section><section><h4 id="一路回去">一路回去<a class="anchor" href="#一路回去"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><p><strong>9. Return to user mode</strong>：執行「從 trap 返回」的特殊指令（x86-64 上叫 <code>sysret</code>）：恢復第 6 步存下的狀態、模式位元切回 user mode、PC 回到 library 裡 trap 的下一條指令。</p><p><strong>10. Return to user program</strong>：library 的 <code>read</code> 執行 <code>ret</code>（普通的函式返回），回到你程式裡 <code>call read</code> 的下一條，回傳值也一起帶回來。失敗時 library 會把錯誤碼存進全域變數 <code>errno</code>，然後回傳 -1。</p><p><strong>11. Clean up（Increment SP）</strong>：丟掉第 1–3 步 push 的三個參數。因為 stack 往低位址長，丟東西就是把 SP 加回去。</p></section></section><section><h3 id="整理">整理<a class="anchor" href="#整理"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><figure class="diagram-block" data-diagram="mermaid"><pre class="diagram-src">sequenceDiagram
+    participant P as 你的程式
+    participant L as C library 的 read
+    participant K as kernel
+    Note over P: 1–3 push 參數
+    P->>L: 4 call read
+    Note over L: 5 編號放進暫存器
+    L->>K: 6 trap，切到 kernel mode
+    Note over K: 7 dispatch 查表&#x3C;br/>8 執行 handler
+    K->>L: 9 返回，切回 user mode
+    L->>P: 10 ret
+    Note over P: 11 清掉參數</pre><figcaption>一次 read() system call 的流程（只有 kernel 那一欄在 kernel mode）</figcaption></figure><p><strong>為什麼 system call 很貴</strong>：普通 function call 只有 1–4、10–11 這種動作；system call 還多了 5–9：存與恢復 CPU 狀態、兩次 mode switch、查表、檢查參數、在 kernel 和 user space 之間複製資料。page-14 的程式 2 每次 <code>write</code> 都要走完一整圈，一百萬次就燒掉 1.32 秒的 <code>sys</code>。這也是為什麼 C library 的 <code>printf</code> 會先把字存在 user space，攢夠了才呼叫一次 <code>write</code>。</p></section><section><h3 id="see-alsolong-syscalllong-number-">See also：<code>long syscall(long number, ...)</code><a class="anchor" href="#see-alsolong-syscalllong-number-"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>C library 提供的通用函式，直接用編號呼叫任何 system call，等於自己做第 5–6 步（<code>...</code> 表示後面參數個數不固定）：</p><div class="expressive-code"><figure class="frame"><figcaption class="header"></figcaption><pre data-language="c" class="wrap" style="--ecMaxLine:72ch"><code><div class="ec-line"><div class="gutter"><div class="ln" aria-hidden="true">1</div></div><div class="code"><span style="--0:#F97583;--1:#F97583">#include</span><span style="--0:#E1E4E8;--1:#E1E4E8"> </span><span style="--0:#9ECBFF;--1:#9ECBFF">&#x3C;sys/syscall.h></span></div></div><div class="ec-line"><div class="gutter"><div class="ln" aria-hidden="true">2</div></div><div class="code"><span style="--0:#F97583;--1:#F97583">#include</span><span style="--0:#E1E4E8;--1:#E1E4E8"> </span><span style="--0:#9ECBFF;--1:#9ECBFF">&#x3C;unistd.h></span></div></div><div class="ec-line"><div class="gutter"><div class="ln" aria-hidden="true">3</div></div><div class="code">
+</div></div><div class="ec-line"><div class="gutter"><div class="ln" aria-hidden="true">4</div></div><div class="code"><span style="--0:#B392F0;--1:#B392F0">syscall</span><span style="--0:#E1E4E8;--1:#E1E4E8">(SYS_read, fd, buffer, nbytes);</span><span style="--0:#99A0A6;--1:#99A0A6">   // 效果同 read(fd, buffer, nbytes)</span></div></div></code><button class="copy-btn" aria-label="Copy code"><div class="copy-btn-icon"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon copy-icon"><path d="M368.37-237.37q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-474.26q0-34.48 24.26-58.74 24.26-24.26 58.74-24.26h378.26q34.48 0 58.74 24.26 24.26 24.26 24.26 58.74v474.26q0 34.48-24.26 58.74-24.26 24.26-58.74 24.26H368.37Zm0-83h378.26v-474.26H368.37v474.26Zm-155 238q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-515.76q0-17.45 11.96-29.48 11.97-12.02 29.33-12.02t29.54 12.02q12.17 12.03 12.17 29.48v515.76h419.76q17.45 0 29.48 11.96 12.02 11.97 12.02 29.33t-12.02 29.54q-12.03 12.17-29.48 12.17H213.37Zm155-238v-474.26 474.26Z"></path></svg><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon success-icon"><path d="m389-377.13 294.7-294.7q12.58-12.67 29.52-12.67 16.93 0 29.61 12.67 12.67 12.68 12.67 29.53 0 16.86-12.28 29.14L419.07-288.41q-12.59 12.67-29.52 12.67-16.94 0-29.62-12.67L217.41-430.93q-12.67-12.68-12.79-29.45-.12-16.77 12.55-29.45 12.68-12.67 29.62-12.67 16.93 0 29.28 12.67L389-377.13Z"></path></svg></div></button></pre></figure></div><p>平常用不到，但它說明了一件事：<code>read()</code> 這些名字只是 library 的包裝，kernel 真正認的是編號。</p><blockquote class="admonition bdm-note"><span class="bdm-title"><div>現代 64 位元機器</div></span><p>這張圖出自 Tanenbaum 的教科書，畫的是 32 位元時代的做法。現在 x86-64 Linux 的參數多半直接放在暫存器，不會 push 到 stack（暫存器比記憶體快），所以第 1–3、11 步實際上不太一樣。但「library 包裝 → 放編號 → trap → dispatch → handler → 返回」這個流程不變。</p></blockquote></section></section>
+<section><h2 id="page-18">page-18<a class="anchor" href="#page-18"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="unix-architecture">UNIX Architecture<a class="anchor" href="#unix-architecture"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>跟 page-07 的洋蔥圖是同一件事，改畫成由上往下的四層：users → 應用程式 → kernel → 硬體。層與層之間各有一個介面（圖左的三個箭頭）：</p><ul>
+<li><strong>User interface</strong>（users ↔ 應用程式）：使用者操作程式的方式，例如在 shell 打指令、點視窗。</li>
+<li><strong>System call interface</strong>（應用程式 ↔ kernel）：紅線，就是 page-07 那條紅線。應用程式只能透過 system call 進 kernel。</li>
+<li><strong>Kernel interface to the hardware</strong>（kernel ↔ 硬體）：kernel 透過它直接操作硬體，只有 kernel 能碰（page-07「kernel 特別的三件事」）。</li>
+</ul><p>圖上其他東西：</p><ul>
+<li>最上面一堆 user：UNIX 是多人（multi-user）系統，很多人可以同時登入同一台機器。</li>
+<li>X：X Window System，UNIX 上的圖形介面（視窗、滑鼠）。它也只是一般的應用程式，在紅線之上。</li>
+<li>terminal（終端機）：早期接到主機上的一組螢幕加鍵盤，使用者透過它打指令。現在電腦上的「終端機」視窗就是在模擬它。</li>
+</ul><p>kernel 那一層列的工作，後面章節會細講，這裡先知道名字在說什麼：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>名詞</th><th>意思</th></tr></thead><tbody><tr><td>CPU scheduling</td><td>決定下一個讓哪個 process 用 CPU（page-05 的時間多工）</td></tr><tr><td>signal handling</td><td>signal 是送給 process 的通知，例如按 Ctrl-C 會送一個 signal 叫程式結束</td></tr><tr><td>virtual memory</td><td>讓每個 process 以為自己獨占一整段記憶體位址（page-16 圖上的 0 到 <code>0xFFFFFFFF</code>），再由 kernel 對應到真正的實體記憶體</td></tr><tr><td>paging</td><td>把記憶體切成固定大小的「頁」來管理，是實作 virtual memory 的方法</td></tr><tr><td>swapping</td><td>實體記憶體不夠時，把暫時不用的資料搬到硬碟，要用時再搬回來</td></tr><tr><td>file system</td><td>用檔案和目錄來組織硬碟上的資料</td></tr><tr><td>disk drivers</td><td>driver（驅動程式）是 kernel 裡專門操作某一種硬體的程式碼</td></tr><tr><td>caching/buffering</td><td>把常用或剛讀寫的資料暫存在記憶體，減少存取慢速硬碟的次數</td></tr></tbody></table></section></section>
+<section><h2 id="page-19">page-19<a class="anchor" href="#page-19"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="resource-managerhorizontal-viewpoint">Resource Manager（horizontal viewpoint）<a class="anchor" href="#resource-managerhorizontal-viewpoint"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>回到 page-05 的觀點二：OS 是資源管理者。這頁把 OS 做的事分成兩類。</p><p><strong>Services for Application Programs</strong>：透過 system call 提供給應用程式用的服務，也就是紅線上方看得到的東西。</p><ul>
+<li>User Identification：辨識是哪個使用者、有什麼權限</li>
+<li>Process Management：建立、結束、等待 process</li>
+<li>Memory Management：向 OS 要記憶體、還記憶體</li>
+<li>File/Directory Management：開、讀、寫、刪除檔案和目錄</li>
+<li>Inter-process Communication（IPC）：process 之間互相傳資料</li>
+<li>Signal：送出、接收 signal（page-18）</li>
+<li>I/O Management：操作終端機、網路等裝置</li>
+</ul><p><strong>OS Kernel</strong>：kernel 內部為了提供上面那些服務要做的事，應用程式看不到。</p><ul>
+<li>CPU Scheduling、Virtual Memory、File System：見 page-18</li>
+<li>Protection：控制誰能存取哪些資源，例如 process 不能碰別人的記憶體（page-11）</li>
+<li>Security：防禦攻擊，例如密碼驗證、擋掉沒有權限的登入</li>
+<li>Synchronization：多個 process 同時存取同一份資料時，協調先後順序，避免資料錯亂</li>
+<li>I/O Control：實際對硬體下指令</li>
+</ul></section><section><h3 id="下面的硬體圖">下面的硬體圖<a class="anchor" href="#下面的硬體圖"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>一台 PC 的硬體：CPU、Memory 和各種裝置都接在同一條 bus 上（page-04 的 system bus）。每個裝置前面都有一個 <strong>controller（控制器）</strong>，它是真正操作裝置的一塊晶片。CPU 透過 bus 對 controller 下指令，不直接控制裝置；kernel 裡的 driver（page-18）就是負責跟某一種 controller 溝通的程式碼。</p><p>這些裝置就是 OS 要管理、分給各個 process 共用的「資源」。</p></section></section>  </div> <script type="module" src="/_astro/Markdown.astro_astro_type_script_index_0_lang.DMmJuWXS.js"></script> <div class="relative transition overflow-hidden bg-[var(--license-block-bg)] py-5 px-6 mb-6 rounded-xl license-container onload-animation"> <div class="transition font-bold text-black/75 dark:text-white/75"> OS Concept </div> <a href="https://konyi0613.github.io/notes/sp/ch00-os_concept/" class="link text-[var(--primary)]"> https://konyi0613.github.io/notes/sp/ch00-os_concept/ </a> <div class="flex gap-6 mt-2"> <div> <div class="transition text-black/30 dark:text-white/30 text-sm">Author</div> <div class="transition text-black/75 dark:text-white/75 line-clamp-2">Konyi</div> </div> <div> <div class="transition text-black/30 dark:text-white/30 text-sm">Published at</div> <div class="transition text-black/75 dark:text-white/75 line-clamp-2">2026-09-23</div> </div> <div> <div class="transition text-black/30 dark:text-white/30 text-sm">License</div> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" class="link text-[var(--primary)] line-clamp-2">CC BY-NC-SA 4.0</a> </div> </div> <svg width="0.97em" height="1em" class="transition text-[15rem] absolute pointer-events-none right-6 top-1/2 -translate-y-1/2 text-black/5 dark:text-white/5" data-icon="fa6-brands:creative-commons">   <symbol id="ai:fa6-brands:creative-commons" viewBox="0 0 496 512"><path fill="currentColor" d="m245.83 214.87l-33.22 17.28c-9.43-19.58-25.24-19.93-27.46-19.93c-22.13 0-33.22 14.61-33.22 43.84c0 23.57 9.21 43.84 33.22 43.84c14.47 0 24.65-7.09 30.57-21.26l30.55 15.5c-6.17 11.51-25.69 38.98-65.1 38.98c-22.6 0-73.96-10.32-73.96-77.05c0-58.69 43-77.06 72.63-77.06c30.72-.01 52.7 11.95 65.99 35.86m143.05 0l-32.78 17.28c-9.5-19.77-25.72-19.93-27.9-19.93c-22.14 0-33.22 14.61-33.22 43.84c0 23.55 9.23 43.84 33.22 43.84c14.45 0 24.65-7.09 30.54-21.26l31 15.5c-2.1 3.75-21.39 38.98-65.09 38.98c-22.69 0-73.96-9.87-73.96-77.05c0-58.67 42.97-77.06 72.63-77.06c30.71-.01 52.58 11.95 65.56 35.86M247.56 8.05C104.74 8.05 0 123.11 0 256.05c0 138.49 113.6 248 247.56 248c129.93 0 248.44-100.87 248.44-248c0-137.87-106.62-248-248.44-248m.87 450.81c-112.54 0-203.7-93.04-203.7-202.81c0-105.42 85.43-203.27 203.72-203.27c112.53 0 202.82 89.46 202.82 203.26c-.01 121.69-99.68 202.82-202.84 202.82"/></symbol><use href="#ai:fa6-brands:creative-commons"></use>  </svg> </div> </div> </div>  <div class="flex flex-col md:flex-row justify-between mb-4 gap-4 overflow-hidden w-full"> <a href="#" class="w-full font-bold overflow-hidden active:scale-95 pointer-events-none">  </a> <a href="/notes/sp/ch01-services_for_app/" class="w-full font-bold overflow-hidden active:scale-95"> <div class="btn-card rounded-2xl w-full h-[3.75rem] max-w-full px-4 flex items-center !justify-end gap-4"> <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-black/75 dark:text-white/75"> Services for Application Programs </div> <svg width="1em" height="1em" viewBox="0 0 24 24" class="text-[2rem] text-[var(--primary)]" data-icon="material-symbols:chevron-right-rounded">   <use href="#ai:material-symbols:chevron-right-rounded"></use>  </svg> </div> </a> </div>  <div class="footer col-span-2 onload-animation hidden lg:block"> <!--<div class="border-t border-[var(&#45;&#45;primary)] mx-16 border-dashed py-8 max-w-[var(&#45;&#45;page-width)] flex flex-col items-center justify-center px-6">--><div class="transition border-t border-black/10 dark:border-white/15 my-10 border-dashed mx-32"></div> <!--<div class="transition bg-[oklch(92%_0.01_var(&#45;&#45;hue))] dark:bg-black rounded-2xl py-8 mt-4 mb-8 flex flex-col items-center justify-center px-6">--> <div class="transition border-dashed border-[oklch(85%_0.01_var(--hue))] dark:border-white/15 rounded-2xl mb-12 flex flex-col items-center justify-center px-6"> <div class="transition text-50 text-sm text-center">
+&copy; <span id="copyright-year">2026</span> Konyi. All Rights Reserved. /
+<a class="transition link text-[var(--primary)] font-medium" target="_blank" href="/rss.xml">RSS</a> /
+<a class="transition link text-[var(--primary)] font-medium" target="_blank" href="/sitemap-index.xml">Sitemap</a><br>
+Powered by
+<a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://astro.build">Astro</a> &
+<a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a> </div> </div> </div> </div> </main> <div class="footer col-span-2 onload-animation block lg:hidden"> <!--<div class="border-t border-[var(&#45;&#45;primary)] mx-16 border-dashed py-8 max-w-[var(&#45;&#45;page-width)] flex flex-col items-center justify-center px-6">--><div class="transition border-t border-black/10 dark:border-white/15 my-10 border-dashed mx-32"></div> <!--<div class="transition bg-[oklch(92%_0.01_var(&#45;&#45;hue))] dark:bg-black rounded-2xl py-8 mt-4 mb-8 flex flex-col items-center justify-center px-6">--> <div class="transition border-dashed border-[oklch(85%_0.01_var(--hue))] dark:border-white/15 rounded-2xl mb-12 flex flex-col items-center justify-center px-6"> <div class="transition text-50 text-sm text-center">
+&copy; <span id="copyright-year">2026</span> Konyi. All Rights Reserved. /
+<a class="transition link text-[var(--primary)] font-medium" target="_blank" href="/rss.xml">RSS</a> /
+<a class="transition link text-[var(--primary)] font-medium" target="_blank" href="/sitemap-index.xml">Sitemap</a><br>
+Powered by
+<a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://astro.build">Astro</a> &
+<a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a> </div> </div> </div> </div> <!-- There can't be a filter on parent element, or it will break `fixed` --><div class="back-to-top-wrapper hidden lg:block" data-astro-cid-eymb5ayk> <div id="back-to-top-btn" class="back-to-top-btn hide flex items-center rounded-2xl overflow-hidden transition" onclick="backToTop()" data-astro-cid-eymb5ayk> <button aria-label="Back to Top" class="btn-card h-[3.75rem] w-[3.75rem]" data-astro-cid-eymb5ayk> <svg width="1em" height="1em" class="mx-auto" data-astro-cid-eymb5ayk="true" data-icon="material-symbols:keyboard-arrow-up-rounded">   <symbol id="ai:material-symbols:keyboard-arrow-up-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="m12 10.8l-3.9 3.9q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7l4.6-4.6q.3-.3.7-.3t.7.3l4.6 4.6q.275.275.275.7t-.275.7t-.7.275t-.7-.275z"/></symbol><use href="#ai:material-symbols:keyboard-arrow-up-rounded"></use>  </svg> </button> </div> </div>  <script>
+function backToTop() {
+    window.scroll({ top: 0, behavior: 'smooth' });
+}
+</script> </div> </div>  <div class="absolute w-full z-0 hidden xl:block"> <div class="relative max-w-[var(--page-width)] mx-auto"> <!-- TOC component --> <div id="toc-wrapper" class="hidden lg:block transition absolute top-0 -right-[var(--toc-width)] w-[var(--toc-width)] items-center toc-hide"> <div id="toc-inner-wrapper" class="fixed top-14 w-[var(--toc-width)] h-[calc(100vh_-_20rem)] overflow-y-scroll overflow-x-hidden hide-scrollbar"> <div id="toc" class="w-full h-full transition-swup-fade "> <div class="h-8 w-full"></div> <table-of-contents class="group"><a href="#page-04" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">1</div><div class="transition text-sm text-50">page-04</div></a><a href="#這頁的主旨" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">這頁的主旨</div></a><a href="#左邊的階層圖由上往下" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">左邊的階層圖（由上往下）</div></a><a href="#兩個關鍵介面圖上的兩個紫色標籤" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">兩個關鍵「介面」（圖上的兩個紫色標籤）</div></a><a href="#右下角疊上去的硬體方塊圖" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">右下角疊上去的硬體方塊圖</div></a><a href="#page-05" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">2</div><div class="transition text-sm text-50">page-05</div></a><a href="#觀點一延伸機器-it-is-an-extended-machinevertical縱向" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">觀點一：延伸機器 It is an extended machine（vertical，縱向）</div></a><a href="#觀點二資源管理者-it-is-a-resource-managerhorizontal橫向" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">觀點二：資源管理者 It is a resource manager（horizontal，橫向）</div></a><a href="#page-07" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">3</div><div class="transition text-sm text-50">page-07</div></a><a href="#由外往內的每一層對應右邊的說明框" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">4</div><div class="transition text-sm text-50">由外往內的每一層（對應右邊的說明框）</div></a><a href="#1-applications應用程式最外圈" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">1. applications（應用程式，最外圈）</div></a><a href="#2-shell外殼" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">2. shell（外殼）</div></a><a href="#3-system-calls系統呼叫紅色分界線" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">3. System Calls（系統呼叫，紅色分界線）</div></a><a href="#4-kernel核心最內圈" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">4. kernel（核心，最內圈）</div></a><a href="#5-library-routines函式庫常式" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">5. library routines（函式庫常式）</div></a><a href="#kernel-特別的三件事" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">kernel 特別的三件事</div></a><a href="#page-10" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">5</div><div class="transition text-sm text-50">page-10</div></a><a href="#system-call-vs-function-call" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">System call vs. function call</div></a><a href="#為什麼右圖把-os-畫成另一個框" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">為什麼右圖把 OS 畫成另一個框</div></a><a href="#mode-switch-vs-context-switch" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">Mode switch vs. context switch</div></a><a href="#page-11" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">6</div><div class="transition text-sm text-50">page-11</div></a><a href="#user-mode-與-kernel-mode-的保護機制" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">User mode 與 kernel mode 的保護機制</div></a><a href="#page-14" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">7</div><div class="transition text-sm text-50">page-14</div></a><a href="#page-15" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">8</div><div class="transition text-sm text-50">page-15</div></a><a href="#page-16" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">9</div><div class="transition text-sm text-50">page-16</div></a><a href="#這頁在講什麼" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">這頁在講什麼</div></a><a href="#先補三個背景知識" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">先補三個背景知識</div></a><a href="#11-個步驟" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">11 個步驟</div></a><a href="#整理" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">整理</div></a><a href="#see-alsolong-syscalllong-number-" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">See also：long syscall(long number, ...)</div></a><a href="#page-18" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">10</div><div class="transition text-sm text-50">page-18</div></a><a href="#unix-architecture" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">UNIX Architecture</div></a><a href="#page-19" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">11</div><div class="transition text-sm text-50">page-19</div></a><a href="#resource-managerhorizontal-viewpoint" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">Resource Manager（horizontal viewpoint）</div></a><a href="#下面的硬體圖" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">下面的硬體圖</div></a><div id="active-indicator" style="opacity: 0" class="-z-10 absolute bg-[var(--toc-btn-hover)] left-0 right-0 rounded-xl transition-all group-hover:bg-transparent border-2 border-[var(--toc-btn-hover)] group-hover:border-[var(--toc-btn-active)] border-dashed"></div></table-of-contents><script type="module">class l extends HTMLElement{tocEl=null;visibleClass="visible";observer;anchorNavTarget=null;headingIdxMap=new Map;headings=[];sections=[];tocEntries=[];active=[];activeIndicator=null;constructor(){super(),this.observer=new IntersectionObserver(this.markVisibleSection,{threshold:0})}markVisibleSection=t=>{t.forEach(e=>{const i=e.target.children[0]?.getAttribute("id"),s=i?this.headingIdxMap.get(i):void 0;s!=null&&(this.active[s]=e.isIntersecting),e.isIntersecting&&this.anchorNavTarget==e.target.firstChild&&(this.anchorNavTarget=null)}),this.active.includes(!0)||this.fallback(),this.update()};toggleActiveHeading=()=>{let t=this.active.length-1,e=this.active.length-1,i=-1;for(;t>=0&&!this.active[t];)this.tocEntries[t].classList.remove(this.visibleClass),t--;for(;t>=0&&this.active[t];)this.tocEntries[t].classList.add(this.visibleClass),e=Math.min(e,t),i=Math.max(i,t),t--;for(;t>=0;)this.tocEntries[t].classList.remove(this.visibleClass),t--;if(e>i)this.activeIndicator?.setAttribute("style","opacity: 0");else{let s=this.tocEl?.getBoundingClientRect().top||0,n=this.tocEl?.scrollTop||0,o=this.tocEntries[e].getBoundingClientRect().top-s+n,c=this.tocEntries[i].getBoundingClientRect().bottom-s+n;this.activeIndicator?.setAttribute("style",`top: ${o}px; height: ${c-o}px`)}};scrollToActiveHeading=()=>{if(this.anchorNavTarget||!this.tocEl)return;const t=document.querySelectorAll(`#toc .${this.visibleClass}`);if(!t.length)return;const e=t[0],i=t[t.length-1],s=this.tocEl.clientHeight;let n;i.getBoundingClientRect().bottom-e.getBoundingClientRect().top<.9*s?n=e.offsetTop-32:n=i.offsetTop-s*.8,this.tocEl.scrollTo({top:n,left:0,behavior:"smooth"})};update=()=>{requestAnimationFrame(()=>{this.toggleActiveHeading(),this.scrollToActiveHeading()})};fallback=()=>{if(this.sections.length)for(let t=0;t<this.sections.length;t++){let e=this.sections[t].getBoundingClientRect().top,i=this.sections[t].getBoundingClientRect().bottom;if(this.isInRange(e,0,window.innerHeight)||this.isInRange(i,0,window.innerHeight)||e<0&&i>window.innerHeight)this.markActiveHeading(t);else if(e>window.innerHeight)break}};markActiveHeading=t=>{this.active[t]=!0};handleAnchorClick=t=>{const e=t.composedPath().find(i=>i instanceof HTMLAnchorElement);if(e){const i=decodeURIComponent(e.hash?.substring(1)),s=this.headingIdxMap.get(i);s!==void 0?this.anchorNavTarget=this.headings[s]:this.anchorNavTarget=null}};isInRange(t,e,i){return e<t&&t<i}connectedCallback(){const t=document.querySelector(".prose");t?t.addEventListener("animationend",()=>{this.init()},{once:!0}):console.debug("Animation element not found")}init(){if(this.tocEl=document.getElementById("toc-inner-wrapper"),!!this.tocEl&&(this.tocEl.addEventListener("click",this.handleAnchorClick,{capture:!0}),this.activeIndicator=document.getElementById("active-indicator"),this.tocEntries=Array.from(document.querySelectorAll("#toc a[href^='#']")),this.tocEntries.length!==0)){this.sections=new Array(this.tocEntries.length),this.headings=new Array(this.tocEntries.length);for(let t=0;t<this.tocEntries.length;t++){const e=decodeURIComponent(this.tocEntries[t].hash?.substring(1)),i=document.getElementById(e),s=i?.parentElement;i instanceof HTMLElement&&s instanceof HTMLElement&&(this.headings[t]=i,this.sections[t]=s,this.headingIdxMap.set(e,t))}this.active=new Array(this.tocEntries.length).fill(!1),this.sections.forEach(t=>this.observer.observe(t)),this.fallback(),this.update()}}disconnectedCallback(){this.sections.forEach(t=>this.observer.unobserve(t)),this.observer.disconnect(),this.tocEl?.removeEventListener("click",this.handleAnchorClick)}}customElements.get("table-of-contents")||customElements.define("table-of-contents",l);</script> <div class="h-8 w-full"></div> </div> </div> </div> <!-- #toc needs to exist for Swup to work normally -->  </div> </div>  <!-- increase the page height during page transition to prevent the scrolling animation from jumping --> <div id="page-height-extend" class="hidden h-[300vh]" data-astro-cid-sckkx6r4 style="--bannerOffset: 15vh;--banner-height-home: 65vh;--banner-height: 35vh;--configHue: 20;--page-width: 75rem;"></div>  <script type="module" src="/_astro/Layout.astro_astro_type_script_index_0_lang.DAHrxWCB.js"></script> <script type="module" src="/_astro/Layout.astro_astro_type_script_index_1_lang.Ddm2SD6h.js"></script></body></html>

@@ -1,0 +1,1089 @@
+<!DOCTYPE html><html lang="en" class="bg-[var(--page-bg)] transition text-[14px] md:text-[16px]" data-overlayscrollbars-initialize data-astro-cid-sckkx6r4 style="--bannerOffset: 15vh;--banner-height-home: 65vh;--banner-height: 35vh;--configHue: 20;--page-width: 75rem;"> <head><title>Services for Application Programs - Konyi&#39;s Blog</title><meta charset="UTF-8"><meta name="description" content="Services for Application Programs - Konyi's Blog"><meta name="author" content="Konyi"><meta property="og:site_name" content="Konyi's Blog"><meta property="og:url" content="https://konyi0613.github.io/notes/sp/ch01-services_for_app/"><meta property="og:title" content="Services for Application Programs - Konyi's Blog"><meta property="og:description" content="Services for Application Programs - Konyi's Blog"><meta property="og:type" content="article"><meta name="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://konyi0613.github.io/notes/sp/ch01-services_for_app/"><meta name="twitter:title" content="Services for Application Programs - Konyi's Blog"><meta name="twitter:description" content="Services for Application Programs - Konyi's Blog"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.13.10"><link rel="icon" href="/favicon/favicon-light-32.png" sizes="32x32" media="(prefers-color-scheme: light)"><link rel="icon" href="/favicon/favicon-light-128.png" sizes="128x128" media="(prefers-color-scheme: light)"><link rel="icon" href="/favicon/favicon-light-180.png" sizes="180x180" media="(prefers-color-scheme: light)"><link rel="icon" href="/favicon/favicon-light-192.png" sizes="192x192" media="(prefers-color-scheme: light)"><link rel="icon" href="/favicon/favicon-dark-32.png" sizes="32x32" media="(prefers-color-scheme: dark)"><link rel="icon" href="/favicon/favicon-dark-128.png" sizes="128x128" media="(prefers-color-scheme: dark)"><link rel="icon" href="/favicon/favicon-dark-180.png" sizes="180x180" media="(prefers-color-scheme: dark)"><link rel="icon" href="/favicon/favicon-dark-192.png" sizes="192x192" media="(prefers-color-scheme: dark)"><!-- Set the theme before the page is rendered to avoid a flash --><script>(function(){const DEFAULT_THEME = "auto";
+const LIGHT_MODE = "light";
+const DARK_MODE = "dark";
+const AUTO_MODE = "auto";
+const BANNER_HEIGHT_EXTEND = 30;
+const PAGE_WIDTH = 75;
+const configHue = 20;
+
+			// Load the theme from local storage
+			const theme = localStorage.getItem('theme') || DEFAULT_THEME;
+			switch (theme) {
+				case LIGHT_MODE:
+					document.documentElement.classList.remove('dark');
+					break
+				case DARK_MODE:
+					document.documentElement.classList.add('dark');
+					break
+				case AUTO_MODE:
+					if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+						document.documentElement.classList.add('dark');
+					} else {
+						document.documentElement.classList.remove('dark');
+					}
+			}
+
+			// Load the hue from local storage
+			const hue = localStorage.getItem('hue') || configHue;
+			document.documentElement.style.setProperty('--hue', hue);
+
+			// calculate the --banner-height-extend, which needs to be a multiple of 4 to avoid blurry text
+			let offset = Math.floor(window.innerHeight * (BANNER_HEIGHT_EXTEND / 100));
+			offset = offset - offset % 4;
+			document.documentElement.style.setProperty('--banner-height-extend', `${offset}px`);
+		})();</script><!-- defines global css variables. This will be applied to <html> <body> and some other elements idk why --><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Services for Application Programs","description":"Services for Application Programs","isPartOf":"System Programming","author":{"@type":"Person","name":"Konyi","url":"https://konyi0613.github.io/"},"inLanguage":"en"}</script><link rel="alternate" type="application/rss+xml" title="Konyi" href="https://konyi0613.github.io/rss.xml"><link rel="stylesheet" href="/_astro/Layout.DSulWsr7.css">
+<link rel="stylesheet" href="/_astro/Layout.y4KPJ9hc.css">
+<link rel="stylesheet" href="/_astro/_page_.ZlghMKVQ.css">
+<link rel="stylesheet" href="/_astro/_page_.DH99ciXV.css">
+<link rel="stylesheet" href="/_astro/about.B-Xk7MHk.css">
+<style>.diary-calendar.svelte-1fl5r95{position:relative;--day-text: rgba(0, 0, 0, .75);--day-muted: rgba(0, 0, 0, .25)}.dark .diary-calendar.svelte-1fl5r95{position:relative;--day-text: rgba(255, 255, 255, .75);--day-muted: rgba(255, 255, 255, .25)}.dot.svelte-1fl5r95{display:inline-block;width:4px;height:4px;border-radius:9999px;background:var(--primary);flex:none}.day.svelte-1fl5r95{color:var(--day-text)}.day.marked.svelte-1fl5r95{color:var(--day-color);font-weight:700}.day.has-entry.svelte-1fl5r95{background:var(--btn-regular-bg);font-weight:700;cursor:pointer}.day.has-entry.svelte-1fl5r95:hover{background:var(--btn-regular-bg-hover)}.day.has-entry.svelte-1fl5r95:active{background:var(--btn-regular-bg-active);transform:scale(.95)}.day.today.svelte-1fl5r95{outline:2px solid var(--primary);outline-offset:-2px}.day.draft.svelte-1fl5r95{opacity:.7}.day.draft.svelte-1fl5r95:after{content:"";position:absolute;inset:0;border:1px dashed var(--meta-divider);border-radius:inherit;pointer-events:none}.draft-badge.svelte-1fl5r95{flex:none;font-size:.7rem;font-weight:700;line-height:1;padding:.2rem .35rem;border-radius:.3rem;color:var(--btn-content);background:var(--btn-regular-bg);border:1px dashed var(--meta-divider)}.day.outside.svelte-1fl5r95{color:var(--day-muted);opacity:.55}.day.selected.svelte-1fl5r95{background:var(--primary);color:#fff;font-weight:700}.day.selected.svelte-1fl5r95 .dot:where(.svelte-1fl5r95){background:#fff}.jump-select.svelte-1fl5r95{-webkit-appearance:none;-moz-appearance:none;appearance:none;background:transparent;border:0;border-radius:.5rem;padding:.25rem .4rem;cursor:pointer;transition:background .15s ease;text-align:center;-moz-text-align-last:center;text-align-last:center}.jump-select.svelte-1fl5r95:hover{background:var(--btn-plain-bg-hover)}.jump-select.svelte-1fl5r95:focus-visible{outline:2px solid var(--primary);outline-offset:-2px}.dark .jump-select.svelte-1fl5r95{color-scheme:dark}.jump-select.svelte-1fl5r95 option:where(.svelte-1fl5r95){background:var(--float-panel-bg)}.diary-tip.svelte-1fl5r95{position:absolute;z-index:60;transform:translate(-50%,calc(-100% - .5rem));pointer-events:none;border-radius:.5rem;background:var(--float-panel-bg);box-shadow:0 8px 24px #0000001f}input.svelte-1wah7ro:focus{outline:0}.search-panel.svelte-1wah7ro{max-height:calc(100vh - 100px);overflow-y:auto}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k){-webkit-appearance:none;height:1.5rem;background-image:var(--color-selection-bar);transition:background-image .15s ease-in-out}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-webkit-slider-thumb{-webkit-appearance:none;height:1rem;width:.5rem;border-radius:.125rem;background:#ffffffb3;box-shadow:none}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-webkit-slider-thumb:hover{background:#fffc}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-webkit-slider-thumb:active{background:#fff9}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-moz-range-thumb{-webkit-appearance:none;height:1rem;width:.5rem;border-radius:.125rem;border-width:0;background:#ffffffb3;box-shadow:none}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-moz-range-thumb:hover{background:#fffc}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-moz-range-thumb:active{background:#fff9}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-ms-thumb{-webkit-appearance:none;height:1rem;width:.5rem;border-radius:.125rem;background:#ffffffb3;box-shadow:none}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-ms-thumb:hover{background:#fffc}#display-setting.svelte-d7tq3k input[type=range]:where(.svelte-d7tq3k)::-ms-thumb:active{background:#fff9}
+</style><script type="module" src="/_astro/page.Z8IJTFqj.js"></script></head> <body class=" min-h-screen transition  enable-banner" data-overlayscrollbars-initialize data-astro-cid-sckkx6r4 style="--bannerOffset: 15vh;--banner-height-home: 65vh;--banner-height: 35vh;--configHue: 20;--page-width: 75rem;"> <div id="config-carrier" data-hue="20"></div>    <div id="top-row" class="z-50 pointer-events-none relative transition-all duration-700 max-w-[var(--page-width)] px-0 md:px-4 mx-auto"> <div id="navbar-wrapper" class="pointer-events-auto sticky top-0 transition-all"> <div id="navbar" class="z-50 onload-animation"> <div class="absolute h-8 left-0 right-0 -top-8 bg-[var(--card-bg)] transition"></div> <!-- used for onload animation --> <div class="card-base !overflow-visible max-w-[var(--page-width)] h-[4.5rem] !rounded-t-none mx-auto flex items-center justify-between px-4"> <a href="/" class="btn-plain scale-animation rounded-lg h-[3.25rem] px-5 font-bold active:scale-95"> <div class="flex flex-row text-[var(--primary)] items-center text-md"> <svg width="1em" height="1em" class="text-[1.75rem] mb-1 mr-2" data-icon="material-symbols:home-outline-rounded">   <symbol id="ai:material-symbols:home-outline-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="M6 19h3v-5q0-.425.288-.712T10 13h4q.425 0 .713.288T15 14v5h3v-9l-6-4.5L6 10zm-2 0v-9q0-.475.213-.9t.587-.7l6-4.5q.525-.4 1.2-.4t1.2.4l6 4.5q.375.275.588.7T20 10v9q0 .825-.588 1.413T18 21h-4q-.425 0-.712-.288T13 20v-5h-2v5q0 .425-.288.713T10 21H6q-.825 0-1.412-.587T4 19m8-6.75"/></symbol><use href="#ai:material-symbols:home-outline-rounded"></use>  </svg> Konyi&#39;s Blog </div> </a> <div class="hidden md:flex"> <a aria-label="Home" href="/" class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95"> <div class="flex items-center"> Home  </div> </a><a aria-label="Archive" href="/archive/" class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95"> <div class="flex items-center"> Archive  </div> </a><a aria-label="About" href="/about/" class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95"> <div class="flex items-center"> About  </div> </a><a aria-label="Notes" href="/notes/" class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95"> <div class="flex items-center"> Notes  </div> </a> </div> <div class="flex"> <!--<SearchPanel client:load>--> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).only=e;window.dispatchEvent(new Event("astro:only"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="16cUVi" component-url="/_astro/Search.CkeXxXjO.js" component-export="default" renderer-url="/_astro/client.svelte.E6BSH4ng.js" props="{}" ssr client="only" opts="{&quot;name&quot;:&quot;Search&quot;,&quot;value&quot;:&quot;svelte&quot;}"></astro-island> <button aria-label="Display Settings" class="btn-plain scale-animation rounded-lg h-11 w-11 active:scale-90" id="display-settings-switch"> <svg width="1em" height="1em" class="text-[1.25rem]" data-icon="material-symbols:palette-outline">   <symbol id="ai:material-symbols:palette-outline" viewBox="0 0 24 24"><path fill="currentColor" d="M12 22q-2.05 0-3.875-.788t-3.187-2.15t-2.15-3.187T2 12q0-2.075.813-3.9t2.2-3.175T8.25 2.788T12.2 2q2 0 3.775.688t3.113 1.9t2.125 2.875T22 11.05q0 2.875-1.75 4.413T16 17h-1.85q-.225 0-.312.125t-.088.275q0 .3.375.863t.375 1.287q0 1.25-.687 1.85T12 22m-5.5-9q.65 0 1.075-.425T8 11.5t-.425-1.075T6.5 10t-1.075.425T5 11.5t.425 1.075T6.5 13m3-4q.65 0 1.075-.425T11 7.5t-.425-1.075T9.5 6t-1.075.425T8 7.5t.425 1.075T9.5 9m5 0q.65 0 1.075-.425T16 7.5t-.425-1.075T14.5 6t-1.075.425T13 7.5t.425 1.075T14.5 9m3 4q.65 0 1.075-.425T19 11.5t-.425-1.075T17.5 10t-1.075.425T16 11.5t.425 1.075T17.5 13M12 20q.225 0 .363-.125t.137-.325q0-.35-.375-.825T11.75 17.3q0-1.05.725-1.675T14.25 15H16q1.65 0 2.825-.962T20 11.05q0-3.025-2.312-5.038T12.2 4Q8.8 4 6.4 6.325T4 12q0 3.325 2.338 5.663T12 20"/></symbol><use href="#ai:material-symbols:palette-outline"></use>  </svg> </button> <astro-island uid="xHcFf" component-url="/_astro/LightDarkSwitch.BRdKw8uI.js" component-export="default" renderer-url="/_astro/client.svelte.E6BSH4ng.js" props="{}" ssr client="only" opts="{&quot;name&quot;:&quot;LightDarkSwitch&quot;,&quot;value&quot;:&quot;svelte&quot;}"></astro-island> <button aria-label="Menu" name="Nav Menu" class="btn-plain scale-animation rounded-lg w-11 h-11 active:scale-90 md:!hidden" id="nav-menu-switch"> <svg width="1em" height="1em" class="text-[1.25rem]" data-icon="material-symbols:menu-rounded">   <symbol id="ai:material-symbols:menu-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="M4 18q-.425 0-.712-.288T3 17t.288-.712T4 16h16q.425 0 .713.288T21 17t-.288.713T20 18zm0-5q-.425 0-.712-.288T3 12t.288-.712T4 11h16q.425 0 .713.288T21 12t-.288.713T20 13zm0-5q-.425 0-.712-.288T3 7t.288-.712T4 6h16q.425 0 .713.288T21 7t-.288.713T20 8z"/></symbol><use href="#ai:material-symbols:menu-rounded"></use>  </svg> </button> </div> <div id="nav-menu-panel" class="float-panel float-panel-closed absolute transition-all fixed right-4 px-2 py-2"> <a href="/" class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
+        "> <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)]"> Home </div> <svg width="1em" height="1em" class="transition text-[1.25rem] text-[var(--primary)]" data-icon="material-symbols:chevron-right-rounded">   <symbol id="ai:material-symbols:chevron-right-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="M12.6 12L8.7 8.1q-.275-.275-.275-.7t.275-.7t.7-.275t.7.275l4.6 4.6q.15.15.213.325t.062.375t-.062.375t-.213.325l-4.6 4.6q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7z"/></symbol><use href="#ai:material-symbols:chevron-right-rounded"></use>  </svg>  </a><a href="/archive/" class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
+        "> <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)]"> Archive </div> <svg width="1em" height="1em" viewBox="0 0 24 24" class="transition text-[1.25rem] text-[var(--primary)]" data-icon="material-symbols:chevron-right-rounded">   <use href="#ai:material-symbols:chevron-right-rounded"></use>  </svg>  </a><a href="/about/" class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
+        "> <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)]"> About </div> <svg width="1em" height="1em" viewBox="0 0 24 24" class="transition text-[1.25rem] text-[var(--primary)]" data-icon="material-symbols:chevron-right-rounded">   <use href="#ai:material-symbols:chevron-right-rounded"></use>  </svg>  </a><a href="/notes/" class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
+        "> <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)]"> Notes </div> <svg width="1em" height="1em" viewBox="0 0 24 24" class="transition text-[1.25rem] text-[var(--primary)]" data-icon="material-symbols:chevron-right-rounded">   <use href="#ai:material-symbols:chevron-right-rounded"></use>  </svg>  </a> </div> <astro-island uid="Z1hAL6F" component-url="/_astro/DisplaySettings.C5x3qtFK.js" component-export="default" renderer-url="/_astro/client.svelte.E6BSH4ng.js" props="{}" ssr client="only" opts="{&quot;name&quot;:&quot;DisplaySettings&quot;,&quot;value&quot;:&quot;svelte&quot;}"></astro-island> </div> </div> <script type="module">function c(){localStorage.theme==="dark"?(document.documentElement.classList.remove("dark"),localStorage.theme="light"):(document.documentElement.classList.add("dark"),localStorage.theme="dark")}function o(){let t=document.getElementById("scheme-switch");t&&(t.onclick=function(){c()});let n=document.getElementById("display-settings-switch");n&&(n.onclick=function(){let e=document.getElementById("display-setting");e&&e.classList.toggle("float-panel-closed")});let l=document.getElementById("nav-menu-switch");l&&(l.onclick=function(){let e=document.getElementById("nav-menu-panel");e&&e.classList.toggle("float-panel-closed")})}o();</script> <script>(function(){const scriptUrl = "/pagefind/pagefind.js";
+
+async function loadPagefind() {
+    try {
+        const response = await fetch(scriptUrl, { method: 'HEAD' });
+        if (!response.ok) {
+            throw new Error(`Pagefind script not found: ${response.status}`);
+        }
+
+        const pagefind = await import(scriptUrl);
+
+        await pagefind.options({
+            excerptLength: 20
+        });
+
+        window.pagefind = pagefind;
+
+        document.dispatchEvent(new CustomEvent('pagefindready'));
+        console.log('Pagefind loaded and initialized successfully, event dispatched.');
+    } catch (error) {
+        console.error('Failed to load Pagefind:', error);
+        window.pagefind = {
+            search: () => Promise.resolve({ results: [] }),
+            options: () => Promise.resolve(),
+        };
+        document.dispatchEvent(new CustomEvent('pagefindloaderror'));
+        console.log('Pagefind load error, event dispatched.');
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadPagefind);
+} else {
+    loadPagefind();
+}
+})();</script> </div> </div>  <div id="banner-wrapper" class="absolute z-10 w-full transition duration-700 overflow-hidden" style="top: -30vh"> <div id="banner" class="object-cover h-full transition duration-700 opacity-0 scale-105 overflow-hidden relative"> <div class="transition absolute inset-0 dark:bg-black/10 bg-opacity-50 pointer-events-none"></div> <img src="/_astro/banner.CXuT8U5n_aes0a.webp" alt="Banner image of the blog" style="object-position: center" loading="lazy" decoding="async" fetchpriority="auto" width="3907" height="1640" class="w-full h-full object-cover">  </div> </div> <div class="absolute w-full z-30 pointer-events-none" style="top: calc(35vh - 3.5rem)"> <!-- The pointer-events-none here prevent blocking the click event of the TOC --> <div class="relative max-w-[var(--page-width)] mx-auto pointer-events-auto"> <div id="main-grid" class="transition duration-700 w-full left-0 right-0 grid grid-cols-[17.5rem_auto] grid-rows-[auto_1fr_auto] lg:grid-rows-[auto]
+    mx-auto gap-4 px-0 md:px-4"> <!-- Banner image credit -->  <div id="sidebar" class="mb-4 row-start-2 row-end-3 col-span-2 lg:row-start-1 lg:row-end-2 lg:col-span-1 lg:max-w-[17.5rem] onload-animation w-full"> <div class="flex flex-col w-full gap-4 mb-4"> <div class="card-base p-3"> <a aria-label="Go to About Page" href="/about/" class="group block relative mx-auto mt-1 lg:mx-0 lg:mt-0 mb-3
+       max-w-[12rem] lg:max-w-none overflow-hidden rounded-xl active:scale-95"> <div class="absolute transition pointer-events-none group-hover:bg-black/30 group-active:bg-black/50
+        w-full h-full z-50 flex items-center justify-center"> <svg width="1.13em" height="1em" class="transition opacity-0 scale-90 group-hover:scale-100 group-hover:opacity-100 text-white text-5xl" data-icon="fa6-regular:address-card">   <symbol id="ai:fa6-regular:address-card" viewBox="0 0 576 512"><path fill="currentColor" d="M512 80c8.8 0 16 7.2 16 16v320c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V96c0-8.8 7.2-16 16-16zM64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm144 224a64 64 0 1 0 0-128a64 64 0 1 0 0 128m-32 32c-44.2 0-80 35.8-80 80c0 8.8 7.2 16 16 16h192c8.8 0 16-7.2 16-16c0-44.2-35.8-80-80-80zm200-144c-13.3 0-24 10.7-24 24s10.7 24 24 24h80c13.3 0 24-10.7 24-24s-10.7-24-24-24zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24h80c13.3 0 24-10.7 24-24s-10.7-24-24-24z"/></symbol><use href="#ai:fa6-regular:address-card"></use>  </svg> </div> <div class="mx-auto lg:w-full h-full lg:mt-0  overflow-hidden relative"> <div class="transition absolute inset-0 dark:bg-black/10 bg-opacity-50 pointer-events-none"></div> <img src="/_astro/avatar.ClNXyL35_Z1nNErV.webp" alt="Profile Image of the Author" style="object-position: center" loading="lazy" decoding="async" fetchpriority="auto" width="828" height="828" class="w-full h-full object-cover">  </div> </a> <div class="px-2"> <div class="font-bold text-xl text-center mb-1 dark:text-neutral-50 transition">Konyi</div> <div class="h-1 w-5 bg-[var(--primary)] mx-auto rounded-full mb-2 transition"></div> <div class="text-center text-neutral-400 mb-2.5 transition"></div> <div class="flex flex-wrap gap-2 justify-center mb-1"> <a rel="me" aria-label="GitHub" href="https://github.com/Konyi0613" target="_blank" class="btn-regular rounded-lg h-10 w-10 active:scale-90"> <svg width="0.97em" height="1em" class="text-[1.5rem]" data-icon="fa6-brands:github">   <symbol id="ai:fa6-brands:github" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6c-3.3.3-5.6-1.3-5.6-3.6c0-2 2.3-3.6 5.2-3.6c3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9c2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9c.3 2 2.9 3.3 5.9 2.6c2.9-.7 4.9-2.6 4.6-4.6c-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2c12.8 2.3 17.3-5.6 17.3-12.1c0-6.2-.3-40.4-.3-61.4c0 0-70 15-84.7-29.8c0 0-11.4-29.1-27.8-36.6c0 0-22.9-15.7 1.6-15.4c0 0 24.9 2 38.6 25.8c21.9 38.6 58.6 27.5 72.9 20.9c2.3-16 8.8-27.1 16-33.7c-55.9-6.2-112.3-14.3-112.3-110.5c0-27.5 7.6-41.3 23.6-58.9c-2.6-6.5-11.1-33.3 2.6-67.9c20.9-6.5 69 27 69 27c20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27c13.7 34.7 5.2 61.4 2.6 67.9c16 17.7 25.8 31.5 25.8 58.9c0 96.5-58.9 104.2-114.8 110.5c9.2 7.9 17 22.9 17 46.4c0 33.7-.3 75.4-.3 83.6c0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252C496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2c1.6 1.6 3.9 2.3 5.2 1c1.3-1 1-3.3-.7-5.2c-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9c1.6 1 3.6.7 4.3-.7c.7-1.3-.3-2.9-2.3-3.9c-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2c2.3 2.3 5.2 2.6 6.5 1c1.3-1.3.7-4.3-1.3-6.2c-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2c-1.4-2.3-4-3.3-5.6-2"/></symbol><use href="#ai:fa6-brands:github"></use>  </svg> </a><a rel="me" aria-label="Instagram" href="https://www.instagram.com/x_j1m0613/" target="_blank" class="btn-regular rounded-lg h-10 w-10 active:scale-90"> <svg width="0.88em" height="1em" class="text-[1.5rem]" data-icon="fa6-brands:instagram">   <symbol id="ai:fa6-brands:instagram" viewBox="0 0 448 512"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9S287.7 141 224.1 141m0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7s74.7 33.5 74.7 74.7s-33.6 74.7-74.7 74.7m146.4-194.3c0 14.9-12 26.8-26.8 26.8c-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8s26.8 12 26.8 26.8m76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9c-26.2-26.2-58-34.4-93.9-36.2c-37-2.1-147.9-2.1-184.9 0c-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9c1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0c35.9-1.7 67.7-9.9 93.9-36.2c26.2-26.2 34.4-58 36.2-93.9c2.1-37 2.1-147.8 0-184.8M398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6c-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6c-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6c29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6c11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1"/></symbol><use href="#ai:fa6-brands:instagram"></use>  </svg> </a><a rel="me" aria-label="Facebook" href="https://www.facebook.com/kon.yi.963661" target="_blank" class="btn-regular rounded-lg h-10 w-10 active:scale-90"> <svg width="1em" height="1em" class="text-[1.5rem]" data-icon="fa6-brands:facebook">   <symbol id="ai:fa6-brands:facebook" viewBox="0 0 512 512"><path fill="currentColor" d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256c0 120 82.7 220.8 194.2 248.5V334.2h-52.8V256h52.8v-33.7c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287v175.9C413.8 494.8 512 386.9 512 256"/></symbol><use href="#ai:fa6-brands:facebook"></use>  </svg> </a>  </div> </div> </div> </div> <div id="sidebar-sticky" class="transition-all duration-700 flex flex-col w-full gap-4 top-4 sticky top-4"> <widget-layout data-id="categories" data-is-collapsed="false" class="pb-4 card-base onload-animation" style="animation-delay: 150ms; --collapsedHeight: 7.5rem;" data-astro-cid-ucso7hve="true"> <div class="font-bold transition text-lg text-neutral-900 dark:text-neutral-100 relative ml-8 mt-4 mb-2
+        before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
+        before:absolute before:left-[-16px] before:top-[5.5px]" data-astro-cid-ucso7hve style="--collapsedHeight: 7.5rem;">Categories</div> <div id="categories" class="collapse-wrapper px-4 overflow-hidden" data-astro-cid-ucso7hve style="--collapsedHeight: 7.5rem;"> <a href="/archive/?category=Math" aria-label="View all posts in the Math category"> <button class="
+            w-full
+            h-10
+            rounded-lg
+            bg-none
+            hover:bg-[var(--btn-plain-bg-hover)]
+            active:bg-[var(--btn-plain-bg-active)]
+            transition-all
+            pl-2
+            hover:pl-3
+            
+            text-neutral-700
+            hover:text-[var(--primary)]
+            dark:text-neutral-300
+            dark:hover:text-[var(--primary)]
+        "> <div class="flex items-center justify-between relative mr-2"> <div class="overflow-hidden text-left whitespace-nowrap overflow-ellipsis  "> Math </div> <div class="transition px-2 h-7 ml-4 min-w-[2rem] rounded-lg text-sm font-bold
+                    text-[var(--btn-content)] dark:text-[var(--deep-text)]
+                    bg-[var(--btn-regular-bg)] dark:bg-[var(--primary)]
+                    flex items-center justify-center"> 1 </div> </div> </button> </a><a href="/archive/?category=%E4%BF%AE%E8%AA%B2%E5%BF%83%E5%BE%97" aria-label="View all posts in the 修課心得 category"> <button class="
+            w-full
+            h-10
+            rounded-lg
+            bg-none
+            hover:bg-[var(--btn-plain-bg-hover)]
+            active:bg-[var(--btn-plain-bg-active)]
+            transition-all
+            pl-2
+            hover:pl-3
+            
+            text-neutral-700
+            hover:text-[var(--primary)]
+            dark:text-neutral-300
+            dark:hover:text-[var(--primary)]
+        "> <div class="flex items-center justify-between relative mr-2"> <div class="overflow-hidden text-left whitespace-nowrap overflow-ellipsis  "> 修課心得 </div> <div class="transition px-2 h-7 ml-4 min-w-[2rem] rounded-lg text-sm font-bold
+                    text-[var(--btn-content)] dark:text-[var(--deep-text)]
+                    bg-[var(--btn-regular-bg)] dark:bg-[var(--primary)]
+                    flex items-center justify-center"> 3 </div> </div> </button> </a><a href="/archive/?category=%E6%8E%92%E5%90%8D" aria-label="View all posts in the 排名 category"> <button class="
+            w-full
+            h-10
+            rounded-lg
+            bg-none
+            hover:bg-[var(--btn-plain-bg-hover)]
+            active:bg-[var(--btn-plain-bg-active)]
+            transition-all
+            pl-2
+            hover:pl-3
+            
+            text-neutral-700
+            hover:text-[var(--primary)]
+            dark:text-neutral-300
+            dark:hover:text-[var(--primary)]
+        "> <div class="flex items-center justify-between relative mr-2"> <div class="overflow-hidden text-left whitespace-nowrap overflow-ellipsis  "> 排名 </div> <div class="transition px-2 h-7 ml-4 min-w-[2rem] rounded-lg text-sm font-bold
+                    text-[var(--btn-content)] dark:text-[var(--deep-text)]
+                    bg-[var(--btn-regular-bg)] dark:bg-[var(--primary)]
+                    flex items-center justify-center"> 1 </div> </div> </button> </a> </div>  </widget-layout>  <script type="module">class d extends HTMLElement{constructor(){if(super(),this.dataset.isCollapsed!=="true")return;const e=this.dataset.id,t=this.querySelector(".expand-btn"),s=this.querySelector(`#${e}`);t.addEventListener("click",()=>{s.classList.remove("collapsed"),t.classList.add("hidden")})}}customElements.get("widget-layout")||customElements.define("widget-layout",d);</script> <widget-layout data-id="tags" data-is-collapsed="false" class="pb-4 card-base onload-animation" style="animation-delay: 200ms; --collapsedHeight: 7.5rem;" data-astro-cid-ucso7hve="true"> <div class="font-bold transition text-lg text-neutral-900 dark:text-neutral-100 relative ml-8 mt-4 mb-2
+        before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
+        before:absolute before:left-[-16px] before:top-[5.5px]" data-astro-cid-ucso7hve style="--collapsedHeight: 7.5rem;">Tags</div> <div id="tags" class="collapse-wrapper px-4 overflow-hidden" data-astro-cid-ucso7hve style="--collapsedHeight: 7.5rem;">  <div class="flex gap-2 flex-wrap"> <a href="/archive/?tag=probability" aria-label="View all posts with the probability tag" class="btn-regular h-8 text-sm px-3 rounded-lg">  probability </a><a href="/archive/?tag=%E4%BF%AE%E8%AA%B2%E5%BF%83%E5%BE%97" aria-label="View all posts with the 修課心得 tag" class="btn-regular h-8 text-sm px-3 rounded-lg">  修課心得 </a><a href="/archive/?tag=%E5%8F%B0%E5%A4%A7" aria-label="View all posts with the 台大 tag" class="btn-regular h-8 text-sm px-3 rounded-lg">  台大 </a><a href="/archive/?tag=%E5%A4%A7%E4%B8%80" aria-label="View all posts with the 大一 tag" class="btn-regular h-8 text-sm px-3 rounded-lg">  大一 </a><a href="/archive/?tag=%E5%A4%A7%E4%BA%8C" aria-label="View all posts with the 大二 tag" class="btn-regular h-8 text-sm px-3 rounded-lg">  大二 </a><a href="/archive/?tag=%E6%8E%92%E5%90%8D" aria-label="View all posts with the 排名 tag" class="btn-regular h-8 text-sm px-3 rounded-lg">  排名 </a><a href="/archive/?tag=%E6%95%99%E6%8E%88" aria-label="View all posts with the 教授 tag" class="btn-regular h-8 text-sm px-3 rounded-lg">  教授 </a> </div>  </div>  </widget-layout>   </div> </div> <main id="swup-container" class="transition-swup-fade col-span-2 lg:col-span-1 overflow-hidden"> <div id="content-wrapper" class="onload-animation"> <!-- the overflow-hidden here prevent long text break the layout--> <!-- make id different from windows.swup global property -->   <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative mb-4"> <div id="post-container" class="card-base z-10 px-6 md:px-9 pt-6 pb-4 relative w-full"> <!-- breadcrumb back to the course --> <a href="/notes/sp/" class="btn-regular !inline-flex w-fit rounded-lg h-8 px-3 text-sm items-center gap-1 mb-4 onload-animation"> <svg width="1em" height="1em" class="text-[1.25rem]" data-icon="material-symbols:chevron-left-rounded">   <symbol id="ai:material-symbols:chevron-left-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="m10.8 12l3.9 3.9q.275.275.275.7t-.275.7t-.7.275t-.7-.275l-4.6-4.6q-.15-.15-.212-.325T8.425 12t.063-.375t.212-.325l4.6-4.6q.275-.275.7-.275t.7.275t.275.7t-.275.7z"/></symbol><use href="#ai:material-symbols:chevron-left-rounded"></use>  </svg> System Programming </a> <!-- word count and reading time --> <div class="flex flex-row text-black/30 dark:text-white/30 gap-5 mb-3 transition onload-animation"> <div class="flex flex-row items-center"> <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2"> <svg width="1em" height="1em" data-icon="material-symbols:notes-rounded">   <symbol id="ai:material-symbols:notes-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="M4 18q-.425 0-.712-.288T3 17t.288-.712T4 16h10q.425 0 .713.288T15 17t-.288.713T14 18zm0-5q-.425 0-.712-.288T3 12t.288-.712T4 11h16q.425 0 .713.288T21 12t-.288.713T20 13zm0-5q-.425 0-.712-.288T3 7t.288-.712T4 6h16q.425 0 .713.288T21 7t-.288.713T20 8z"/></symbol><use href="#ai:material-symbols:notes-rounded"></use>  </svg> </div> <div class="text-sm">6802 words</div> </div> <div class="flex flex-row items-center"> <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2"> <svg width="1em" height="1em" data-icon="material-symbols:schedule-outline-rounded">   <symbol id="ai:material-symbols:schedule-outline-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="M13 11.6V8q0-.425-.288-.712T12 7t-.712.288T11 8v3.975q0 .2.075.388t.225.337l3.3 3.3q.275.275.7.275T16 16t.275-.7t-.275-.7zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22m0-2q3.325 0 5.663-2.337T20 12t-2.337-5.663T12 4T6.337 6.338T4 12t2.338 5.663T12 20"/></symbol><use href="#ai:material-symbols:schedule-outline-rounded"></use>  </svg> </div> <div class="text-sm">34 min</div> </div> </div> <!-- title --> <div class="relative onload-animation"> <div data-pagefind-body data-pagefind-weight="10" data-pagefind-meta="title" class="transition w-full block font-bold mb-3
+                     text-3xl md:text-[2.25rem]/[2.75rem]
+                     text-black/90 dark:text-white/90
+                     md:before:w-1 before:h-5 before:rounded-md before:bg-[var(--primary)]
+                     before:absolute before:top-[0.75rem] before:left-[-1.125rem]"> Services for Application Programs </div> </div> <!-- metadata --> <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-black/50 dark:text-white/50 mb-5 onload-animation"> <span class="font-bold text-[var(--primary)]"> Unit 01 </span>     </div> <div class="border-[var(--line-divider)] border-dashed border-b-[1px] mb-5"></div> <div data-pagefind-body class="prose dark:prose-invert prose-base !max-w-none custom-md mb-6 markdown-content onload-animation"> <!--<div class="prose dark:prose-invert max-w-none custom-md">--> <!--<div class="max-w-none custom-md">-->  <p>這一章把 ch00 page-19 列的「Services for Application Programs」一項一項展開，從第一項 User Identification 開始。</p>
+<section><h2 id="page-22">page-22<a class="anchor" href="#page-22"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="user-identification-in-unix">User Identification in UNIX<a class="anchor" href="#user-identification-in-unix"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>UNIX 是多人系統，所以系統必須先知道「你是誰」，才能決定你能碰哪些東西。這頁講的就是登入（logging in）時系統查的那份帳號資料。</p><section><h4 id="etcpasswd"><code>/etc/passwd</code><a class="anchor" href="#etcpasswd"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><p>一個純文字檔，一行一個帳號，欄位用 <code>:</code> 分隔，共七欄。投影片的例子：</p><div class="expressive-code"><link rel="stylesheet" href="/_astro/ec.4fsv9.css"><script type="module" src="/_astro/ec.g1fg5.js"></script><figure class="frame"><figcaption class="header"></figcaption><pre data-language="plaintext" class="wrap" style="--ecMaxLine:37ch"><code><div class="ec-line"><div class="gutter"><div class="ln" aria-hidden="true">1</div></div><div class="code"><span style="--0:#e1e4e8;--1:#e1e4e8">root:x:0:1:Super-User:/root:/bin/tcsh</span></div></div></code><button class="copy-btn" aria-label="Copy code"><div class="copy-btn-icon"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon copy-icon"><path d="M368.37-237.37q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-474.26q0-34.48 24.26-58.74 24.26-24.26 58.74-24.26h378.26q34.48 0 58.74 24.26 24.26 24.26 24.26 58.74v474.26q0 34.48-24.26 58.74-24.26 24.26-58.74 24.26H368.37Zm0-83h378.26v-474.26H368.37v474.26Zm-155 238q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-515.76q0-17.45 11.96-29.48 11.97-12.02 29.33-12.02t29.54 12.02q12.17 12.03 12.17 29.48v515.76h419.76q17.45 0 29.48 11.96 12.02 11.97 12.02 29.33t-12.02 29.54q-12.03 12.17-29.48 12.17H213.37Zm155-238v-474.26 474.26Z"></path></svg><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon success-icon"><path d="m389-377.13 294.7-294.7q12.58-12.67 29.52-12.67 16.93 0 29.61 12.67 12.67 12.68 12.67 29.53 0 16.86-12.28 29.14L419.07-288.41q-12.59 12.67-29.52 12.67-16.94 0-29.62-12.67L217.41-430.93q-12.67-12.68-12.79-29.45-.12-16.77 12.55-29.45 12.68-12.67 29.62-12.67 16.93 0 29.28 12.67L389-377.13Z"></path></svg></div></button></pre></figure></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>欄位</th><th>例子</th><th>意思</th></tr></thead><tbody><tr><td>Login-name</td><td><code>root</code></td><td>登入用的帳號名稱</td></tr><tr><td>encrypted passwd</td><td><code>x</code></td><td>加密後的密碼。現在都寫 <code>x</code>，表示真正的密碼放在 <code>/etc/shadow</code></td></tr><tr><td>numeric user-ID（UID）</td><td><code>0</code></td><td>系統內部真正用來辨識使用者的數字，kernel 只認 UID 不認名字。<code>0</code> 是 root，也就是權限最大的超級使用者</td></tr><tr><td>numeric group ID（GID）</td><td><code>1</code></td><td>所屬群組的編號，用來做一群人共用的權限</td></tr><tr><td>comment</td><td><code>Super-User</code></td><td>說明欄，通常放全名或用途</td></tr><tr><td>home dir</td><td><code>/root</code></td><td>登入後所在的目錄</td></tr><tr><td>shell program</td><td><code>/bin/tcsh</code></td><td>登入後幫你啟動哪一支 shell（ch00 page-07：shell 是命令解譯器）</td></tr></tbody></table><ul>
+<li><strong>local machine or NIS DB</strong>：帳號資料可以放在這台機器自己的 <code>/etc/passwd</code>，也可以放在 NIS（Network Information Service）這種集中式資料庫——整個網路的機器共用同一份帳號資料，不必每台各自維護。</li>
+</ul></section><section><h4 id="etcshadow"><code>/etc/shadow</code><a class="anchor" href="#etcshadow"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><p><code>/etc/passwd</code> 必須人人可讀（很多程式要靠它把 UID 換成使用者名稱），但這樣等於把加密後的密碼送給攻擊者慢慢猜。所以密碼欄改成 <code>x</code>，真正加密後的密碼移到 <code>/etc/shadow</code>，這個檔只有 root 讀得到。</p></section><section><h4 id="related-shell-command">Related shell command<a class="anchor" href="#related-shell-command"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><p><code>passwd</code>：改自己的密碼。</p></section></section></section>
+<section><h2 id="page-23">page-23<a class="anchor" href="#page-23"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="cat-etcpasswd"><code>cat /etc/passwd</code><a class="anchor" href="#cat-etcpasswd"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p><code>cat</code>（concatenate）把檔案內容印到螢幕上。這頁就是真的印出來看一台機器上的 <code>/etc/passwd</code> 長什麼樣。</p><p>可以觀察到的幾件事：</p><ul>
+<li><strong>大部分帳號不是給人用的</strong>：<code>daemon</code>、<code>bin</code>、<code>sys</code>、<code>mail</code>、<code>www-data</code>、<code>backup</code> 這些都是系統服務專用的帳號。每個服務用自己的低權限帳號去跑，萬一被攻破，攻擊者也只拿到那個帳號的權限，不會直接變成 root（ch00 page-19 的 Protection / Security）。
+<ul>
+<li>daemon：在背景常駐執行的程式，例如網頁伺服器、印表機服務。</li>
+</ul>
+</li>
+<li><strong>第二欄全是 <code>x</code></strong>：密碼都搬到 <code>/etc/shadow</code> 了。</li>
+<li><strong><code>root</code> 的 UID 和 GID 都是 0</strong>。</li>
+<li><strong><code>nobody</code> 的 UID 是 65534</strong>：權限最小的帳號，給完全不需要權限的程式用。</li>
+<li><strong>第七欄不一定是 shell</strong>：<code>sync</code> 這個帳號的第七欄是 <code>/bin/sync</code>。</li>
+</ul><section><h4 id="第七欄怎麼拿來擋登入">第七欄怎麼拿來擋登入<a class="anchor" href="#第七欄怎麼拿來擋登入"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><p>第七欄真正的定義是：<strong>驗證通過後，系統要幫你執行哪一支程式</strong>。平常放 shell，你才會拿到那個可以一直打指令的介面；換成一支做完就結束的程式，密碼對了也待不住：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>第七欄</th><th>登入後會發生什麼</th></tr></thead><tbody><tr><td><code>/bin/bash</code></td><td>進入 shell，可以一直打指令</td></tr><tr><td><code>/bin/sync</code></td><td>執行 <code>sync</code>（把還沒寫回硬碟的資料寫回去）就結束，連線隨即斷掉</td></tr><tr><td><code>/usr/sbin/nologin</code></td><td>印一行「This account is currently not available.」就結束</td></tr><tr><td><code>/bin/false</code></td><td>什麼都不印，直接以失敗結束</td></tr></tbody></table><p>現在的系統會把服務帳號設成 <code>/usr/sbin/nologin</code>，這份投影片比較舊，所以那些帳號還寫著 <code>/bin/sh</code>。不過這只擋互動登入，帳號本身還是活的：系統服務照樣用它的身分在背景跑。</p><p>而「沒有 shell 的帳號」有兩種情況。第七欄真的空白時 <strong>不會</strong> 擋登入，<code>login</code> 會改用預設的 <code>/bin/sh</code>；真正登不進去的通常是密碼被鎖住——<code>/etc/shadow</code> 的密碼欄寫 <code>*</code> 或 <code>!</code>，代表沒有任何輸入算得出這個值，所以永遠比對不過。服務帳號多半兩招一起用。</p></section></section></section>
+<section><h2 id="page-24">page-24<a class="anchor" href="#page-24"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="password-encryption-and-salt">Password Encryption and Salt<a class="anchor" href="#password-encryption-and-salt"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>密碼不是明文存的，存的是 <code>crypt()</code> 算出來的結果。這個運算是單向的：能拿密碼去算結果，不能從結果反推回密碼。登入時系統把你輸入的密碼再算一次，比對兩個結果一不一樣。</p><ul>
+<li>
+<p><strong><code>crypt(3)</code> is designed to make a key search computationally expensive</strong>
+<code>crypt</code> 是 C library 的函式（<code>(3)</code> 是 man 的第 3 章，見 page-25）。它被刻意設計成算起來很慢，這樣攻擊者要一個一個試密碼（key search）就得花上大量時間。</p>
+</li>
+<li>
+<p><strong><code>/bin/passwd</code> selects a salt based on the time of day</strong>
+你設定密碼時，<code>passwd</code> 會依「當下的時間」挑一個 <strong>salt</strong>，轉成兩個字元的字串。</p>
+</li>
+<li>
+<p><strong>Salt is converted into a two character string and stored in the encrypted password file</strong>
+<code>crypt(密碼, salt)</code> 的結果前兩個字元就是 salt 本身，跟著一起存進密碼檔，之後驗證才知道該用哪個 salt 重算。</p>
+<div class="expressive-code"><figure class="frame"><figcaption class="header"></figcaption><pre data-language="plaintext" class="wrap" style="--ecMaxLine:40ch"><code><div class="ec-line"><div class="gutter"><div class="ln" aria-hidden="true">1</div></div><div class="code"><span style="--0:#e1e4e8;--1:#e1e4e8">crypt( "apple", "am" ) = "amADBMNoVAZpc"</span></div></div><div class="ec-line"><div class="gutter"><div class="ln" aria-hidden="true">2</div></div><div class="code"><span style="--0:#e1e4e8;--1:#e1e4e8">crypt( "water", "pm" ) = "pmRarHxhhU34U"</span></div></div></code><button class="copy-btn" aria-label="Copy code"><div class="copy-btn-icon"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon copy-icon"><path d="M368.37-237.37q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-474.26q0-34.48 24.26-58.74 24.26-24.26 58.74-24.26h378.26q34.48 0 58.74 24.26 24.26 24.26 24.26 58.74v474.26q0 34.48-24.26 58.74-24.26 24.26-58.74 24.26H368.37Zm0-83h378.26v-474.26H368.37v474.26Zm-155 238q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-515.76q0-17.45 11.96-29.48 11.97-12.02 29.33-12.02t29.54 12.02q12.17 12.03 12.17 29.48v515.76h419.76q17.45 0 29.48 11.96 12.02 11.97 12.02 29.33t-12.02 29.54q-12.03 12.17-29.48 12.17H213.37Zm155-238v-474.26 474.26Z"></path></svg><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon success-icon"><path d="m389-377.13 294.7-294.7q12.58-12.67 29.52-12.67 16.93 0 29.61 12.67 12.67 12.68 12.67 29.53 0 16.86-12.28 29.14L419.07-288.41q-12.59 12.67-29.52 12.67-16.94 0-29.62-12.67L217.41-430.93q-12.67-12.68-12.79-29.45-.12-16.77 12.55-29.45 12.68-12.67 29.62-12.67 16.93 0 29.28 12.67L389-377.13Z"></path></svg></div></button></pre></figure></div>
+</li>
+<li>
+<p><strong>Salt makes it harder for an attacker to build a reverse dictionary</strong>
+reverse dictionary 是攻擊者預先算好的對照表：常見密碼 → 加密結果，拿到密碼檔就能直接查。有了 salt，每一個 salt 都要各算一整本表，成本暴增。</p>
+</li>
+<li>
+<p><strong>allows users to use the same password on different computers</strong>
+同一組密碼配上不同的 salt，存出來的結果完全不同。所以同一個人在不同機器用同一組密碼，從密碼檔也看不出來它們是一樣的；同一台機器上兩個人密碼相同，也不會長得一樣。</p>
+</li>
+</ul><blockquote class="admonition bdm-note"><span class="bdm-title">NOTE</span><p>現在的系統已經不用這種兩字元 salt 的舊做法了，改用 SHA-512、bcrypt、yescrypt 這類演算法，salt 長很多。<code>/etc/shadow</code> 裡 <code>$6$</code> 開頭就代表 SHA-512。但 salt 的用意跟這頁講的完全一樣。</p></blockquote></section></section>
+<section><h2 id="page-25">page-25<a class="anchor" href="#page-25"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="man-3-crypt"><code>man 3 crypt</code><a class="anchor" href="#man-3-crypt"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p><code>man</code>（manual）用來查線上手冊：<code>man 指令或函式名稱</code> 就會顯示它的用法。</p><p>手冊分成 8 章（section）。同一個名字可能在不同章各有一篇，所以要用數字指定要查哪一章：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Section</th><th>內容</th></tr></thead><tbody><tr><td>1</td><td>一般指令（在 shell 打的那些，例如 <code>ls</code>、<code>cat</code>）</td></tr><tr><td>2</td><td>System calls</td></tr><tr><td>3</td><td>Library 函式，特別是 C 標準函式庫</td></tr><tr><td>4</td><td>特殊檔案（<code>/dev</code> 底下的裝置）與 driver</td></tr><tr><td>5</td><td>檔案格式，例如 <code>man 5 passwd</code> 就是在講 <code>/etc/passwd</code> 的七個欄位</td></tr><tr><td>6</td><td>遊戲與螢幕保護程式</td></tr><tr><td>7</td><td>雜項</td></tr><tr><td>8</td><td>系統管理指令與 daemon</td></tr></tbody></table><p>所以 <code>man 3 crypt</code> 查的是「C library 裡的 <code>crypt</code> 函式」。平常看到的 <code>crypt(3)</code>、<code>read(2)</code>、<code>printf(3)</code> 寫法，括號裡就是章號——從章號就能看出它是 system call 還是 library 函式，正好對應 ch00 page-16：<code>read(2)</code> 是 system call，<code>printf(3)</code> 是包在上面的 library 函式。</p><blockquote>
+<p><code>man -k 關鍵字</code> 可以用關鍵字反查有哪些手冊頁。</p>
+</blockquote></section></section>
+<section><h2 id="page-27">page-27<a class="anchor" href="#page-27"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="programs-and-processes">Programs and Processes<a class="anchor" href="#programs-and-processes"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><ul>
+<li><strong>Program</strong>：躺在硬碟上的一個可執行檔（executable file），是靜態的資料。</li>
+<li><strong>Process</strong>：program 被載入記憶體、正在執行中的一份實例（ch00 page-07：a program in execution）。每個 process 有一個唯一的 <strong>process ID（PID）</strong>，kernel 用它來指名道姓。</li>
+<li>同一支 program 可以同時有很多個 process：同一個編輯器開兩次，就是兩個 process，各自有自己的記憶體和 PID。</li>
+</ul><p>相關指令：</p><ul>
+<li><code>ps</code>：印出目前 process 的快照（snapshot），印完就結束。</li>
+<li><code>top</code>：持續更新地顯示 process 和它們的 CPU、記憶體用量。</li>
+</ul></section></section>
+<section><h2 id="page-28">page-28<a class="anchor" href="#page-28"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="cpu-scheduling">CPU Scheduling<a class="anchor" href="#cpu-scheduling"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>決定「哪個 process 可以占用資源」——資源可以是 CPU，也可以是磁碟等等。</p><p>圖的比喻：CPU 是那支遊戲手把，三個小孩是三個 process，大家都想玩（都想執行），但手把只有一支，所以要有人決定 <strong>Whose turn is it?</strong> 做這個決定的就是 kernel 裡的 scheduler。</p><ul>
+<li><strong>User can change a process priority</strong>：使用者可以調整 process 的優先權，讓 scheduler 比較早／比較晚挑到它。</li>
+<li>相關指令 <code>nice</code>：啟動一支程式時順便指定它的 <strong>nice 值</strong>，例如 <code>nice -n 10 ./myprogram</code>。
+<ul>
+<li>nice 值的範圍是 -20 到 19，預設 0。<strong>數字越大，優先權越低</strong>（越願意禮讓別人），數字越小優先權越高。</li>
+<li>一般使用者只能把自己的 nice 值調大（自願降低優先權），要調成負的必須是 root，否則人人都把自己設成最高優先權就失去意義了。</li>
+<li>已經在跑的 process 要改用 <code>renice</code>。</li>
+</ul>
+</li>
+</ul></section></section>
+<section><h2 id="page-29--page-43">page-29 ~ page-43<a class="anchor" href="#page-29--page-43"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="example-of-multitasking">Example of Multitasking<a class="anchor" href="#example-of-multitasking"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>一整段動畫，用彩色長條代表 process，演一遍它們在系統裡怎麼流動。兩張字幕分別定義：</p><ul>
+<li><strong>Time sharing</strong>（page-29）：CPU 的時間被切開來分給多個工作，看起來像同時進行。</li>
+<li><strong>Context switch</strong>（page-35）：把一個 process 的執行狀態存起來、再把另一個 process 的狀態載回來的過程。</li>
+</ul><section><h4 id="畫面上的零件">畫面上的零件<a class="anchor" href="#畫面上的零件"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>零件</th><th>功能</th></tr></thead><tbody><tr><td>Start（左上方框）</td><td>process 的誕生處。新的 process 從這裡進入系統</td></tr><tr><td>Ready Queue</td><td>「可以執行、但還沒輪到」的 process 排隊的地方</td></tr><tr><td>CPU（紫色圓）</td><td>正在執行的 process。一次只容得下一個</td></tr><tr><td>Exit（右上箭頭）</td><td>執行完畢的 process 從這裡離開系統</td></tr><tr><td>Time Slice（中間那條長回程）</td><td>時間片用完、被換下來的 process 走的路，終點是 ready queue</td></tr><tr><td>Event Queue</td><td>「在等某件事發生、還不能執行」的 process 待的地方，例如等磁碟把資料讀好</td></tr><tr><td>Event（左下紫色橢圓）</td><td>事件真的發生的那一刻。process 經過這裡就代表它等到了</td></tr><tr><td>彩色長條</td><td>一支 process。動畫全程顏色不變，可以靠顏色追蹤同一支 process</td></tr></tbody></table></section><section><h4 id="搬移規則">搬移規則<a class="anchor" href="#搬移規則"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><p>兩個佇列都是 <strong>從尾端進、從前端出</strong>：ready queue 左邊是尾端、右邊是前端；event queue 右邊是尾端、左邊是前端。</p><blockquote class="admonition bdm-important"><span class="bdm-title"><div>叫 queue，但不一定照順序處理</div></span><p>event queue 裡誰先走，看的是 <strong>誰等的事件先發生</strong>，跟排隊順序無關。等磁碟的可能比早就在排隊、等鍵盤輸入的更早等到。</p><p>那為什麼還叫 queue？因為真正的系統裡沒有「一個」event queue：kernel 是每一種事件各維護一條等待佇列——等這顆磁碟的一條、等鍵盤的一條、等某支子 process 結束的一條。同一條佇列裡等的是同一件事，事件發生時確實照順序叫醒；會看起來像插隊，是因為投影片把所有佇列畫成同一個框。queue 在這裡指的是 kernel 用來掛住這些 process 的串列，不是「先到先服務」的保證。</p><p>同理，ready queue 也不是嚴格先到先服務：scheduler 挑人時會看優先權（page-28 的 <code>nice</code>）。投影片畫成單純排隊是簡化過的。</p></blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>路徑</th><th>什麼時候走</th></tr></thead><tbody><tr><td>Start → ready queue 尾端</td><td>新的 process 被建立</td></tr><tr><td>ready queue 前端 → CPU</td><td>scheduler 挑中它（dispatch）。CPU 換人的這一刻就是 context switch</td></tr><tr><td>CPU → Exit</td><td>程式跑完了，離開系統</td></tr><tr><td>CPU → Time Slice → ready queue 尾端</td><td>時間片用完被換下來。它 <strong>還能跑</strong>，只是得重新排隊</td></tr><tr><td>CPU → event queue 尾端</td><td>它要等 I/O（例如 <code>read</code> 要等磁碟），在等到之前 <strong>不能跑</strong></td></tr><tr><td>event queue 前端 → Event → 左側路徑 → ready queue 尾端</td><td>等的事件發生了。注意它不會直接回到 CPU，一樣要重新排隊</td></tr></tbody></table></section><section><h4 id="動畫逐格">動畫逐格<a class="anchor" href="#動畫逐格"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><p>起始狀態（page-29）：ready queue 由尾到前是橘、黃綠、深綠；CPU 空著；event queue 由前到尾是淡紫、紅、暗紅、藍灰。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>投影片</th><th>畫面變化</th><th>對應規則</th></tr></thead><tbody><tr><td>30</td><td>深綠離開 ready queue 前端，往 CPU 移動</td><td>它排最前面，被 scheduler 挑中</td></tr><tr><td>31</td><td>深綠進入 CPU 開始執行；ready queue 剩橘、黃綠</td><td>—</td></tr><tr><td>32</td><td>淡紫離開 event queue 前端，往 Event 移動</td><td>它等的事件發生了</td></tr><tr><td>33</td><td>淡紫抵達 Event</td><td>—</td></tr><tr><td>34</td><td>淡紫沿左側路徑往上走；同時紅離開 event queue 前往 Event</td><td>等到的 process 正在回 ready queue 的路上</td></tr><tr><td>35</td><td>深綠從 CPU 右側離開、黃綠從 ready queue 前端進 CPU（兩條橘色弧線）；淡紫已排進 ready queue 尾端</td><td>深綠時間片用完，CPU 換人 = <strong>context switch</strong>：存下深綠的狀態、載回黃綠的狀態</td></tr><tr><td>36</td><td>深綠走在 Time Slice 那條回程上往左</td><td>—</td></tr><tr><td>37</td><td>深綠繞到最左邊、往上爬</td><td>—</td></tr><tr><td>38</td><td>深綠插進 ready queue 尾端（深綠、淡紫、橘）</td><td>被時間片換下來的 process 重新排隊</td></tr><tr><td>39</td><td>Start 生出一支粉紅；紅從 Event 回到 ready queue 尾端；橘從前端出發去 CPU；黃綠離開 CPU 沿右側往下</td><td>黃綠要等 I/O，所以離開 CPU 去 event queue，不是回 ready queue</td></tr><tr><td>40</td><td>粉紅排進 ready queue 尾端；橘在 CPU 執行；黃綠進 event queue 排在藍灰後面；暗紅離開 event queue 前往 Event</td><td>—</td></tr><tr><td>41</td><td>橘從 Exit 離開；淡紫從 ready queue 前端進 CPU；暗紅回到 ready queue 尾端；藍灰離開 event queue 前往 Event</td><td>橘是跑完了才走 Exit，這條路的 process 不會再回來</td></tr><tr><td>42</td><td>淡紫的時間片用完，走上 Time Slice 回程；深綠再次從前端進 CPU；藍灰沿左側往上；黃綠抵達 Event</td><td>同一支 process 會這樣一輪一輪地跑</td></tr></tbody></table></section><section><h4 id="page-43三個狀態">page-43：三個狀態<a class="anchor" href="#page-43三個狀態"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><p>最後一張把畫面上的三個位置正式命名，並附上狀態圖：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>位置</th><th>狀態</th><th>意思</th></tr></thead><tbody><tr><td>Ready Queue</td><td><strong>Ready</strong></td><td>可以執行，只差沒輪到 CPU</td></tr><tr><td>CPU</td><td><strong>Running</strong></td><td>正在執行</td></tr><tr><td>Event Queue</td><td><strong>Blocked</strong></td><td>在等某個事件，例如等磁碟把資料讀好。資料還沒來，它的下一行程式就沒辦法往下跑，所以 scheduler 不會挑它——給它 CPU 也只是白白占著</td></tr></tbody></table><p>投影片上四個黃色數字就是四種轉換：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>編號</th><th>轉換</th><th>圖上的路徑</th></tr></thead><tbody><tr><td>1</td><td>Process blocks for input（Running → Blocked）</td><td>CPU 右側往下進 event queue</td></tr><tr><td>2</td><td>Scheduler picks another process（Running → Ready）</td><td>Time Slice 那條回程</td></tr><tr><td>3</td><td>Scheduler picks this process（Ready → Running）</td><td>ready queue 前端進 CPU</td></tr><tr><td>4</td><td>Input becomes available（Blocked → Ready）</td><td>Event 往上回 ready queue</td></tr></tbody></table><figure class="diagram-block" data-diagram="mermaid"><pre class="diagram-src">stateDiagram-v2
+    direction LR
+    [*] --> Ready: Start 新 process
+    Ready --> Running: 3 scheduler 挑中它
+    Running --> Ready: 2 time slice 用完
+    Running --> Blocked: 1 等 I/O
+    Blocked --> Ready: 4 事件發生
+    Running --> [*]: Exit 執行完畢</pre><figcaption>Process 的三個狀態與四條轉換</figcaption></figure><p>注意沒有 Blocked → Running 這條路：等到事件的 process 一定要先回 Ready 排隊，不會直接搶回 CPU。</p><p>回頭對照 ch00 的兩個例子：page-15 的 <code>sleep 5</code> 就是主動讓自己變成 Blocked（所以那 5 秒 <code>user</code> 時間是 0）；ch00 page-10 講的 context switch，發生的時機就是這裡的轉換 2 和 3。</p></section></section></section>
+<section><h2 id="page-44">page-44<a class="anchor" href="#page-44"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="unix-processshell-怎麼幫你執行指令">UNIX Process：shell 怎麼幫你執行指令<a class="anchor" href="#unix-processshell-怎麼幫你執行指令"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>Shell 是 command interpreter（命令解譯器，ch00 page-07）：你打 <code>ls</code>、<code>pwd</code>，它負責找到那支程式並讓它跑起來。圖畫的就是這個過程，四個圈都是 system call。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>步驟</th><th>誰做的</th><th>發生什麼</th></tr></thead><tbody><tr><td><code>fork</code></td><td>shell process</td><td>複製出一個幾乎一模一樣的 <strong>child process</strong>：記憶體內容、開著的檔案都複製一份。從這裡開始分岔成兩條路，上面虛線是原本的 shell（<strong>parent process</strong>），下面實線是 child</td></tr><tr><td><code>execve()</code></td><td>child</td><td>把自己的記憶體內容整個換成 <code>/bin/ls</code> 這支程式。PID 不變，但執行的程式變了——child 從「shell 的分身」變成 <code>ls</code></td></tr><tr><td><code>exit</code></td><td>child</td><td><code>ls</code> 跑完，結束自己並回傳一個狀態碼</td></tr><tr><td><code>wait</code></td><td>parent</td><td>shell 在這裡停下來等 child 結束。child 一 <code>exit</code>，<code>wait</code> 就返回，shell 印出提示字元，繼續等你下一個指令</td></tr></tbody></table><p>所以打完 <code>ls</code> 之後 shell 還在，是因為真正去執行 <code>ls</code> 的是 child，shell 自己只是等。指令後面加 <code>&#x26;</code> 改成背景執行，差別就在 shell 不 <code>wait</code>，直接回來接受下一個指令。</p><p>用 page-43 的狀態來看：<code>wait</code> 期間 shell 在等「child 結束」這個事件，所以它是 Blocked。</p><blockquote>
+<p>投影片註明細節留到 Ch8。</p>
+</blockquote></section></section>
+<section><h2 id="page-45">page-45<a class="anchor" href="#page-45"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="a-process-tree">A Process Tree<a class="anchor" href="#a-process-tree"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>每個 process 都是別的 process <code>fork</code> 出來的，所以全系統的 process 構成一棵樹：</p><ul>
+<li>A 建立了 B、C 兩個 child</li>
+<li>B 又建立了 D、E、F 三個 child</li>
+</ul><p>樹根是開機時 kernel 建立的第一支 process（Linux 上是 <code>systemd</code> 或 <code>init</code>，PID 1），其他所有 process 都是它的後代。</p><p>每個 process 除了自己的 PID，還記得 parent 的 PID（<strong>PPID</strong>）。這條關係是必要的：<code>wait</code> 要知道該等誰、child 結束時要通知誰。想看這棵樹可以用 <code>pstree</code>，或 <code>ps -ef</code> 看 PPID 欄。</p></section></section>
+<section><h2 id="page-46">page-46<a class="anchor" href="#page-46"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="common-unix-shells">Common UNIX Shells<a class="anchor" href="#common-unix-shells"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Shell</th><th>路徑</th><th>作者</th></tr></thead><tbody><tr><td>Bourne shell</td><td><code>/bin/sh</code></td><td>Steve Bourne，Bell Labs</td></tr><tr><td>C shell</td><td><code>/bin/csh</code></td><td>Bill Joy，Berkeley（投影片寫 Bill Jay 是筆誤）</td></tr><tr><td>KornShell</td><td><code>/bin/ksh</code></td><td>David Korn，Bourne shell 的後繼者</td></tr></tbody></table><p>C shell 和 KornShell 的賣點是那些互動功能：</p><ul>
+<li><strong>Command-line editing</strong>：可以用方向鍵回頭修改正在打的那一行，不必整行刪掉重打。</li>
+<li><strong>History</strong>：叫回之前打過的指令（按 ↑ 或用 <code>!!</code>）。</li>
+<li><strong>Job control</strong>：一個 shell 同時管多個工作——<code>Ctrl-Z</code> 把目前的工作暫停丟到背景，<code>bg</code> 讓它在背景繼續跑，<code>fg</code> 叫回前景。</li>
+</ul><p>相關指令 <code>chsh</code>（change shell）：改自己的登入 shell，改的就是 page-22 <code>/etc/passwd</code> 的第七欄。</p><blockquote>
+<p>現在最常見的是 <code>bash</code>（Bourne Again Shell，多數 Linux 的預設）和 <code>zsh</code>（macOS 的預設），都是這三支的後代。</p>
+</blockquote></section></section>
+<section><h2 id="page-47">page-47<a class="anchor" href="#page-47"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="inter-process-communication">Inter-process Communication<a class="anchor" href="#inter-process-communication"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><ul>
+<li><strong>Pipe（<code>|</code>）</strong>：把左邊指令的輸出接到右邊指令的輸入。兩支程式是同時在跑的，資料邊產生邊流過去，不需要中間檔案。
+<ul>
+<li>講得精確一點：pipe 把左邊 process 的標準輸出（fd 1）接到右邊 process 的標準輸入（fd 0），ch00 page-16 講過這兩個編號。中間的緩衝區由 kernel 提供，所以這是一種 process 之間的溝通方式，也就是這頁標題的 IPC。</li>
+</ul>
+</li>
+<li><strong>Filter</strong>：讀進輸入、做某種轉換、再輸出的程式。因為輸入輸出都是文字，才能一個接一個串起來。</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Filter</th><th>功能</th></tr></thead><tbody><tr><td><code>wc</code></td><td>數行數、字數、字元數</td></tr><tr><td><code>grep</code></td><td>挑出含有指定字串的行</td></tr><tr><td><code>more</code></td><td>一頁一頁顯示，按鍵才往下捲</td></tr><tr><td><code>sort</code></td><td>把行照字母或數字排序</td></tr></tbody></table></section></section>
+<section><h2 id="page-48">page-48<a class="anchor" href="#page-48"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="examples-of-filter--pipe">Examples of Filter &#x26; Pipe<a class="anchor" href="#examples-of-filter--pipe"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>指令</th><th>做什麼</th></tr></thead><tbody><tr><td><code>ls -la | more</code></td><td>列出所有檔案（含隱藏檔與詳細資訊），一頁一頁看</td></tr><tr><td><code>cat file | wc</code></td><td>把 <code>file</code> 的內容餵給 <code>wc</code>，算出行數、字數、字元數</td></tr><tr><td><code>man ksh | grep "history"</code></td><td>在 ksh 的手冊裡找出含 history 的行</td></tr><tr><td><code>ls -l | grep "bowman" | wc</code></td><td>串兩層：先挑出含 bowman 的行，再數有幾行</td></tr><tr><td><code>who | sort > current_users</code></td><td><code>who</code> 列出目前登入的使用者，排序後寫進 <code>current_users</code> 這個檔案</td></tr></tbody></table><p>最後一個例子裡的 <code>></code> 不是 pipe，是 <strong>redirection（重導向）</strong>：pipe 把輸出接給另一支程式，<code>></code> 把輸出寫進檔案。</p><p><strong>UNIX philosophy</strong>：</p><ol>
+<li>Write programs that do one thing and do it well——每支程式只做一件事，做到好。</li>
+<li>Write programs that work together——程式之間要能互相搭配。</li>
+<li>Write programs that handle text streams, because that is the universal interface——都用文字流當介面。</li>
+</ol><p>第三條是前兩條能成立的原因：大家的輸入輸出都是純文字，任意兩支程式就接得起來，不必事先約定格式。<code>ls</code>、<code>grep</code>、<code>wc</code> 的作者彼此不認識，<code>ls -l | grep "bowman" | wc</code> 照樣能跑。</p></section></section>
+<section><h2 id="page-49">page-49<a class="anchor" href="#page-49"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="some-system-calls-for-process-management">Some System Calls For Process Management<a class="anchor" href="#some-system-calls-for-process-management"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>page-44 那張圖的四個圈，正式的介面長這樣：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Call</th><th>作用</th></tr></thead><tbody><tr><td><code>pid = fork()</code></td><td>建立一個和 parent 一模一樣的 child。回傳值分辨身分：parent 拿到 child 的 PID，child 拿到 0</td></tr><tr><td><code>pid = waitpid(pid, &#x26;statloc, options)</code></td><td>等某一個 child 結束，並把它的結束狀態放進 <code>statloc</code></td></tr><tr><td><code>s = execve(name, argv, environp)</code></td><td>用 <code>name</code> 這支程式取代目前 process 的 core image（process 在記憶體裡的內容：程式碼加資料）。<code>argv</code> 是命令列參數，<code>environp</code> 是環境變數</td></tr><tr><td><code>exit(status)</code></td><td>結束自己，把 <code>status</code> 交回給 parent，由 parent 的 <code>waitpid</code> 收下</td></tr></tbody></table><blockquote>
+<p>一樣留到 Ch8 細講。</p>
+</blockquote></section></section>
+<section><h2 id="page-51">page-51<a class="anchor" href="#page-51"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="typical-memory-arrangement">Typical Memory Arrangement<a class="anchor" href="#typical-memory-arrangement"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>這張圖畫的是 <strong>一支 process 的記憶體長什麼樣</strong>：縱軸是記憶體位址，最下面是低位址、最上面是高位址（跟 ch00 page-16 那張圖同方向，只是那張還畫了 kernel space，這張只畫 user space）。中間那根長條被切成幾段，每一段放不同種類的東西。</p><p>由下往上：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>區段</th><th>放什麼</th><th>怎麼來的</th></tr></thead><tbody><tr><td><strong>text</strong></td><td>程式的機器指令，也就是 ch00 page-16 圖上那些框</td><td><code>exec</code> 從程式檔讀進來（Read from program file by exec）</td></tr><tr><td><strong>initialized data</strong></td><td>有給初始值的全域變數與 static 變數，例如 <code>int a = 5;</code></td><td>同樣由 <code>exec</code> 從程式檔讀進來，因為初始值 5 就存在檔案裡</td></tr><tr><td><strong>un-initialized data（bss）</strong></td><td>沒給初始值的全域變數與 static 變數，例如 <code>int b;</code></td><td>程式檔裡不存內容，只記「要多大」。<code>exec</code> 直接把這塊整個填 0（Initialized to 0 by exec）</td></tr><tr><td><strong>heap</strong></td><td><code>malloc()</code> 要來的記憶體</td><td>程式執行中自己要的，用多少長多少</td></tr><tr><td><strong>stack</strong></td><td>函式呼叫用的：參數、區域變數、return address（ch00 page-16 補充過）</td><td>每呼叫一層函式就往下長一塊，回來就縮回去</td></tr><tr><td>最上面那塊（圖上沒有名字）</td><td><strong>command-line arguments 和 environment variables</strong>，也就是 <code>execve(name, argv, environp)</code> 傳進來的那兩樣（page-49）</td><td><code>exec</code> 啟動這支程式時放上去的</td></tr></tbody></table><section><h4 id="中間那塊虛線區">中間那塊虛線區<a class="anchor" href="#中間那塊虛線區"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><p>heap 和 stack 中間那段用虛線框起來、還畫了兩個相對的箭頭，表示 <strong>目前沒在用的空白區，留給這兩邊成長</strong>：</p><ul>
+<li><strong>stack 由上往下長</strong>：多呼叫一層函式，就往低位址延伸一點。</li>
+<li><strong>heap 由下往上長</strong>：<code>malloc</code> 要更多記憶體，就往高位址延伸一點。</li>
+</ul><p>兩邊朝對方長，就不必事先決定誰該分多少——哪邊用得多哪邊就長得多。當然也可能長到撞在一起：遞迴太深把 stack 撐爆就是 stack overflow，heap 要不到空間則是 <code>malloc</code> 回傳 <code>NULL</code>。</p></section><section><h4 id="一個變數會住在哪">一個變數會住在哪<a class="anchor" href="#一個變數會住在哪"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>C 裡的東西</th><th>住在</th></tr></thead><tbody><tr><td>函式的程式碼</td><td>text</td></tr><tr><td><code>int g = 5;</code>（全域，有初始值）</td><td>initialized data</td></tr><tr><td><code>int g;</code>、<code>static int s;</code>（沒初始值）</td><td>bss</td></tr><tr><td><code>malloc()</code> 拿到的那塊</td><td>heap</td></tr><tr><td>函式裡的區域變數、參數</td><td>stack</td></tr><tr><td><code>argv</code>、環境變數</td><td>最上面那塊</td></tr></tbody></table><p>順帶兩個常見誤會：</p><ul>
+<li><strong>沒初始值的全域變數保證是 0</strong>（<code>exec</code> 清過），但 <strong>區域變數不保證</strong>——stack 上那塊是前一個函式用剩的垃圾，沒人幫你清。</li>
+<li>字串常值（<code>char *s = "hello";</code> 裡的 <code>"hello"</code>）通常跟 text 放在一起，而且是唯讀的，所以去改它會讓程式當掉。</li>
+</ul><blockquote>
+<p>投影片註明細節留到 Ch7。</p>
+</blockquote></section></section></section>
+<section><h2 id="page-53">page-53<a class="anchor" href="#page-53"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="unix-file-and-directory">UNIX File and Directory<a class="anchor" href="#unix-file-and-directory"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><ul>
+<li><strong>File：a sequence of bytes</strong>。UNIX 眼中的檔案就是一串 byte，沒有格式、沒有結構；要怎麼解讀是程式自己的事。這正是 page-48「用文字流當通用介面」能成立的底層原因。</li>
+<li><strong>Directory：a file that includes info on how to find other files</strong>。目錄本身也是一個檔案，只是它的內容是一張對照表：檔名 → 去哪裡找這個檔案。目錄裡可以再放目錄，所以整個系統長成一棵樹。</li>
+</ul><p>圖就是這棵樹，從根目錄 <code>/</code> 往下長。<strong>方框是目錄，橢圓是一般檔案</strong>：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>路徑</th><th>裡面是什麼</th></tr></thead><tbody><tr><td><code>/vmunix</code></td><td>kernel 本身的 binary image（ch00 page-07；現在的 Linux 放在 <code>/boot/vmlinuz-*</code>）</td></tr><tr><td><code>/dev</code></td><td>裝置檔，例如 <code>console</code>（終端機）、<code>lp0</code>（印表機）。UNIX 把裝置也當成檔案，用同一套 <code>read</code>／<code>write</code> 操作，就是 ch00 page-25 man section 4 說的 special files</td></tr><tr><td><code>/bin</code></td><td>可執行檔，例如 <code>csh</code></td></tr><tr><td><code>/lib</code></td><td>函式庫，例如 <code>libc.a</code>（C 標準函式庫，ch00 page-07 的 library routines）</td></tr><tr><td><code>/usr</code></td><td>底下有 <code>include</code>，放 <code>stdio.h</code> 這類標頭檔</td></tr><tr><td><code>/etc</code></td><td>系統設定檔，例如 page-22 的 <code>passwd</code></td></tr></tbody></table><p>路徑（path）就是從根一路走下來的那條路，例如 <code>/usr/include/stdio.h</code>。</p><p>投影片下方那行提示 <code>mount</code> 指令：不加參數執行它會列出目前掛載了哪些檔案系統，接的就是下一頁。</p></section></section>
+<section><h2 id="page-54">page-54<a class="anchor" href="#page-54"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="mount-file-systems">Mount File Systems<a class="anchor" href="#mount-file-systems"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p><strong>一個 file system 就是某塊儲存空間（一顆磁碟、一個分割區、一支隨身碟）上的一棵獨立目錄樹。</strong> 問題是：機器上有好幾塊這種空間，怎麼讓使用者用同一套路徑去存取？</p><p>Windows 的答案是分成 <code>C:</code>、<code>D:</code> 各自一棵樹。UNIX 的答案是 <strong>mount（掛載）</strong>：把另一個 file system 接到現有這棵樹的某個目錄底下，全系統始終只有一棵樹、一個根 <code>/</code>。</p><p>兩張圖就是掛載前後的對照：</p><ul>
+<li><strong>(a) 掛載前</strong>：根目錄下有 <code>bin</code>、<code>dev</code>、<code>lib</code>、<code>mnt</code>、<code>usr</code>。<code>mnt</code> 是一個空目錄，準備拿來當 <strong>掛載點（mount point）</strong>。另一個 file system 此時還在那塊磁碟上，但不在這棵樹裡，碰不到。</li>
+<li><strong>(b) 掛載後</strong>：那個 file system 的整棵樹接到 <code>mnt</code> 這個節點底下，於是它的檔案全都能用 <code>/mnt/...</code> 這種路徑存取。</li>
+</ul><p>要注意掛載點原本的內容會被暫時蓋住，等 unmount 之後才會再出現。</p></section></section>
+<section><h2 id="page-55">page-55<a class="anchor" href="#page-55"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="file-permissionls--l-的輸出">File Permission：<code>ls -l</code> 的輸出<a class="anchor" href="#file-permissionls--l-的輸出"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><div class="expressive-code"><figure class="frame"><figcaption class="header"></figcaption><pre data-language="plaintext" class="wrap" style="--ecMaxLine:65ch"><code><div class="ec-line"><div class="gutter"><div class="ln" aria-hidden="true">1</div></div><div class="code"><span style="--0:#e1e4e8;--1:#e1e4e8">lrwxr-xr-x 1 test user 18 Aug 28 13:41 home -> /usr/people/maria/</span></div></div><div class="ec-line"><div class="gutter"><div class="ln" aria-hidden="true">2</div></div><div class="code"><span style="--0:#e1e4e8;--1:#e1e4e8">-rw-r--r-- 1 test user 94 Aug 28 13:42 nothing.txt</span></div></div><div class="ec-line"><div class="gutter"><div class="ln" aria-hidden="true">3</div></div><div class="code"><span style="--0:#e1e4e8;--1:#e1e4e8">drwxr-xr-x 2 test user  9 Aug 28 13:40 test_dir/</span></div></div></code><button class="copy-btn" aria-label="Copy code"><div class="copy-btn-icon"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon copy-icon"><path d="M368.37-237.37q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-474.26q0-34.48 24.26-58.74 24.26-24.26 58.74-24.26h378.26q34.48 0 58.74 24.26 24.26 24.26 24.26 58.74v474.26q0 34.48-24.26 58.74-24.26 24.26-58.74 24.26H368.37Zm0-83h378.26v-474.26H368.37v474.26Zm-155 238q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-515.76q0-17.45 11.96-29.48 11.97-12.02 29.33-12.02t29.54 12.02q12.17 12.03 12.17 29.48v515.76h419.76q17.45 0 29.48 11.96 12.02 11.97 12.02 29.33t-12.02 29.54q-12.03 12.17-29.48 12.17H213.37Zm155-238v-474.26 474.26Z"></path></svg><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon success-icon"><path d="m389-377.13 294.7-294.7q12.58-12.67 29.52-12.67 16.93 0 29.61 12.67 12.67 12.68 12.67 29.53 0 16.86-12.28 29.14L419.07-288.41q-12.59 12.67-29.52 12.67-16.94 0-29.62-12.67L217.41-430.93q-12.67-12.68-12.79-29.45-.12-16.77 12.55-29.45 12.68-12.67 29.62-12.67 16.93 0 29.28 12.67L389-377.13Z"></path></svg></div></button></pre></figure></div><p>一行由左到右是：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>欄位</th><th>例子</th><th>意思</th></tr></thead><tbody><tr><td>File type</td><td><code>l</code>、<code>-</code>、<code>d</code></td><td>第 1 個字元。<code>-</code> 一般檔案、<code>d</code> 目錄、<code>l</code> symbolic link（指向另一個路徑的捷徑，所以第一行後面有 <code>home -> /usr/people/maria/</code>）</td></tr><tr><td>Permissions</td><td><code>rwxr-xr-x</code></td><td>接下來 9 個字元，見下面</td></tr><tr><td>連結數</td><td><code>1</code>、<code>2</code></td><td>有幾個名字指向這個檔案（page-56 的 <code>link</code>）</td></tr><tr><td>Owner</td><td><code>test</code></td><td>檔案屬於哪個使用者</td></tr><tr><td>Group</td><td><code>user</code></td><td>檔案屬於哪個群組</td></tr><tr><td>大小</td><td><code>94</code></td><td>幾個 byte</td></tr><tr><td>Modify date</td><td><code>Aug 28 13:42</code></td><td>最後修改時間</td></tr><tr><td>File name</td><td><code>nothing.txt</code></td><td>檔名</td></tr></tbody></table><section><h4 id="那-9-個字元">那 9 個字元<a class="anchor" href="#那-9-個字元"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h4><p>分成三組，每組三個字元，分別給 <strong>owner（擁有者）、group（同群組的人）、world（其他所有人）</strong>：</p><div class="expressive-code"><figure class="frame"><figcaption class="header"></figcaption><pre data-language="plaintext" class="wrap" style="--ecMaxLine:13ch"><code><div class="ec-line"><div class="gutter"><div class="ln" aria-hidden="true">1</div></div><div class="code"><span style="--0:#e1e4e8;--1:#e1e4e8">rwx  r-x  r-x</span></div></div></code><button class="copy-btn" aria-label="Copy code"><div class="copy-btn-icon"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon copy-icon"><path d="M368.37-237.37q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-474.26q0-34.48 24.26-58.74 24.26-24.26 58.74-24.26h378.26q34.48 0 58.74 24.26 24.26 24.26 24.26 58.74v474.26q0 34.48-24.26 58.74-24.26 24.26-58.74 24.26H368.37Zm0-83h378.26v-474.26H368.37v474.26Zm-155 238q-34.48 0-58.74-24.26-24.26-24.26-24.26-58.74v-515.76q0-17.45 11.96-29.48 11.97-12.02 29.33-12.02t29.54 12.02q12.17 12.03 12.17 29.48v515.76h419.76q17.45 0 29.48 11.96 12.02 11.97 12.02 29.33t-12.02 29.54q-12.03 12.17-29.48 12.17H213.37Zm155-238v-474.26 474.26Z"></path></svg><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" class="copy-btn-icon success-icon"><path d="m389-377.13 294.7-294.7q12.58-12.67 29.52-12.67 16.93 0 29.61 12.67 12.67 12.68 12.67 29.53 0 16.86-12.28 29.14L419.07-288.41q-12.59 12.67-29.52 12.67-16.94 0-29.62-12.67L217.41-430.93q-12.67-12.68-12.79-29.45-.12-16.77 12.55-29.45 12.68-12.67 29.62-12.67 16.93 0 29.28 12.67L389-377.13Z"></path></svg></div></button></pre></figure></div><p>每組裡 <code>r</code> 可讀、<code>w</code> 可寫、<code>x</code> 可執行，沒有該權限就寫 <code>-</code>。三個權限各對應一個數字：<strong>r = 4、w = 2、x = 1</strong>，一組相加就變成一位數，三組合起來就是 <code>chmod</code> 用的三位數。</p><p><code>chmod 700 file.txt</code>：owner 是 7 = 4+2+1 全開，group 和 world 都是 0，完全不給。</p><p><code>chmod g+rw file.txt</code>：符號寫法，只調整指定的部分。<code>u</code> owner、<code>g</code> group、<code>o</code> other、<code>a</code> 全部；<code>+</code> 加上、<code>-</code> 拿掉、<code>=</code> 設成剛好這樣。</p><blockquote>
+<p>目錄的 rwx 意思不一樣：<code>r</code> 是可以列出裡面有哪些檔案，<code>w</code> 是可以在裡面新增或刪除檔案，<code>x</code> 是可以進入、可以穿過它去存取底下的東西。</p>
+</blockquote><p>相關指令：<code>chmod</code> 改權限、<code>chown</code> 改擁有者、<code>touch</code> 建立空檔或更新修改時間。</p></section></section></section>
+<section><h2 id="page-56">page-56<a class="anchor" href="#page-56"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="some-system-calls-for-directory-management">Some System Calls For Directory Management<a class="anchor" href="#some-system-calls-for-directory-management"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Call</th><th>作用</th></tr></thead><tbody><tr><td><code>s = mkdir(name, mode)</code></td><td>建一個新目錄，<code>mode</code> 是它的權限（page-55 那三位數）</td></tr><tr><td><code>s = rmdir(name)</code></td><td>刪掉一個空目錄</td></tr><tr><td><code>s = link(name1, name2)</code></td><td>讓 <code>name2</code> 這個名字也指向 <code>name1</code> 那個檔案。同一份資料兩個名字，不是複製</td></tr><tr><td><code>s = unlink(name)</code></td><td>從目錄裡刪掉 <code>name</code> 這一筆對照，連結數減 1。減到 0，也就是再也沒有名字指得到這個檔案時，kernel 才真的把內容釋放掉</td></tr><tr><td><code>s = mount(special, name, flag)</code></td><td>把 <code>special</code>（那塊儲存空間）掛到 <code>name</code> 這個目錄底下，page-54</td></tr><tr><td><code>s = umount(special)</code></td><td>卸載</td></tr></tbody></table><p><code>link</code> 和 <code>unlink</code> 要一起看，重點是 <strong>檔案的內容和檔案的名字是兩回事</strong>：內容只有一份，名字則是目錄裡的一筆對照（page-53：目錄就是「檔名 → 去哪找」的表），而且可以有好幾個。page-55 的連結數就是在算目前有幾個名字指著同一份內容。</p><p><code>link</code> 幫它多加一個名字，<code>unlink</code> 拿掉其中一個名字。所以 <code>rm</code> 做的其實不是「刪掉檔案」，而是 <code>unlink</code> 掉一個名字；只有在拿掉的是最後一個名字時，那份內容才會真的消失。</p><blockquote>
+<p>投影片註明細節留到 Ch4。</p>
+</blockquote></section></section>
+<section><h2 id="page-57">page-57<a class="anchor" href="#page-57"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="some-system-calls-for-file-management">Some System Calls For File Management<a class="anchor" href="#some-system-calls-for-file-management"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Call</th><th>作用</th></tr></thead><tbody><tr><td><code>fd = open(file, how, ...)</code></td><td>開啟檔案，回傳 fd（file descriptor，ch00 page-16）。<code>how</code> 指定要讀、要寫還是兩者都要</td></tr><tr><td><code>s = close(fd)</code></td><td>關閉一個開著的檔案</td></tr><tr><td><code>n = read(fd, buffer, nbytes)</code></td><td>從檔案讀資料進 buffer，回傳實際讀到幾個 byte（ch00 page-16 整頁在拆解這個呼叫）</td></tr><tr><td><code>n = write(fd, buffer, nbytes)</code></td><td>把 buffer 裡的資料寫進檔案</td></tr><tr><td><code>position = lseek(fd, offset, whence)</code></td><td>移動 file pointer</td></tr><tr><td><code>s = stat(name, &#x26;buf)</code></td><td>取得檔案的狀態資訊，放進 <code>buf</code></td></tr></tbody></table><p>兩個需要解釋的：</p><ul>
+<li><strong>file pointer</strong>：每個開著的檔案都有一個「目前讀寫到哪裡」的位置，<code>read</code>／<code>write</code> 做完會自動往後移。<code>lseek</code> 讓你直接把它移到別處：<code>offset</code> 是移動量，<code>whence</code> 說明從哪裡算起（檔頭、目前位置、還是檔尾）。有它才能不照順序地讀檔案中間某一段。</li>
+<li><strong><code>stat</code></strong>：拿到的就是 page-55 <code>ls -l</code> 顯示的那些——檔案型態、權限、owner、group、大小、時間。<code>ls -l</code> 本身就是對每個檔案呼叫 <code>stat</code> 再排版印出來。</li>
+</ul><blockquote>
+<p>投影片註明細節留到 Ch3。</p>
+</blockquote></section></section>
+<section><h2 id="page-58">page-58<a class="anchor" href="#page-58"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h2><section><h3 id="what-you-should-know">What You Should Know<a class="anchor" href="#what-you-should-know"><span class="anchor-icon" data-pagefind-ignore="">#</span></a></h3><p>整章的複習清單，對照到筆記的位置：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>項目</th><th>在哪</th></tr></thead><tbody><tr><td>What is Operating System</td><td>ch00 page-04、05</td></tr><tr><td>UNIX architecture</td><td>ch00 page-07、18、19</td></tr><tr><td>System call vs. function call</td><td>ch00 page-10、16</td></tr><tr><td>Kernel/user mode/space</td><td>ch00 page-11</td></tr><tr><td>Multitasking, time sharing</td><td>page-29 ~ 43</td></tr><tr><td>User identification</td><td>page-22 ~ 25</td></tr><tr><td>Process</td><td>page-27、44、45、49</td></tr><tr><td>Memory arrangement</td><td>page-51</td></tr><tr><td>Directory and file</td><td>page-53 ~ 57</td></tr></tbody></table></section></section>  </div> <script type="module" src="/_astro/Markdown.astro_astro_type_script_index_0_lang.DMmJuWXS.js"></script> <div class="relative transition overflow-hidden bg-[var(--license-block-bg)] py-5 px-6 mb-6 rounded-xl license-container onload-animation"> <div class="transition font-bold text-black/75 dark:text-white/75"> Services for Application Programs </div> <a href="https://konyi0613.github.io/notes/sp/ch01-services_for_app/" class="link text-[var(--primary)]"> https://konyi0613.github.io/notes/sp/ch01-services_for_app/ </a> <div class="flex gap-6 mt-2"> <div> <div class="transition text-black/30 dark:text-white/30 text-sm">Author</div> <div class="transition text-black/75 dark:text-white/75 line-clamp-2">Konyi</div> </div> <div> <div class="transition text-black/30 dark:text-white/30 text-sm">Published at</div> <div class="transition text-black/75 dark:text-white/75 line-clamp-2">2026-09-23</div> </div> <div> <div class="transition text-black/30 dark:text-white/30 text-sm">License</div> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" class="link text-[var(--primary)] line-clamp-2">CC BY-NC-SA 4.0</a> </div> </div> <svg width="0.97em" height="1em" class="transition text-[15rem] absolute pointer-events-none right-6 top-1/2 -translate-y-1/2 text-black/5 dark:text-white/5" data-icon="fa6-brands:creative-commons">   <symbol id="ai:fa6-brands:creative-commons" viewBox="0 0 496 512"><path fill="currentColor" d="m245.83 214.87l-33.22 17.28c-9.43-19.58-25.24-19.93-27.46-19.93c-22.13 0-33.22 14.61-33.22 43.84c0 23.57 9.21 43.84 33.22 43.84c14.47 0 24.65-7.09 30.57-21.26l30.55 15.5c-6.17 11.51-25.69 38.98-65.1 38.98c-22.6 0-73.96-10.32-73.96-77.05c0-58.69 43-77.06 72.63-77.06c30.72-.01 52.7 11.95 65.99 35.86m143.05 0l-32.78 17.28c-9.5-19.77-25.72-19.93-27.9-19.93c-22.14 0-33.22 14.61-33.22 43.84c0 23.55 9.23 43.84 33.22 43.84c14.45 0 24.65-7.09 30.54-21.26l31 15.5c-2.1 3.75-21.39 38.98-65.09 38.98c-22.69 0-73.96-9.87-73.96-77.05c0-58.67 42.97-77.06 72.63-77.06c30.71-.01 52.58 11.95 65.56 35.86M247.56 8.05C104.74 8.05 0 123.11 0 256.05c0 138.49 113.6 248 247.56 248c129.93 0 248.44-100.87 248.44-248c0-137.87-106.62-248-248.44-248m.87 450.81c-112.54 0-203.7-93.04-203.7-202.81c0-105.42 85.43-203.27 203.72-203.27c112.53 0 202.82 89.46 202.82 203.26c-.01 121.69-99.68 202.82-202.84 202.82"/></symbol><use href="#ai:fa6-brands:creative-commons"></use>  </svg> </div> </div> </div>  <div class="flex flex-col md:flex-row justify-between mb-4 gap-4 overflow-hidden w-full"> <a href="/notes/sp/ch00-os_concept/" class="w-full font-bold overflow-hidden active:scale-95"> <div class="btn-card rounded-2xl w-full h-[3.75rem] max-w-full px-4 flex items-center !justify-start gap-4"> <svg width="1em" height="1em" viewBox="0 0 24 24" class="text-[2rem] text-[var(--primary)]" data-icon="material-symbols:chevron-left-rounded">   <use href="#ai:material-symbols:chevron-left-rounded"></use>  </svg> <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-black/75 dark:text-white/75"> OS Concept </div> </div> </a> <a href="#" class="w-full font-bold overflow-hidden active:scale-95 pointer-events-none">  </a> </div>  <div class="footer col-span-2 onload-animation hidden lg:block"> <!--<div class="border-t border-[var(&#45;&#45;primary)] mx-16 border-dashed py-8 max-w-[var(&#45;&#45;page-width)] flex flex-col items-center justify-center px-6">--><div class="transition border-t border-black/10 dark:border-white/15 my-10 border-dashed mx-32"></div> <!--<div class="transition bg-[oklch(92%_0.01_var(&#45;&#45;hue))] dark:bg-black rounded-2xl py-8 mt-4 mb-8 flex flex-col items-center justify-center px-6">--> <div class="transition border-dashed border-[oklch(85%_0.01_var(--hue))] dark:border-white/15 rounded-2xl mb-12 flex flex-col items-center justify-center px-6"> <div class="transition text-50 text-sm text-center">
+&copy; <span id="copyright-year">2026</span> Konyi. All Rights Reserved. /
+<a class="transition link text-[var(--primary)] font-medium" target="_blank" href="/rss.xml">RSS</a> /
+<a class="transition link text-[var(--primary)] font-medium" target="_blank" href="/sitemap-index.xml">Sitemap</a><br>
+Powered by
+<a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://astro.build">Astro</a> &
+<a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a> </div> </div> </div> </div> </main> <div class="footer col-span-2 onload-animation block lg:hidden"> <!--<div class="border-t border-[var(&#45;&#45;primary)] mx-16 border-dashed py-8 max-w-[var(&#45;&#45;page-width)] flex flex-col items-center justify-center px-6">--><div class="transition border-t border-black/10 dark:border-white/15 my-10 border-dashed mx-32"></div> <!--<div class="transition bg-[oklch(92%_0.01_var(&#45;&#45;hue))] dark:bg-black rounded-2xl py-8 mt-4 mb-8 flex flex-col items-center justify-center px-6">--> <div class="transition border-dashed border-[oklch(85%_0.01_var(--hue))] dark:border-white/15 rounded-2xl mb-12 flex flex-col items-center justify-center px-6"> <div class="transition text-50 text-sm text-center">
+&copy; <span id="copyright-year">2026</span> Konyi. All Rights Reserved. /
+<a class="transition link text-[var(--primary)] font-medium" target="_blank" href="/rss.xml">RSS</a> /
+<a class="transition link text-[var(--primary)] font-medium" target="_blank" href="/sitemap-index.xml">Sitemap</a><br>
+Powered by
+<a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://astro.build">Astro</a> &
+<a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a> </div> </div> </div> </div> <!-- There can't be a filter on parent element, or it will break `fixed` --><div class="back-to-top-wrapper hidden lg:block" data-astro-cid-eymb5ayk> <div id="back-to-top-btn" class="back-to-top-btn hide flex items-center rounded-2xl overflow-hidden transition" onclick="backToTop()" data-astro-cid-eymb5ayk> <button aria-label="Back to Top" class="btn-card h-[3.75rem] w-[3.75rem]" data-astro-cid-eymb5ayk> <svg width="1em" height="1em" class="mx-auto" data-astro-cid-eymb5ayk="true" data-icon="material-symbols:keyboard-arrow-up-rounded">   <symbol id="ai:material-symbols:keyboard-arrow-up-rounded" viewBox="0 0 24 24"><path fill="currentColor" d="m12 10.8l-3.9 3.9q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7l4.6-4.6q.3-.3.7-.3t.7.3l4.6 4.6q.275.275.275.7t-.275.7t-.7.275t-.7-.275z"/></symbol><use href="#ai:material-symbols:keyboard-arrow-up-rounded"></use>  </svg> </button> </div> </div>  <script>
+function backToTop() {
+    window.scroll({ top: 0, behavior: 'smooth' });
+}
+</script> </div> </div>  <div class="absolute w-full z-0 hidden xl:block"> <div class="relative max-w-[var(--page-width)] mx-auto"> <!-- TOC component --> <div id="toc-wrapper" class="hidden lg:block transition absolute top-0 -right-[var(--toc-width)] w-[var(--toc-width)] items-center toc-hide"> <div id="toc-inner-wrapper" class="fixed top-14 w-[var(--toc-width)] h-[calc(100vh_-_20rem)] overflow-y-scroll overflow-x-hidden hide-scrollbar"> <div id="toc" class="w-full h-full transition-swup-fade "> <div class="h-8 w-full"></div> <table-of-contents class="group"><a href="#page-22" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">1</div><div class="transition text-sm text-50">page-22</div></a><a href="#user-identification-in-unix" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">User Identification in UNIX</div></a><a href="#page-23" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">2</div><div class="transition text-sm text-50">page-23</div></a><a href="#cat-etcpasswd" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">cat /etc/passwd</div></a><a href="#page-24" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">3</div><div class="transition text-sm text-50">page-24</div></a><a href="#password-encryption-and-salt" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">Password Encryption and Salt</div></a><a href="#page-25" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">4</div><div class="transition text-sm text-50">page-25</div></a><a href="#man-3-crypt" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">man 3 crypt</div></a><a href="#page-27" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">5</div><div class="transition text-sm text-50">page-27</div></a><a href="#programs-and-processes" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">Programs and Processes</div></a><a href="#page-28" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">6</div><div class="transition text-sm text-50">page-28</div></a><a href="#cpu-scheduling" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">CPU Scheduling</div></a><a href="#page-29--page-43" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">7</div><div class="transition text-sm text-50">page-29 ~ page-43</div></a><a href="#example-of-multitasking" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">Example of Multitasking</div></a><a href="#page-44" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">8</div><div class="transition text-sm text-50">page-44</div></a><a href="#unix-processshell-怎麼幫你執行指令" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">UNIX Process：shell 怎麼幫你執行指令</div></a><a href="#page-45" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">9</div><div class="transition text-sm text-50">page-45</div></a><a href="#a-process-tree" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">A Process Tree</div></a><a href="#page-46" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">10</div><div class="transition text-sm text-50">page-46</div></a><a href="#common-unix-shells" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">Common UNIX Shells</div></a><a href="#page-47" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">11</div><div class="transition text-sm text-50">page-47</div></a><a href="#inter-process-communication" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">Inter-process Communication</div></a><a href="#page-48" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">12</div><div class="transition text-sm text-50">page-48</div></a><a href="#examples-of-filter--pipe" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">Examples of Filter &amp; Pipe</div></a><a href="#page-49" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">13</div><div class="transition text-sm text-50">page-49</div></a><a href="#some-system-calls-for-process-management" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">Some System Calls For Process Management</div></a><a href="#page-51" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">14</div><div class="transition text-sm text-50">page-51</div></a><a href="#typical-memory-arrangement" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">Typical Memory Arrangement</div></a><a href="#page-53" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">15</div><div class="transition text-sm text-50">page-53</div></a><a href="#unix-file-and-directory" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">UNIX File and Directory</div></a><a href="#page-54" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">16</div><div class="transition text-sm text-50">page-54</div></a><a href="#mount-file-systems" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">Mount File Systems</div></a><a href="#page-55" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">17</div><div class="transition text-sm text-50">page-55</div></a><a href="#file-permissionls--l-的輸出" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">File Permission：ls -l 的輸出</div></a><a href="#page-56" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">18</div><div class="transition text-sm text-50">page-56</div></a><a href="#some-system-calls-for-directory-management" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">Some System Calls For Directory Management</div></a><a href="#page-57" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">19</div><div class="transition text-sm text-50">page-57</div></a><a href="#some-system-calls-for-file-management" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">Some System Calls For File Management</div></a><a href="#page-58" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold bg-[var(--toc-badge-bg)] text-[var(--btn-content)]">20</div><div class="transition text-sm text-50">page-58</div></a><a href="#what-you-should-know" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
+        hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2
+    "><div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ml-4"><div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div></div><div class="transition text-sm text-50">What You Should Know</div></a><div id="active-indicator" style="opacity: 0" class="-z-10 absolute bg-[var(--toc-btn-hover)] left-0 right-0 rounded-xl transition-all group-hover:bg-transparent border-2 border-[var(--toc-btn-hover)] group-hover:border-[var(--toc-btn-active)] border-dashed"></div></table-of-contents><script type="module">class l extends HTMLElement{tocEl=null;visibleClass="visible";observer;anchorNavTarget=null;headingIdxMap=new Map;headings=[];sections=[];tocEntries=[];active=[];activeIndicator=null;constructor(){super(),this.observer=new IntersectionObserver(this.markVisibleSection,{threshold:0})}markVisibleSection=t=>{t.forEach(e=>{const i=e.target.children[0]?.getAttribute("id"),s=i?this.headingIdxMap.get(i):void 0;s!=null&&(this.active[s]=e.isIntersecting),e.isIntersecting&&this.anchorNavTarget==e.target.firstChild&&(this.anchorNavTarget=null)}),this.active.includes(!0)||this.fallback(),this.update()};toggleActiveHeading=()=>{let t=this.active.length-1,e=this.active.length-1,i=-1;for(;t>=0&&!this.active[t];)this.tocEntries[t].classList.remove(this.visibleClass),t--;for(;t>=0&&this.active[t];)this.tocEntries[t].classList.add(this.visibleClass),e=Math.min(e,t),i=Math.max(i,t),t--;for(;t>=0;)this.tocEntries[t].classList.remove(this.visibleClass),t--;if(e>i)this.activeIndicator?.setAttribute("style","opacity: 0");else{let s=this.tocEl?.getBoundingClientRect().top||0,n=this.tocEl?.scrollTop||0,o=this.tocEntries[e].getBoundingClientRect().top-s+n,c=this.tocEntries[i].getBoundingClientRect().bottom-s+n;this.activeIndicator?.setAttribute("style",`top: ${o}px; height: ${c-o}px`)}};scrollToActiveHeading=()=>{if(this.anchorNavTarget||!this.tocEl)return;const t=document.querySelectorAll(`#toc .${this.visibleClass}`);if(!t.length)return;const e=t[0],i=t[t.length-1],s=this.tocEl.clientHeight;let n;i.getBoundingClientRect().bottom-e.getBoundingClientRect().top<.9*s?n=e.offsetTop-32:n=i.offsetTop-s*.8,this.tocEl.scrollTo({top:n,left:0,behavior:"smooth"})};update=()=>{requestAnimationFrame(()=>{this.toggleActiveHeading(),this.scrollToActiveHeading()})};fallback=()=>{if(this.sections.length)for(let t=0;t<this.sections.length;t++){let e=this.sections[t].getBoundingClientRect().top,i=this.sections[t].getBoundingClientRect().bottom;if(this.isInRange(e,0,window.innerHeight)||this.isInRange(i,0,window.innerHeight)||e<0&&i>window.innerHeight)this.markActiveHeading(t);else if(e>window.innerHeight)break}};markActiveHeading=t=>{this.active[t]=!0};handleAnchorClick=t=>{const e=t.composedPath().find(i=>i instanceof HTMLAnchorElement);if(e){const i=decodeURIComponent(e.hash?.substring(1)),s=this.headingIdxMap.get(i);s!==void 0?this.anchorNavTarget=this.headings[s]:this.anchorNavTarget=null}};isInRange(t,e,i){return e<t&&t<i}connectedCallback(){const t=document.querySelector(".prose");t?t.addEventListener("animationend",()=>{this.init()},{once:!0}):console.debug("Animation element not found")}init(){if(this.tocEl=document.getElementById("toc-inner-wrapper"),!!this.tocEl&&(this.tocEl.addEventListener("click",this.handleAnchorClick,{capture:!0}),this.activeIndicator=document.getElementById("active-indicator"),this.tocEntries=Array.from(document.querySelectorAll("#toc a[href^='#']")),this.tocEntries.length!==0)){this.sections=new Array(this.tocEntries.length),this.headings=new Array(this.tocEntries.length);for(let t=0;t<this.tocEntries.length;t++){const e=decodeURIComponent(this.tocEntries[t].hash?.substring(1)),i=document.getElementById(e),s=i?.parentElement;i instanceof HTMLElement&&s instanceof HTMLElement&&(this.headings[t]=i,this.sections[t]=s,this.headingIdxMap.set(e,t))}this.active=new Array(this.tocEntries.length).fill(!1),this.sections.forEach(t=>this.observer.observe(t)),this.fallback(),this.update()}}disconnectedCallback(){this.sections.forEach(t=>this.observer.unobserve(t)),this.observer.disconnect(),this.tocEl?.removeEventListener("click",this.handleAnchorClick)}}customElements.get("table-of-contents")||customElements.define("table-of-contents",l);</script> <div class="h-8 w-full"></div> </div> </div> </div> <!-- #toc needs to exist for Swup to work normally -->  </div> </div>  <!-- increase the page height during page transition to prevent the scrolling animation from jumping --> <div id="page-height-extend" class="hidden h-[300vh]" data-astro-cid-sckkx6r4 style="--bannerOffset: 15vh;--banner-height-home: 65vh;--banner-height: 35vh;--configHue: 20;--page-width: 75rem;"></div>  <script type="module" src="/_astro/Layout.astro_astro_type_script_index_0_lang.DAHrxWCB.js"></script> <script type="module" src="/_astro/Layout.astro_astro_type_script_index_1_lang.Ddm2SD6h.js"></script></body></html>
